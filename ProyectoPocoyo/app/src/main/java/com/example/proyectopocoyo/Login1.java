@@ -15,7 +15,7 @@ public class Login1 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login1);
 
         TextView Txt = findViewById(R.id.txtCrear);
         Txt.setOnClickListener(new View.OnClickListener() {
@@ -38,14 +38,11 @@ public class Login1 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Crear un Intent para abrir la nueva actividad
-                Intent intent = new Intent(Login1.this,
+                Intent intent2 = new Intent(Login1.this,
                         MainActivity.class);
 
-                // Puedes agregar información adicional al intent si es necesario
-                // intent.putExtra("clave", "valor");
-
                 // Iniciar la nueva actividad
-                startActivity(intent);
+                startActivity(intent2);
             }
         });
     }
