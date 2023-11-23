@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ProyectoPocoyo"
         tools:targetApi="31">
         <activity
+            android:name=".MovieActivity"
+            android:exported="false" />
+        <activity
             android:name=".Login1"
             android:exported="true">
             <intent-filter>
@@ -21,13 +24,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"
-            android:parentActivityName=".Login1"
-            android:exported="true">
-
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:parentActivityName=".Login1">
             <intent-filter>
                 <action android:name="com.example.proyectopocoyo.MainActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
@@ -35,12 +38,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Login1" />
         </activity>
-
-        <activity android:name=".MainActivity2"
-            android:parentActivityName=".Login1"
-            android:exported="true">
+        <activity
+            android:name=".MainActivity2"
+            android:exported="true"
+            android:parentActivityName=".Login1">
             <intent-filter>
                 <action android:name="com.example.proyectopocoyo.MainActivity2" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
 
