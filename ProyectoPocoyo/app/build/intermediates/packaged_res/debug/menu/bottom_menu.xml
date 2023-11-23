@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_item1"
+        android:title="Inicio"
+        android:icon="@drawable/inicio" />
+    <item
+        android:id="@+id/menu_item2"
+        android:title="Favoritos"
+        android:icon="@drawable/lista" />
+    <item
+        android:id="@+id/menu_item3"
+        android:title="Añadir"
+        android:icon="@drawable/anadir" />
+    <item
+        android:id="@+id/menu_item4"
+        android:title="Perfil"
+        android:icon="@drawable/perfil" />
+</menu>

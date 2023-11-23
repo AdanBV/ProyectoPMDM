@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="grey">#808080</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">Proyecto Pocoyo</string>
+    <string name="confirmar">Confirmar Contraseña</string>
+    <string name="contra">Contraseña</string>
+    <string name="crear">Crear Cuenta</string>
+    <string name="iniciar">Iniciar Sesión</string>
+    <string name="or">Or</string>
+    <string name="registrarse">Registrarse</string>
+    <string name="usuario">Usuario</string>
+    <style name="Base.Theme.ProyectoPocoyo" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        <item name="android:statusBarColor">@color/black</item>
+        
+    </style>
+    <style name="Theme.ProyectoPocoyo" parent="Base.Theme.ProyectoPocoyo"/>
+</resources>
