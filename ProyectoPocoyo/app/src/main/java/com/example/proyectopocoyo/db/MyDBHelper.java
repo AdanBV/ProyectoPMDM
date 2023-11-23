@@ -15,17 +15,6 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        //Crear la tabla Usuario
-        db.execSQL("CREATE TABLE User(idUsuario TEXT, )";
-        db.execSQL(User.INSERT_QUOTES_SCRIPT);
-
-        //Crear la tabla Pelicula
-        db.execSQL(Movie.CREATE_QUOTES_SCRIPT);
-        db.execSQL(Movie.INSERT_QUOTES_SCRIPT);
-
-        //Crear la tabla Reseñas
-        db.execSQL(Review.CREATE_QUOTES_SCRIPT);
-        db.execSQL(Review.INSERT_QUOTES_SCRIPT);
     }
 
     @Override

@@ -16,7 +16,7 @@
             android:name=".activities.MovieActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.Login1"
+            android:name=".activities.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +25,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.MainActivity"
+            android:name=".activities.HomeActivity"
             android:exported="true"
-            android:parentActivityName=".activities.Login1">
+            android:parentActivityName=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="com.example.proyectopocoyo.MainActivity" />
 
@@ -36,12 +36,12 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.Login1" />
+                android:value=".activities.LoginActivity" />
         </activity>
         <activity
-            android:name=".activities.MainActivity2"
+            android:name=".activities.RegisterActivity"
             android:exported="true"
-            android:parentActivityName=".activities.Login1">
+            android:parentActivityName=".activities.LoginActivity">
             <intent-filter>
                 <action android:name="com.example.proyectopocoyo.MainActivity2" />
 
@@ -50,7 +50,7 @@
 
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.Login1" />
+                android:value=".activities.LoginActivity" />
         </activity>
     </application>
 

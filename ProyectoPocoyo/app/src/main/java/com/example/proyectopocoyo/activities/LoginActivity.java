@@ -10,20 +10,20 @@ import android.widget.TextView;
 
 import com.example.proyectopocoyo.R;
 
-public class Login1 extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login1);
+        setContentView(R.layout.activity_login);
 
-        TextView Txt = findViewById(R.id.txtCrear);
+        TextView Txt = findViewById(R.id.button_Register);
         Txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Crear un Intent para abrir la nueva actividad
-                Intent intent = new Intent(Login1.this,
-                        MainActivity2.class);
+                Intent intent = new Intent(LoginActivity.this,
+                        RegisterActivity.class);
 
                 // Puedes agregar información adicional al intent si es necesario
                 // intent.putExtra("clave", "valor");
@@ -33,13 +33,13 @@ public class Login1 extends AppCompatActivity {
             }
         });
 
-        Button btn = findViewById(R.id.button);
+        Button btn = findViewById(R.id.button_LogIn);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Crear un Intent para abrir la nueva actividad
-                Intent intent2 = new Intent(Login1.this,
-                        MainActivity.class);
+                Intent intent2 = new Intent(LoginActivity.this,
+                        HomeActivity.class);
 
                 // Iniciar la nueva actividad
                 startActivity(intent2);
