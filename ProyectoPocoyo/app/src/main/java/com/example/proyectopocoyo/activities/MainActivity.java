@@ -1,17 +1,17 @@
 
 // PÁGINA PRINCIPAL DE LA APP (INICIO)
 
-package com.example.proyectopocoyo;
+package com.example.proyectopocoyo.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyectopocoyo.clases.Pelicula;
+import com.example.proyectopocoyo.clases.PeliculaAdapter;
+import com.example.proyectopocoyo.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

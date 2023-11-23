@@ -1,4 +1,4 @@
-package com.example.proyectopocoyo;
+package com.example.proyectopocoyo.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
