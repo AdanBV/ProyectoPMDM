@@ -75,4 +75,23 @@ public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "New user successfully registered", Toast.LENGTH_LONG).show();
         }
     }
+
+    public void addReview(int reviewId, String textReview, float ratingReview,int userId, int movieId){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("Review_id", reviewId);
+        cv.put("Review_text",textReview);
+        cv.put("Review_rating",ratingReview);
+        cv.put("User_id",userId);
+        cv.put("Movie_id",movieId);
+
+        long result = db.insert("Review", null, cv);
+
+        if(result == -1){
+            Toast.makeText(context, "Failed to create review", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(context, "New review successfully created", Toast.LENGTH_LONG).show();
+        }
+    }
 }
