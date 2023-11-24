@@ -3,10 +3,15 @@
 
 package com.example.proyectopocoyo.activities;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +20,7 @@ import com.example.proyectopocoyo.clases.Pelicula;
 import com.example.proyectopocoyo.clases.PeliculaAdapter;
 import com.example.proyectopocoyo.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        final int[] posicion = new int[]{0,1,2,3};
         // VISTA XML QUE SE VA A MOSTRAR
         setContentView(R.layout.activity_home);
 
@@ -32,6 +39,37 @@ public class HomeActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
 
         // HAY QUE AÑADIR UN LISTENER PARA LA BARRA DE NAVEGACÓN INFERIOR
+
+        bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
+
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                String t = (String) menuItem.getTitle();
+                switch (t) {
+                    case "Inicio":
+                        showToast("Clic en Inicio");
+                        return true;
+
+                    case "Favoritos":
+                        showToast("Clic en Favoritos");
+                        return true;
+
+                    case "Añadir":
+                        Intent intent2 = new Intent(HomeActivity.this, ReviewActivity.class);
+                        // Iniciar la nueva actividad
+                        startActivity(intent2);
+                        return true;
+
+                    case "Perfil":
+                        showToast("Clic en Perfil");
+                        return true;
+
+                    default:
+                        return false;
+                }
+            }
+        });
+
 
 
         // LISTA DE PELICULAS PARA PROBAR
@@ -74,5 +112,8 @@ public class HomeActivity extends AppCompatActivity {
                     }
                 })
         );
+    }
+    private void showToast(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
