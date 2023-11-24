@@ -35,20 +35,19 @@ public class RegisterActivity extends AppCompatActivity {
                             null,
                             null,
                             editText_Password.getText().toString().trim());
+
+                    // Crear un Intent para abrir la nueva actividad
+                    Intent intent = new Intent(RegisterActivity.this,
+                            HomeActivity.class);
+
+                    // Iniciar la nueva actividad
+                    startActivity(intent);
                 }else{
                     Toast.makeText(RegisterActivity.this, "Failed to create user, passwords don't match", Toast.LENGTH_LONG).show();
                 }
 
 
-                // Crear un Intent para abrir la nueva actividad
-                Intent intent = new Intent(RegisterActivity.this,
-                        HomeActivity.class);
 
-                // Puedes agregar información adicional al intent si es necesario
-                // intent.putExtra("clave", "valor");
-
-                // Iniciar la nueva actividad
-                startActivity(intent);
             }
         });
     }
