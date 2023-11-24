@@ -24,7 +24,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // VISTA XML QUE SE VA A MOSTRAR
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_home);
 
         // REFERENCIA A LA BARRA DE NAVEGACIÓN INFERIOR
         BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
