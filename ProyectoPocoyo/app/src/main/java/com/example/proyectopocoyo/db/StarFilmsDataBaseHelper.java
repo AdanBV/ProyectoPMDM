@@ -1,54 +1,77 @@
 package com.example.proyectopocoyo.db;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
 
+    // DB INFO
+    private Context context;
     private static final String DATABASE_NAME = "StarFilmsDB";
     private static final int DATABASE_VERSION = 1;
 
-    // Tabla Usuario
-    private static final String CREATE_TABLE_USUARIO =
-            "CREATE TABLE Usuario (idUsuario TEXT PRIMARY KEY, " +
-                    "Nombre TEXT, " +
-                    "Apellido TEXT, " +
-                    "Contrasena TEXT);";
+    // TABLA USUARIO
+    private static final String CREATE_TABLE_USER =
+            "CREATE TABLE User (User_id TEXT PRIMARY KEY, " +
+                    "User_name TEXT, " +
+                    "User_surname TEXT, " +
+                    "User_password TEXT);";
 
-    // Tabla Pelicula
-    private static final String CREATE_TABLE_PELICULA =
-            "CREATE TABLE Pelicula (idPelicula INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "Titulo TEXT, " +
-                    "Director TEXT, " +
-                    "Descripcion TEXT, " +
-                    "ValoracionMedia REAL " +
-                    "CHECK (ValoracionMedia >= 0.0 AND ValoracionMedia <= 10.0));";
+    // TABLA PELICULA
+    private static final String CREATE_TABLE_MOVIE =
+            "CREATE TABLE Movie (Movie_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "Movie_title TEXT, " +
+                    "Movie_director TEXT, " +
+                    "Movie_description TEXT, " +
+                    "Movie_rating REAL " +
+                    "CHECK (Movie_rating >= 0.0 AND Movie_rating <= 10.0));";
 
-    // Tabla Resena
-    private static final String CREATE_TABLE_RESENA =
-            "CREATE TABLE Resena (idResena INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "Texto TEXT, " +
-                    "Valoracion REAL, " +
-                    "idUsuario INTEGER, " +
-                    "idPelicula INTEGER, " +
-                    "CHECK(Valoracion >= 0.0 AND Valoracion <= 10.0), " +
-                    "FOREIGN KEY(idUsuario) REFERENCES Usuario(idUsuario), " +
-                    "FOREIGN KEY(idPelicula) REFERENCES Pelicula(idPelicula));";
+    // TABLA RESENA
+    private static final String CREATE_TABLE_REVIEW =
+            "CREATE TABLE Review (Review_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    "Review_text TEXT, " +
+                    "Review_rating REAL, " +
+                    "User_id INTEGER, " +
+                    "Movie_id INTEGER, " +
+                    "CHECK(Review_rating >= 0.0 AND Review_rating <= 10.0), " +
+                    "FOREIGN KEY(User_id) REFERENCES User(User_id), " +
+                    "FOREIGN KEY(Movie_id) REFERENCES Movie(Movie_id));";
 
     public StarFilmsDataBaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(CREATE_TABLE_USUARIO);
-        db.execSQL(CREATE_TABLE_PELICULA);
-        db.execSQL(CREATE_TABLE_RESENA);
+        db.execSQL(CREATE_TABLE_USER);
+        db.execSQL(CREATE_TABLE_MOVIE);
+        db.execSQL(CREATE_TABLE_REVIEW);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS User");
+        onCreate(db);
+    }
 
+    public void addUser(String userId, String name, String surname, String password) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("User_id", userId);
+        cv.put("User_name", name);
+        cv.put("User_surname", surname);
+        cv.put("User_password", password);
+
+        long result = db.insert("User", null, cv);
+        if(result == -1){
+            Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(context, "New user successfully registered", Toast.LENGTH_LONG).show();
+        }
     }
 }

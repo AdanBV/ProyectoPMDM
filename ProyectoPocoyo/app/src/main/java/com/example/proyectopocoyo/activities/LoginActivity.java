@@ -11,14 +11,13 @@ import android.widget.TextView;
 import com.example.proyectopocoyo.R;
 
 public class LoginActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        TextView Txt = findViewById(R.id.button_Register);
-        Txt.setOnClickListener(new View.OnClickListener() {
+        Button button_register = findViewById(R.id.button_Register);
+        button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Crear un Intent para abrir la nueva actividad
@@ -33,10 +32,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        Button btn = findViewById(R.id.button_LogIn);
-        btn.setOnClickListener(new View.OnClickListener() {
+        Button button_LogIn = findViewById(R.id.button_LogIn);
+        button_LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Añadir campo a Tabla Usuario de la BD
+
+
                 // Crear un Intent para abrir la nueva actividad
                 Intent intent2 = new Intent(LoginActivity.this,
                         HomeActivity.class);
