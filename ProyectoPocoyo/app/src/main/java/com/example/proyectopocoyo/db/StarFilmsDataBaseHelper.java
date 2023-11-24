@@ -68,6 +68,7 @@ public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
         cv.put("User_password", password);
 
         long result = db.insert("User", null, cv);
+
         if(result == -1){
             Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
         }else{
