@@ -3,7 +3,9 @@
 
 package com.example.proyectopocoyo.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -53,5 +55,24 @@ public class HomeActivity extends AppCompatActivity {
         // ADAPTADOR PARA MOSTRAR LA LISTA DE PELICULAS CORRECTAMENTE
         PeliculaAdapter adapter = new PeliculaAdapter(movieList, this);
         recyclerView.setAdapter(adapter);
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent intent2 = new Intent(HomeActivity.this,
+                                MovieActivity.class);
+
+                        // Iniciar la nueva actividad
+                        startActivity(intent2);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+
+                    }
+                })
+        );
     }
 }
