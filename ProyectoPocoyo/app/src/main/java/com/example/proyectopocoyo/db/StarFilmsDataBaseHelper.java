@@ -94,4 +94,20 @@ public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "New review successfully created", Toast.LENGTH_LONG).show();
         }
     }
+    public void addPeli(int Movie_id, String Movie_title, String Movie_director, String Movie_description, Double Movie_rating) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put("Movie_id", Movie_id);
+        cv.put("Movie_title", Movie_title);
+        cv.put("Movie_director", Movie_director);
+        cv.put("Movie_description", Movie_description);
+        cv.put("Movie_rating", Movie_rating);
+
+        long result = db.insert("Pelicula", null, cv);
+
+        if (result == -1) {
+            Toast.makeText(context, "Failed to create movie", Toast.LENGTH_LONG).show();
+        }
+    }
 }
