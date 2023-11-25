@@ -22,7 +22,35 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        CargarBd();
 
+        editText_UserId = findViewById(R.id.editText_UserID);
+        editText_Password = findViewById(R.id.editText_Password);
+
+        button_register = findViewById(R.id.button_Register);
+        button_register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Crear un Intent para abrir la nueva actividad
+                Intent intent = new Intent(LoginActivity.this,
+                        RegisterActivity.class);
+
+                // Iniciar la nueva actividad
+                startActivity(intent);
+            }
+        });
+
+        button_LogIn = findViewById(R.id.button_LogIn);
+        button_LogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Iniciar Sesion
+                IniciarSesion(v);
+            }
+        });
+    }
+
+    public void CargarBd(){
         StarFilmsDataBaseHelper db = new StarFilmsDataBaseHelper(LoginActivity.this);
         db.addPeli(0,"La amenaza fantasma","George Lucas",
                 "La trama describe la historia del maestro jedi Qui-Gon Jinn y de su aprendiz Obi-Wan Kenobi, que escoltan y protegen a la Reina Amidala con la esperanza de encontrar una salida pacífica.",
@@ -48,30 +76,6 @@ public class LoginActivity extends AppCompatActivity {
         db.addPeli(7,"Los ultimos Jedi","Rian Johnson",
                 "La Resistencia encabezada por la general Leia Organa (Carrie Fisher) ha logrado contener temporalmente a la siniestra Primera Orden, un nuevo grupo militar nacido de las cenizas del Imperio Galáctico",
                 1.5);
-        editText_UserId = findViewById(R.id.editText_UserID);
-        editText_Password = findViewById(R.id.editText_Password);
-
-        button_register = findViewById(R.id.button_Register);
-        button_register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Crear un Intent para abrir la nueva actividad
-                Intent intent = new Intent(LoginActivity.this,
-                        RegisterActivity.class);
-
-                // Iniciar la nueva actividad
-                startActivity(intent);
-            }
-        });
-
-        button_LogIn = findViewById(R.id.button_LogIn);
-        button_LogIn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Iniciar Sesion
-                IniciarSesion(v);
-            }
-        });
     }
 
     public void IniciarSesion(View v) {

@@ -15,18 +15,30 @@ import com.example.proyectopocoyo.db.StarFilmsDataBaseHelper;
 
 public class MovieActivity extends AppCompatActivity {
     StarFilmsDataBaseHelper myDb;
-    int numeroPeli;
-    TextView idTitulo=findViewById(R.id.idTitulo);
-    TextView txtTitulo=findViewById(R.id.txtTitulo);
-    TextView txtDescription=findViewById(R.id.txtDescription);
-    TextView txtDirector=findViewById(R.id.txtDirector);
-    TextView txtValoracion=findViewById(R.id.txtValoracion);
+    String title;
+
+    TextView idTitulo;
+    TextView txtTitulo;
+    TextView txtDescription;
+    TextView txtDirector;
+    TextView txtValoracion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+
+        idTitulo = findViewById(R.id.idTitulo);
+        txtTitulo = findViewById(R.id.txtTitulo);
+        txtDescription = findViewById(R.id.txtDescription);
+        txtDirector = findViewById(R.id.txtDirector);
+        txtValoracion = findViewById(R.id.txtValoracion);
+
+        title = "La amenaza fantasma";
+
         myDb = new StarFilmsDataBaseHelper(this);
+
         mostrarDatos();
+
         ImageButton imageButton = findViewById(R.id.imageButton);
 
         imageButton.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +68,7 @@ public class MovieActivity extends AppCompatActivity {
 
     }
     private void mostrarDatos() {
-        Cursor cursor = myDb.obtenerPelis(numeroPeli);
+        Cursor cursor = StarFilmsDataBaseHelper.obtenerPelis(myDb, "La amenaza fantasma");
 
         if (cursor != null && cursor.moveToFirst()) {
             String titulo;

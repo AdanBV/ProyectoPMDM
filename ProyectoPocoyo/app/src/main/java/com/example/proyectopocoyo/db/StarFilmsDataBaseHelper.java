@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
 
     // DB INFO
@@ -104,17 +106,11 @@ public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
         cv.put("Movie_director", Movie_director);
         cv.put("Movie_description", Movie_description);
         cv.put("Movie_rating", Movie_rating);
-
-        long result = db.insert("Pelicula", null, cv);
-
-        if (result == -1) {
-            Toast.makeText(context, "Failed to create movie", Toast.LENGTH_LONG).show();
-        }
     }
 
-    public Cursor obtenerPelis(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM Movie WHERE Movie_id = id";
+    public static Cursor obtenerPelis(@NonNull StarFilmsDataBaseHelper starFilmsDataBaseHelper, String title ) {
+        SQLiteDatabase db = starFilmsDataBaseHelper.getReadableDatabase();
+        String query = "SELECT * FROM Movie WHERE Movie_title = '" + title + "';";
         return db.rawQuery(query, null);
     }
 }
