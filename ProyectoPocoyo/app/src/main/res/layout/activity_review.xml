@@ -7,26 +7,10 @@
     tools:context=".activities.ReviewActivity">
 
     <EditText
-        android:id="@+id/txtRating"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/round_edit_text"
-        android:ems="10"
-        android:hint="Valoración"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorHint="@color/grey"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTexto" />
-
-    <EditText
         android:id="@+id/txtTexto"
-        android:layout_width="263dp"
-        android:layout_height="168dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="257dp"
+        android:layout_height="229dp"
+        android:layout_marginTop="4dp"
         android:background="@drawable/round_edit_text"
         android:ems="10"
         android:hint="Texto de la review"
@@ -35,8 +19,20 @@
         android:textColorHint="@color/grey"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtIdReview" />
+
+    <Button
+        android:id="@+id/btnMostrarMenu"
+        android:layout_width="181dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="74dp"
+        android:onClick="mostrarMenu"
+        android:text="Valorar Pelicula"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTexto" />
 
     <EditText
         android:id="@+id/txtIdMovie"
@@ -58,7 +54,7 @@
         android:id="@+id/txtIdUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="48dp"
         android:background="@drawable/round_edit_text"
         android:ems="10"
         android:hint="Id User"
@@ -66,17 +62,18 @@
         android:padding="10dp"
         android:textColorHint="@color/grey"
         android:textSize="22sp"
+        app:layout_constraintBottom_toTopOf="@+id/txtIdMovie"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtRating" />
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="94dp"
         android:layout_height="103dp"
+        android:layout_marginStart="11dp"
         android:layout_marginEnd="5dp"
         app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.363"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_revert" />
@@ -124,6 +121,24 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/txtPuntuacion"
+        android:layout_width="69dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/round_edit_text"
+        android:ems="10"
+        android:gravity="center"
+        android:text="0/5"
+        android:textColorHint="@color/grey"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnMostrarMenu"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTexto" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

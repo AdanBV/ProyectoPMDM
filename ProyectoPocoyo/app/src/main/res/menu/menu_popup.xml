@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/review0"
+        android:title="Puntuación: 0/5" />
+    <item
+        android:id="@+id/review1"
+        android:title="Puntuación: 1/5" />
+    <item
+        android:id="@+id/review2"
+        android:title="Puntuación: 2/5" />
+    <item
+        android:id="@+id/review3"
+        android:title="Puntuación: 3/5" />
+    <item
+        android:id="@+id/review4"
+        android:title="Puntuación: 4/5" />
+    <item
+        android:id="@+id/review5"
+        android:title="Puntuación: 5/5" />
+</menu>
