@@ -9,7 +9,7 @@ import android.widget.Toast;
 public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
 
     // DB INFO
-    private Context context;
+    private final Context context;
     private static final String DATABASE_NAME = "StarFilmsDB";
     private static final int DATABASE_VERSION = 1;
 
@@ -58,39 +58,39 @@ public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void addUser(String userId, String name, String surname, String password) {
+    public void addUser(String userId, String userName, String userSurname, String userPassword) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put("User_id", userId);
-        cv.put("User_name", name);
-        cv.put("User_surname", surname);
-        cv.put("User_password", password);
+        cv.put("User_name", userName);
+        cv.put("User_surname", userSurname);
+        cv.put("User_password", userPassword);
 
         long result = db.insert("User", null, cv);
 
-        if(result == -1){
+        if (result == -1) {
             Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
-        }else{
+        } else {
             Toast.makeText(context, "New user successfully registered", Toast.LENGTH_LONG).show();
         }
     }
 
-    public void addReview(int reviewId, String textReview, float ratingReview,int userId, int movieId){
+    public void addReview(int reviewId, String reviewText, float reviewRating, int userId, int movieId) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put("Review_id", reviewId);
-        cv.put("Review_text",textReview);
-        cv.put("Review_rating",ratingReview);
-        cv.put("User_id",userId);
-        cv.put("Movie_id",movieId);
+        cv.put("Review_text", reviewText);
+        cv.put("Review_rating", reviewRating);
+        cv.put("User_id", userId);
+        cv.put("Movie_id", movieId);
 
         long result = db.insert("Review", null, cv);
 
-        if(result == -1){
+        if (result == -1) {
             Toast.makeText(context, "Failed to create review", Toast.LENGTH_LONG).show();
-        }else{
+        } else {
             Toast.makeText(context, "New review successfully created", Toast.LENGTH_LONG).show();
         }
     }
