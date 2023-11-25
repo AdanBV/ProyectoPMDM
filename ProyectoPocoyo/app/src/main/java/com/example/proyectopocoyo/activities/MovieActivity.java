@@ -15,10 +15,11 @@ import com.example.proyectopocoyo.db.StarFilmsDataBaseHelper;
 
 public class MovieActivity extends AppCompatActivity {
     StarFilmsDataBaseHelper myDb;
-
+    int numeroPeli;
     TextView idTitulo=findViewById(R.id.idTitulo);
     TextView txtTitulo=findViewById(R.id.txtTitulo);
     TextView txtDescription=findViewById(R.id.txtDescription);
+    TextView txtDirector=findViewById(R.id.txtDirector);
     TextView txtValoracion=findViewById(R.id.txtValoracion);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class MovieActivity extends AppCompatActivity {
 
     }
     private void mostrarDatos() {
-        Cursor cursor = myDb.obtenerPelis();
+        Cursor cursor = myDb.obtenerPelis(numeroPeli);
 
         if (cursor != null && cursor.moveToFirst()) {
             String titulo;
@@ -72,12 +73,14 @@ public class MovieActivity extends AppCompatActivity {
                 e.printStackTrace();
                 titulo = "Columna no encontrada";
                 descripcion = "Columna no encontrada";
+                director = "Columna no encontrada";
                 puntaje = -1;
             }
             // Asignar los datos a los TextView
             idTitulo.setText(titulo);
             txtTitulo.setText(titulo);
             txtDescription.setText(descripcion);
+            txtDirector.setText(director);
             txtValoracion.setText(String.valueOf(puntaje));
         }
 

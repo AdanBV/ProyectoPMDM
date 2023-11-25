@@ -112,9 +112,9 @@ public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor obtenerPelis() {
+    public Cursor obtenerPelis(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String query = "SELECT * FROM Movie";
+        String query = "SELECT * FROM Movie WHERE Movie_id = id";
         return db.rawQuery(query, null);
     }
 }
