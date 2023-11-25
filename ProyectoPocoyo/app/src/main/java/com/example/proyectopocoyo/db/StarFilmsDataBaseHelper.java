@@ -2,6 +2,7 @@ package com.example.proyectopocoyo.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
@@ -109,5 +110,11 @@ public class StarFilmsDataBaseHelper extends SQLiteOpenHelper {
         if (result == -1) {
             Toast.makeText(context, "Failed to create movie", Toast.LENGTH_LONG).show();
         }
+    }
+
+    public Cursor obtenerPelis() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM Movie";
+        return db.rawQuery(query, null);
     }
 }
