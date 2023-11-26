@@ -61,7 +61,9 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
 
                     case "Perfil":
-                        showToast("Clic en Perfil");
+                        Intent intent = new Intent(HomeActivity.this, PerfilActivity.class);
+                        // Iniciar la nueva actividad
+                        startActivity(intent);
                         return true;
 
                     default:

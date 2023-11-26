@@ -59,7 +59,8 @@ public class MovieActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent2 = new Intent(MovieActivity.this,
                         ReviewActivity.class);
-
+                String miCadena = idTitulo.getText().toString().trim() ;
+                intent2.putExtra("NomMovie", miCadena);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }
@@ -68,7 +69,7 @@ public class MovieActivity extends AppCompatActivity {
 
     }
     private void mostrarDatos() {
-        Cursor cursor = DataBaseHelper.obtenerPelis(myDb, "La amenaza fantasma");
+        Cursor cursor = DataBaseHelper.obtenerPelis(myDb, title);
 
         if (cursor != null && cursor.moveToFirst()) {
             String titulo;

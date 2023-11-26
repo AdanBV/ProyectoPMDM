@@ -26,6 +26,19 @@ public class ReviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
 
+        // Obtener el Intent que inició esta actividad
+        Intent intent = getIntent();
+
+        // Verificar si hay un extra con la clave "NomMovie"
+        if (intent.hasExtra("NomMovie")) {
+            // Obtener la cadena del extra
+            String cadenaRecibida = intent.getStringExtra("NomMovie");
+
+            TextView textView = findViewById(R.id.idTitulo);
+            textView.setText(cadenaRecibida);
+        }
+
+
         ImageButton btnVolver = findViewById(R.id.imageButton);
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
