@@ -64,7 +64,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // DATOS INICIALES EN BD
+    // INSERTAR DATOS INICIALES EN BD
     private void initialData(SQLiteDatabase db) {
         ContentValues cv = new ContentValues();
 
@@ -81,7 +81,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode I
         cv.put("Movie_title", "Star Wars: Episode I");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "The Phantom Menace");
+        cv.put("Movie_description", "The Phantom Menace" + "\n" + "El maestro jedi Qui-Gon Jinn " +
+                "y su aprendiz Obi-Wan Kenobi, escoltan y protegen a la Reina " +
+                "Amidala con la esperanza de encontrar una salida pacífica.");
         cv.put("Movie_rating", 8.5);
         cv.put("Movie_image", "Imagen 1");
         db.insert("Movie", null, cv);
@@ -91,7 +93,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode II
         cv.put("Movie_title", "Star Wars: Episode II");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "Attack of the Clones");
+        cv.put("Movie_description", "Attack of the Clones" + "\n" + "La trama se desarrolla diez años después de los sucesos ocurridos " +
+                "en la película anterior, La amenaza fantasma. La galaxia se encuentra " +
+                "al borde de una guerra civil.");
         cv.put("Movie_rating", 8.0);
         cv.put("Movie_image", "Imagen 2");
         db.insert("Movie", null, cv);
@@ -101,7 +105,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode III
         cv.put("Movie_title", "Star Wars: Episode III");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "Revenge of the Sith");
+        cv.put("Movie_description", "Revenge of the Sith" + "\n" + "La trama describe una época en la que los Caballeros Jedi se han " +
+                "esparcido por toda la galaxia, dirigiendo un ejército clon masivo para " +
+                "enfrentar a los Separatistas Galácticos.");
         cv.put("Movie_rating", 8.2);
         cv.put("Movie_image", "Imagen 3");
         db.insert("Movie", null, cv);
@@ -111,7 +117,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode IV
         cv.put("Movie_title", "Star Wars: Episode IV");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "A New Hope");
+        cv.put("Movie_description", "A New Hope" + "\n" + "La trama describe la historia de un grupo de guerrilleros, " +
+                "la Alianza Rebelde, cuyo objetivo es destruir la estación espacial " +
+                "Estrella de la Muerte.");
         cv.put("Movie_rating", 9.0);
         cv.put("Movie_image", "Imagen 4");
         db.insert("Movie", null, cv);
@@ -121,7 +129,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode V
         cv.put("Movie_title", "Star Wars: Episode V");
         cv.put("Movie_director", "Irvin Kershner");
-        cv.put("Movie_description", "The Empire Strikes Back");
+        cv.put("Movie_description", "The Empire Strikes Back" + "\n" + "La ficción de la película se sitúa tres años después de la " +
+                "destrucción de la estación espacial de combate conocida como la " +
+                "Estrella de la Muerte.");
         cv.put("Movie_rating", 9.3);
         cv.put("Movie_image", "Imagen 5");
         db.insert("Movie", null, cv);
@@ -131,7 +141,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode VI
         cv.put("Movie_title", "Star Wars: Episode VI");
         cv.put("Movie_director", "Richard Marquand");
-        cv.put("Movie_description", "Return of the Jedi");
+        cv.put("Movie_description", "Return of the Jedi" + "\n" + "Luke no sabe que el Imperio Galáctico ha iniciado secretamente la " +
+                "construcción de una nueva estación espacial blindada, incluso más " +
+                "poderosa que la primera y temida Estrella de la Muerte.");
         cv.put("Movie_rating", 8.8);
         cv.put("Movie_image", "Imagen 6");
         db.insert("Movie", null, cv);
@@ -141,7 +153,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode VII
         cv.put("Movie_title", "Star Wars: Episode VII");
         cv.put("Movie_director", "J.J. Abrams");
-        cv.put("Movie_description", "The Force Awakens");
+        cv.put("Movie_description", "The Force Awakens" + "\n" + "Cuando el desertor Finn llega a un planeta desierto conoce a Rey, " +
+                "cuyo androide contiene un mapa secreto.");
         cv.put("Movie_rating", 8.0);
         cv.put("Movie_image", "Imagen 7");
         db.insert("Movie", null, cv);
@@ -151,7 +164,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode VIII
         cv.put("Movie_title", "Star Wars: Episode VIII");
         cv.put("Movie_director", "Rian Johnson");
-        cv.put("Movie_description", "The Last Jedi");
+        cv.put("Movie_description", "The Last Jedi" + "\n" + "La Resistencia encabezada por la general Leia Organa (Carrie Fisher) " +
+                "ha logrado contener temporalmente a la siniestra Primera Orden, " +
+                "un nuevo grupo militar nacido de las cenizas del Imperio Galáctico");
         cv.put("Movie_rating", 7.9);
         cv.put("Movie_image", "Imagen 8");
         db.insert("Movie", null, cv);
@@ -185,8 +200,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 if (userPassword.equals("")) {
                     Toast.makeText(context, "Failed to create user, password should be " +
                             "at least 8 digits lenght.", Toast.LENGTH_LONG).show();
-                }
-                else{
+                } else {
                     Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
                 }
                 return false;
@@ -219,7 +233,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void addPeli(int Movie_id, String Movie_title, String Movie_director, String Movie_description, Double Movie_rating) {
+    public void addMovie(int Movie_id, String Movie_title, String Movie_director, String Movie_description, Double Movie_rating) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
