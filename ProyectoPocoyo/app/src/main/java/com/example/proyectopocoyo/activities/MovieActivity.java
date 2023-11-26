@@ -11,10 +11,10 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.example.proyectopocoyo.R;
-import com.example.proyectopocoyo.db.StarFilmsDataBaseHelper;
+import com.example.proyectopocoyo.db.DataBaseHelper;
 
 public class MovieActivity extends AppCompatActivity {
-    StarFilmsDataBaseHelper myDb;
+    DataBaseHelper myDb;
     String title;
 
     TextView idTitulo;
@@ -35,7 +35,7 @@ public class MovieActivity extends AppCompatActivity {
 
         title = "La amenaza fantasma";
 
-        myDb = new StarFilmsDataBaseHelper(this);
+        myDb = new DataBaseHelper(this);
 
         mostrarDatos();
 
@@ -68,7 +68,7 @@ public class MovieActivity extends AppCompatActivity {
 
     }
     private void mostrarDatos() {
-        Cursor cursor = StarFilmsDataBaseHelper.obtenerPelis(myDb, "La amenaza fantasma");
+        Cursor cursor = DataBaseHelper.obtenerPelis(myDb, "La amenaza fantasma");
 
         if (cursor != null && cursor.moveToFirst()) {
             String titulo;

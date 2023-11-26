@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.proyectopocoyo.R;
-import com.example.proyectopocoyo.db.StarFilmsDataBaseHelper;
+import com.example.proyectopocoyo.db.DataBaseHelper;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -29,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Agregar usuario a BD
-                StarFilmsDataBaseHelper db = new StarFilmsDataBaseHelper(RegisterActivity.this);
+                DataBaseHelper db = new DataBaseHelper(RegisterActivity.this);
                 if(editText_Password.getText().toString().trim().equals(editText_RepeatPassword.getText().toString().trim())){
                     db.addUser(editText_UserID.getText().toString().trim(),
                             null,

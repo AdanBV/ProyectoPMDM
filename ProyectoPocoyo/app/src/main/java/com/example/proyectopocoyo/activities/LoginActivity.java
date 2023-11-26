@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectopocoyo.R;
-import com.example.proyectopocoyo.db.StarFilmsDataBaseHelper;
+import com.example.proyectopocoyo.db.DataBaseHelper;
 
 public class LoginActivity extends AppCompatActivity {
     Button button_LogIn, button_register;
@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void CargarBd(){
-        StarFilmsDataBaseHelper db = new StarFilmsDataBaseHelper(LoginActivity.this);
+        DataBaseHelper db = new DataBaseHelper(LoginActivity.this);
         db.addPeli(0,"La amenaza fantasma","George Lucas",
                 "La trama describe la historia del maestro jedi Qui-Gon Jinn y de su aprendiz Obi-Wan Kenobi, que escoltan y protegen a la Reina Amidala con la esperanza de encontrar una salida pacífica.",
                 2.0);
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void IniciarSesion(View v) {
-        StarFilmsDataBaseHelper dbHelper = new StarFilmsDataBaseHelper(this);
+        DataBaseHelper dbHelper = new DataBaseHelper(this);
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         // Usuario y Contraseña de la activity

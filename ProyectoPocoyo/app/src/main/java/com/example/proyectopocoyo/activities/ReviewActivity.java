@@ -11,10 +11,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.proyectopocoyo.R;
-import com.example.proyectopocoyo.db.StarFilmsDataBaseHelper;
+import com.example.proyectopocoyo.db.DataBaseHelper;
 
 public class ReviewActivity extends AppCompatActivity {
 
@@ -48,7 +47,7 @@ public class ReviewActivity extends AppCompatActivity {
         btnReview.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
-                StarFilmsDataBaseHelper db = new StarFilmsDataBaseHelper(ReviewActivity.this);
+                DataBaseHelper db = new DataBaseHelper(ReviewActivity.this);
                 db.addReview(Integer.valueOf(reviewId.getText().toString().trim()),
                         textReview.getText().toString().trim(),
                         Float.valueOf(ratingReview.getText().toString().trim()),
