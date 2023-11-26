@@ -30,7 +30,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE User (User_id TEXT PRIMARY KEY NOT NULL, " +
                 "User_name TEXT, " +
                 "User_surname TEXT, " +
-                "User_password TEXT NOT NULL);");
+                "User_password TEXT NOT NULL, " +
+                "CHECK (User_id != '' AND LENGTH(User_password) >= 8));");
 
         // SENTENCIA CREACIÓN TABLA (Movie)
         db.execSQL("CREATE TABLE Movie (Movie_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -64,7 +65,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     // DATOS INICIALES EN BD
-    private void initialData(SQLiteDatabase db){
+    private void initialData(SQLiteDatabase db) {
         ContentValues cv = new ContentValues();
 
         // DATOS TABLA (User)
@@ -155,24 +156,45 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("Movie_image", "Imagen 8");
         db.insert("Movie", null, cv);
     }
+
     // INSERTAR NUEVO USUARIO EN TABLA (User)
     public boolean addUser(String userId, String userName, String userSurname, String userPassword) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put("User_id", userId);
-        cv.put("User_name", userName);
-        cv.put("User_surname", userSurname);
-        cv.put("User_password", userPassword);
+        // Consulta si existe el usuario
+        Cursor cursor = db.query("User", new String[]{"User_id"}, "User_id = ?",
+                new String[]{userId}, null, null, null);
 
-        long result = db.insert("User", null, cv);
-
-        if (result == -1) {
-            Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
+        // Si el usuario ya existe
+        if (cursor.moveToFirst()) {
+            Toast.makeText(context, "User already in use", Toast.LENGTH_LONG).show();
             return false;
+
+            // Si no existe intenta crear el usuario
         } else {
-            Toast.makeText(context, "New user successfully registered", Toast.LENGTH_LONG).show();
-            return true;
+            cv.put("User_id", userId);
+            cv.put("User_name", userName);
+            cv.put("User_surname", userSurname);
+            cv.put("User_password", userPassword);
+
+            long result = db.insert("User", null, cv);
+
+            // Si no puede crear el usuario
+            if (result == -1) {
+                if (userPassword.equals("")) {
+                    Toast.makeText(context, "Failed to create user, password should be " +
+                            "at least 8 digits lenght.", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
+                }
+                return false;
+                // Si puede crear el usuario
+            } else {
+                Toast.makeText(context, "New user successfully registered", Toast.LENGTH_LONG).show();
+                return true;
+            }
         }
     }
 
