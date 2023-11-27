@@ -55,9 +55,9 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
 
                     case "Añadir":
-                        Intent intent2 = new Intent(HomeActivity.this, ReviewActivity.class);
+                        //Intent intent2 = new Intent(HomeActivity.this, ReviewActivity.class);
                         // Iniciar la nueva actividad
-                        startActivity(intent2);
+                        //startActivity(intent2);
                         return true;
 
                     case "Perfil":

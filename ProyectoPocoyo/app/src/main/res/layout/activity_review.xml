@@ -10,7 +10,7 @@
         android:id="@+id/txtTexto"
         android:layout_width="257dp"
         android:layout_height="229dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/round_edit_text"
         android:ems="10"
         android:hint="Texto de la review"
@@ -19,42 +19,29 @@
         android:textColorHint="@color/grey"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.409"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtIdReview" />
 
     <Button
-        android:id="@+id/btnMostrarMenu"
-        android:layout_width="181dp"
+        android:id="@+id/btnReseña"
+        android:layout_width="252dp"
         android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="74dp"
-        android:onClick="mostrarMenu"
-        android:text="Valorar Pelicula"
+        android:layout_marginBottom="50dp"
+        android:text="Subir Review"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTexto" />
-
-    <EditText
-        android:id="@+id/txtIdMovie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/round_edit_text"
-        android:ems="10"
-        android:hint="Id Movie"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorHint="@color/grey"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIdUser" />
+        app:layout_constraintTop_toBottomOf="@+id/txtIdMovie"
+        app:layout_constraintVertical_bias="0.0"
+        android:textSize="22sp"/>
 
     <EditText
         android:id="@+id/txtIdUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/round_edit_text"
         android:ems="10"
         android:hint="Id User"
@@ -64,15 +51,79 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/txtIdMovie"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintHorizontal_bias="0.401"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/txtIdReview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/round_edit_text"
+        android:ems="10"
+        android:hint="Id Review"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColorHint="@color/grey"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/idTitulo" />
+
+    <TextView
+        android:id="@+id/txtPuntuacion"
+        android:layout_width="69dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="72dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/round_edit_text"
+        android:ems="10"
+        android:gravity="center"
+        android:text="0/5"
+        android:textColorHint="@color/grey"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toStartOf="@+id/btnMostrarMenu"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTexto" />
+
+    <EditText
+        android:id="@+id/txtIdMovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/round_edit_text"
+        android:ems="10"
+        android:hint="Id Movie"
+        android:inputType="text"
+        android:padding="10dp"
+        android:textColorHint="@color/grey"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtIdUser" />
+
+    <Button
+        android:id="@+id/btnMostrarMenu"
+        android:layout_width="181dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="80dp"
+        android:onClick="mostrarMenu"
+        android:text="Valorar Pelicula"
+
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtTexto" />
 
     <ImageButton
         android:id="@+id/imageButton"
         android:layout_width="94dp"
         android:layout_height="103dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         app:layout_constraintEnd_toStartOf="@+id/idTitulo"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -94,50 +145,6 @@
         app:layout_constraintHorizontal_bias="0.957"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btnReseña"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:text="Subir Review"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtIdMovie" />
-
-    <EditText
-        android:id="@+id/txtIdReview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:background="@drawable/round_edit_text"
-        android:ems="10"
-        android:hint="Id Review"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorHint="@color/grey"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idTitulo" />
-
-    <TextView
-        android:id="@+id/txtPuntuacion"
-        android:layout_width="69dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/round_edit_text"
-        android:ems="10"
-        android:gravity="center"
-        android:text="0/5"
-        android:textColorHint="@color/grey"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnMostrarMenu"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTexto" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
