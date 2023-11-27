@@ -1,5 +1,6 @@
 package com.example.proyectopocoyo.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -9,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.proyectopocoyo.R;
@@ -47,6 +49,29 @@ public class LoginActivity extends AppCompatActivity {
                 IniciarSesion(v);
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("¿Estás seguro de que quieres cerrar la aplicación?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Si el usuario hace clic en "Sí", cierra la aplicación
+                        finish();
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Si el usuario hace clic en "No", cierra el cuadro de diálogo
+                        dialog.dismiss();
+                    }
+                });
+
+        // Crea y muestra el cuadro de diálogo
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     public void IniciarSesion(View v) {

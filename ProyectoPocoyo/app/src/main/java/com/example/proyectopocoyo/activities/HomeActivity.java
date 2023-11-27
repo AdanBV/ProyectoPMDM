@@ -2,6 +2,7 @@
 
 package com.example.proyectopocoyo.activities;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -109,20 +111,46 @@ public class HomeActivity extends AppCompatActivity {
         storeDBInfo();
 
         //
-        movieAdapter = new MovieAdapter(this, Movie_image);
+        movieAdapter = new MovieAdapter(this, Movie_image, Movie_title);
         recyclerView.setAdapter(movieAdapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("¿Estás seguro de que deseas cerrar sesión?")
+                .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Si el usuario hace clic en "Sí", cierra la aplicación
+                        Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // Si el usuario hace clic en "No", cierra el cuadro de diálogo
+                        dialog.dismiss();
+                    }
+                });
+
+        // Crea y muestra el cuadro de diálogo
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
     private void storeDBInfo(){
         Cursor cursor = dbHelper.readDB();
         if(cursor.getCount() == 0){
             Toast.makeText(this, "No Data", Toast.LENGTH_LONG).show();
         }else{
             while (cursor.moveToNext()){
-                Movie_title.add(cursor.getString(0));
-                Movie_director.add(cursor.getString(1));
-                Movie_description.add(cursor.getString(2));
-                Movie_rating.add(cursor.getString(3));
-                Movie_image.add(cursor.getString(4));
+                Movie_title.add(cursor.getString(1));
+                Movie_director.add(cursor.getString(2));
+                Movie_description.add(cursor.getString(3));
+                Movie_rating.add(cursor.getString(4));
+                Movie_image.add(cursor.getString(5));
             }
         }
     }
