@@ -1,11 +1,11 @@
 package com.example.proyectopocoyo.clases;
 
-public class Pelicula {
+public class Movie {
     private int imageResource;  // ID de la imagen de la película
     private String titulo;       // Título de la película
     private float valoracion;       // Valoración de la película (0-5)
 
-    public Pelicula(int imageResource, String titulo, float valoracion) {
+    public Movie(int imageResource, String titulo, float valoracion) {
         this.imageResource = imageResource;
         this.titulo = titulo;
         this.valoracion = valoracion;

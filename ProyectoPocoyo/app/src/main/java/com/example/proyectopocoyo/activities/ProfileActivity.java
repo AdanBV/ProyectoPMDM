@@ -13,12 +13,12 @@ import android.widget.Toast;
 import com.example.proyectopocoyo.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class PerfilActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_perfil);
+        setContentView(R.layout.activity_profile);
 
         Button btn = findViewById(R.id.btnLogOut);
 
@@ -26,7 +26,7 @@ public class PerfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Crear un Intent para abrir la nueva actividad
-                Intent intent = new Intent(PerfilActivity.this,
+                Intent intent = new Intent(ProfileActivity.this,
                         LoginActivity.class);
 
                 // Iniciar la nueva actividad
@@ -46,7 +46,7 @@ public class PerfilActivity extends AppCompatActivity {
                 String t = (String) menuItem.getTitle();
                 switch (t) {
                     case "Inicio":
-                        Intent intent = new Intent(PerfilActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
                         // Iniciar la nueva actividad
                         startActivity(intent);
                         return true;

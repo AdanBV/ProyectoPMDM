@@ -52,6 +52,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "FOREIGN KEY(User_id) REFERENCES User(User_id), " +
                 "FOREIGN KEY(Movie_id) REFERENCES Movie(Movie_id));");
 
+        // AGREGAR DATOS A TABLAS
         initialData(db);
     }
 
@@ -72,12 +73,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("User_id", "admin");
         cv.put("User_name", "Administrador");
         cv.put("User_surname", "Principal");
-        cv.put("User_password", "23admin24");
+        cv.put("User_password", "admin");
         db.insert("User", null, cv);
 
         cv.clear();
 
-        // DATOS TABLA (Movies) - CHATGPT GENERATED
+        // DATOS TABLA (Movies) /* CHATGPT GENERATED */
         // Episode I
         cv.put("Movie_title", "Star Wars: Episode I");
         cv.put("Movie_director", "George Lucas");
@@ -85,7 +86,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "y su aprendiz Obi-Wan Kenobi, escoltan y protegen a la Reina " +
                 "Amidala con la esperanza de encontrar una salida pacífica.");
         cv.put("Movie_rating", 8.5);
-        cv.put("Movie_image", "Imagen 1");
+        cv.put("Movie_image", "C:\\Users\\nel_a\\Documents\\RepositoriosGIT\\ProyectoPMDM\\ProyectoPocoyo\\app\\src\\main\\res\\drawable\\episodio1.jpg");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -93,11 +94,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode II
         cv.put("Movie_title", "Star Wars: Episode II");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "Attack of the Clones" + "\n" + "La trama se desarrolla diez años después de los sucesos ocurridos " +
-                "en la película anterior, La amenaza fantasma. La galaxia se encuentra " +
-                "al borde de una guerra civil.");
+        cv.put("Movie_description", "Attack of the Clones" + "\n" + "Diez años después " +
+                "La galaxia se encuentra al borde de una guerra civil.");
         cv.put("Movie_rating", 8.0);
-        cv.put("Movie_image", "Imagen 2");
+        cv.put("Movie_image", "C:\\Users\\nel_a\\Documents\\RepositoriosGIT\\ProyectoPMDM\\ProyectoPocoyo\\app\\src\\main\\res\\drawable\\episodio1.jpg");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -105,11 +105,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode III
         cv.put("Movie_title", "Star Wars: Episode III");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "Revenge of the Sith" + "\n" + "La trama describe una época en la que los Caballeros Jedi se han " +
+        cv.put("Movie_description", "Revenge of the Sith" + "\n" + "Una época en la que los Caballeros Jedi se han " +
                 "esparcido por toda la galaxia, dirigiendo un ejército clon masivo para " +
                 "enfrentar a los Separatistas Galácticos.");
         cv.put("Movie_rating", 8.2);
-        cv.put("Movie_image", "Imagen 3");
+        cv.put("Movie_image", "C:\\Users\\nel_a\\Documents\\RepositoriosGIT\\ProyectoPMDM\\ProyectoPocoyo\\app\\src\\main\\res\\drawable\\episodio1.jpg");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -121,7 +121,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "la Alianza Rebelde, cuyo objetivo es destruir la estación espacial " +
                 "Estrella de la Muerte.");
         cv.put("Movie_rating", 9.0);
-        cv.put("Movie_image", "Imagen 4");
+        cv.put("Movie_image", "C:\\Users\\nel_a\\Documents\\RepositoriosGIT\\ProyectoPMDM\\ProyectoPocoyo\\app\\src\\main\\res\\drawable\\episodio1.jpg");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -133,7 +133,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "destrucción de la estación espacial de combate conocida como la " +
                 "Estrella de la Muerte.");
         cv.put("Movie_rating", 9.3);
-        cv.put("Movie_image", "Imagen 5");
+        cv.put("Movie_image", "C:\\Users\\nel_a\\Documents\\RepositoriosGIT\\ProyectoPMDM\\ProyectoPocoyo\\app\\src\\main\\res\\drawable\\episodio1.jpg");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -145,7 +145,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "construcción de una nueva estación espacial blindada, incluso más " +
                 "poderosa que la primera y temida Estrella de la Muerte.");
         cv.put("Movie_rating", 8.8);
-        cv.put("Movie_image", "Imagen 6");
+        cv.put("Movie_image", "C:\\Users\\nel_a\\Documents\\RepositoriosGIT\\ProyectoPMDM\\ProyectoPocoyo\\app\\src\\main\\res\\drawable\\episodio1.jpg");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -156,7 +156,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("Movie_description", "The Force Awakens" + "\n" + "Cuando el desertor Finn llega a un planeta desierto conoce a Rey, " +
                 "cuyo androide contiene un mapa secreto.");
         cv.put("Movie_rating", 8.0);
-        cv.put("Movie_image", "Imagen 7");
+        cv.put("Movie_image", "C:\\Users\\nel_a\\Documents\\RepositoriosGIT\\ProyectoPMDM\\ProyectoPocoyo\\app\\src\\main\\res\\drawable\\episodio1.jpg");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -168,7 +168,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "ha logrado contener temporalmente a la siniestra Primera Orden, " +
                 "un nuevo grupo militar nacido de las cenizas del Imperio Galáctico");
         cv.put("Movie_rating", 7.9);
-        cv.put("Movie_image", "Imagen 8");
+        cv.put("Movie_image", "C:\\Users\\nel_a\\Documents\\RepositoriosGIT\\ProyectoPMDM\\ProyectoPocoyo\\app\\src\\main\\res\\drawable\\episodio1.jpg");
         db.insert("Movie", null, cv);
     }
 
@@ -181,13 +181,12 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         Cursor cursor = db.query("User", new String[]{"User_id"}, "User_id = ?",
                 new String[]{userId}, null, null, null);
 
-        // Si el usuario ya existe
         if (cursor.moveToFirst()) {
+            // Si el usuario ya existe se avisa
             Toast.makeText(context, "User already in use", Toast.LENGTH_LONG).show();
             return false;
-
-            // Si no existe intenta crear el usuario
         } else {
+            // Si no existe intenta crear el usuario
             cv.put("User_id", userId);
             cv.put("User_name", userName);
             cv.put("User_surname", userSurname);
@@ -195,8 +194,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             long result = db.insert("User", null, cv);
 
-            // Si no puede crear el usuario
             if (result == -1) {
+                // Si no puede crear el usuario se aivsa
                 if (userPassword.equals("")) {
                     Toast.makeText(context, "Failed to create user, password should be " +
                             "at least 8 digits lenght.", Toast.LENGTH_LONG).show();
@@ -204,8 +203,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
                 }
                 return false;
-                // Si puede crear el usuario
+
             } else {
+                // Si puede crear el usuario se indica
                 Toast.makeText(context, "New user successfully registered", Toast.LENGTH_LONG).show();
                 return true;
             }
@@ -242,6 +242,16 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("Movie_director", Movie_director);
         cv.put("Movie_description", Movie_description);
         cv.put("Movie_rating", Movie_rating);
+    }
+
+    public Cursor readDB() {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = null;
+
+        if (db != null) {
+            cursor = db.rawQuery("SELECT * FROM Movie", null);
+        }
+        return cursor;
     }
 
     public static Cursor obtenerPelis(@NonNull DataBaseHelper dbHelper, String title) {

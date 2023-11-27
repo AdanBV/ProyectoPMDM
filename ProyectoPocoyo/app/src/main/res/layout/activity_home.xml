@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#252525"
+    android:background="@color/white"
     android:layout_height="match_parent"
     tools:context=".activities.HomeActivity">
 
@@ -27,8 +27,8 @@
         android:layout_marginBottom="10dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/black"
+        app:itemTextColor="@color/black"
         app:itemActiveIndicatorStyle="@android:color/transparent"
         android:background="@drawable/round_background"
         android:layout_alignParentEnd="true"

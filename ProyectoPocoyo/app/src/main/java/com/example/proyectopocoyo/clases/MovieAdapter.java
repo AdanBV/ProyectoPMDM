@@ -1,4 +1,5 @@
 package com.example.proyectopocoyo.clases;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,18 +9,18 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.proyectopocoyo.R;
 
-import java.util.List;
+import java.util.ArrayList;
 
-public class PeliculaAdapter extends RecyclerView.Adapter<PeliculaAdapter.PeliculaViewHolder> {
-
-    private List<Pelicula> listaPeliculas;
+public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.PeliculaViewHolder> {
     private Context context;
+    private final ArrayList<String> Movie_image;
 
-    public PeliculaAdapter(List<Pelicula> listaPeliculas, Context context) {
-        this.listaPeliculas = listaPeliculas;
+    public MovieAdapter(Context context, ArrayList<String> Movie_image) {
         this.context = context;
+        this.Movie_image = Movie_image;
     }
 
     @NonNull
@@ -31,27 +32,22 @@ public class PeliculaAdapter extends RecyclerView.Adapter<PeliculaAdapter.Pelicu
 
     @Override
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
-        Pelicula pelicula = listaPeliculas.get(position);
-        holder.imagenPelicula.setImageResource(pelicula.getImageResource());
-        //holder.tituloPelicula.setText(pelicula.getTitulo());
-        //holder.valoracionPelicula.setText(String.valueOf(pelicula.getValoracion()));
+        Movie_image.get(position);
+
+        Glide.with(context).load(Movie_image.get(position)).into(holder.imagenPelicula);
     }
 
     @Override
     public int getItemCount() {
-        return listaPeliculas.size();
+        return Movie_image.size();
     }
 
     public static class PeliculaViewHolder extends RecyclerView.ViewHolder {
         ImageView imagenPelicula;
-        //TextView tituloPelicula;
-        //TextView valoracionPelicula;
 
         public PeliculaViewHolder(@NonNull View itemView) {
             super(itemView);
             imagenPelicula = itemView.findViewById(R.id.imagenPelicula);
-            //tituloPelicula = itemView.findViewById(R.id.tituloPelicula);
-            //valoracionPelicula = itemView.findViewById(R.id.valoracionPelicula);
         }
     }
 }

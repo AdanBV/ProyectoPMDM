@@ -1,12 +1,10 @@
-
 // PÁGINA PRINCIPAL DE LA APP (INICIO)
 
 package com.example.proyectopocoyo.activities;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -16,30 +14,33 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.proyectopocoyo.clases.Pelicula;
-import com.example.proyectopocoyo.clases.PeliculaAdapter;
 import com.example.proyectopocoyo.R;
+import com.example.proyectopocoyo.clases.MovieAdapter;
+import com.example.proyectopocoyo.db.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
+    // Ayudante de Base De Datos
+    DataBaseHelper dbHelper;
+
+    // Datos de peliculas
+    ArrayList<String> Movie_title, Movie_director, Movie_description, Movie_rating, Movie_image;
+
+    // Adaptador para mostrar peliculas
+    MovieAdapter movieAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        final int[] posicion = new int[]{0,1,2,3};
         // VISTA XML QUE SE VA A MOSTRAR
         setContentView(R.layout.activity_home);
 
+        final int[] posicion = new int[]{0, 1, 2, 3};
+
         // REFERENCIA A LA BARRA DE NAVEGACIÓN INFERIOR
         BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
-
-        // HAY QUE AÑADIR UN LISTENER PARA LA BARRA DE NAVEGACÓN INFERIOR
-
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
 
             @Override
@@ -61,7 +62,7 @@ public class HomeActivity extends AppCompatActivity {
                         return true;
 
                     case "Perfil":
-                        Intent intent = new Intent(HomeActivity.this, PerfilActivity.class);
+                        Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                         // Iniciar la nueva actividad
                         startActivity(intent);
                         return true;
@@ -72,53 +73,60 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-
-
-        // LISTA DE PELICULAS PARA PROBAR
-        List<Pelicula> movieList = new ArrayList<>();
-
-        movieList.add(new Pelicula(R.drawable.episodio1, "La amenaza fantasma", 1.5f));
-        movieList.add(new Pelicula(R.drawable.episodio2, "El ataque de los clones", 2.0f));
-        movieList.add(new Pelicula(R.drawable.episodio3, "La venganza de los Sith", 2.5f));
-        movieList.add(new Pelicula(R.drawable.episodio4, "Una nueva esperanza", 3.0f));
-        movieList.add(new Pelicula(R.drawable.episodio5, "El Imperio contraataca", 3.5f));
-        movieList.add(new Pelicula(R.drawable.episodio6, "El retorno de los Jedi", 4.0f));
-        movieList.add(new Pelicula(R.drawable.episodio7, "El despertar de la fuerza", 4.5f));
-        movieList.add(new Pelicula(R.drawable.episodio8, "Los últimos Jedi", 5.0f));
-
         // REFERENCIA AL RECYCLERVIEW
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-
         // PRESENTACIÓN DE LOS ELEMENTOS DENTRO DEL RECYCLERVIEW
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+        // EVENTO CLICK SOBRE ELEMENTOS DE RECYCLERVIEW
+        recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
 
-        // ADAPTADOR PARA MOSTRAR LA LISTA DE PELICULAS CORRECTAMENTE
-        PeliculaAdapter adapter = new PeliculaAdapter(movieList, this);
-        recyclerView.setAdapter(adapter);
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
 
-        recyclerView.addOnItemTouchListener(
-                new RecyclerItemClickListener(this, recyclerView ,new RecyclerItemClickListener.OnItemClickListener() {
+                // Iniciar la nueva actividad
+                startActivity(intent2);
+            }
 
-                    @Override
-                    public void onItemClick(View view, int position) {
-                        Intent intent2 = new Intent(HomeActivity.this,
-                                MovieActivity.class);
+            @Override
+            public void onLongItemClick(View view, int position) {
+                Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
 
-                        // Iniciar la nueva actividad
-                        startActivity(intent2);
-                    }
+                // Iniciar la nueva actividad
+                startActivity(intent2);
+            }
+        }));
 
-                    @Override
-                    public void onLongItemClick(View view, int position) {
-                        Intent intent2 = new Intent(HomeActivity.this,
-                                MovieActivity.class);
+        // MOSTRAR PELICULAs
+        dbHelper = new DataBaseHelper(HomeActivity.this);
 
-                        // Iniciar la nueva actividad
-                        startActivity(intent2);
-                    }
-                })
-        );
+        Movie_title = new ArrayList<>();
+        Movie_director = new ArrayList<>();
+        Movie_description = new ArrayList<>();
+        Movie_rating = new ArrayList<>();
+        Movie_image = new ArrayList<>();
+
+        storeDBInfo();
+
+        //
+        movieAdapter = new MovieAdapter(this, Movie_image);
+        recyclerView.setAdapter(movieAdapter);
     }
+    private void storeDBInfo(){
+        Cursor cursor = dbHelper.readDB();
+        if(cursor.getCount() == 0){
+            Toast.makeText(this, "No Data", Toast.LENGTH_LONG).show();
+        }else{
+            while (cursor.moveToNext()){
+                Movie_title.add(cursor.getString(0));
+                Movie_director.add(cursor.getString(1));
+                Movie_description.add(cursor.getString(2));
+                Movie_rating.add(cursor.getString(3));
+                Movie_image.add(cursor.getString(4));
+            }
+        }
+    }
+
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
