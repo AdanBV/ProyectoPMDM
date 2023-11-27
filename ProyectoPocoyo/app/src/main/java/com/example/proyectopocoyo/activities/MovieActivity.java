@@ -33,7 +33,7 @@ public class MovieActivity extends AppCompatActivity {
         txtDirector = findViewById(R.id.txtDirector);
         txtValoracion = findViewById(R.id.txtValoracion);
 
-        title = "La amenaza fantasma";
+        title = "Star Wars: Episode I";
 
         myDb = new DataBaseHelper(this);
 
@@ -94,7 +94,7 @@ public class MovieActivity extends AppCompatActivity {
             txtTitulo.setText(titulo);
             txtDescription.setText(descripcion);
             txtDirector.setText(director);
-            txtValoracion.setText(String.valueOf(puntaje));
+            txtValoracion.setText("Valoración Media: "+String.valueOf(puntaje));
         }
 
         // Cierra el cursor después de usarlo

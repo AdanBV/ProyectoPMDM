@@ -225,9 +225,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 // Si no puede crear el usuario se aivsa
                 if (userPassword.equals("")) {
                     Toast.makeText(context, "Failed to create user, password should be " +
-                            "at least 8 digits lenght.", Toast.LENGTH_LONG).show();
+                            "at least 5 digits lenght.", Toast.LENGTH_LONG).show();
                 } else {
-                    Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Failed to create user, password should be \" +\n" +
+                            "                            \"at least 5 digits lenght.", Toast.LENGTH_LONG).show();
                 }
                 return false;
 
