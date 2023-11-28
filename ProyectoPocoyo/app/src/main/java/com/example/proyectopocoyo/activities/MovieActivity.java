@@ -1,7 +1,9 @@
 package com.example.proyectopocoyo.activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Movie;
@@ -57,6 +59,8 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
 
+
+
         Button añadirReseña=findViewById(R.id.añadirReseña);
         añadirReseña.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +76,8 @@ public class MovieActivity extends AppCompatActivity {
 
 
     }
+
+
     private void mostrarDatos(String movie) {
         Cursor cursor = DataBaseHelper.obtenerPelis(myDb, movie);
 

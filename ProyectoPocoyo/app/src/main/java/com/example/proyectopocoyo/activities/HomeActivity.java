@@ -39,6 +39,8 @@ public class HomeActivity extends AppCompatActivity {
         // VISTA XML QUE SE VA A MOSTRAR
         setContentView(R.layout.activity_home);
 
+
+
         final int[] posicion = new int[]{0, 1, 2, 3};
 
         // REFERENCIA A LA BARRA DE NAVEGACIÓN INFERIOR
@@ -50,17 +52,15 @@ public class HomeActivity extends AppCompatActivity {
                 String t = (String) menuItem.getTitle();
                 switch (t) {
                     case "Inicio":
-                        showToast("Clic en Inicio");
+
                         return true;
 
                     case "Favoritos":
-                        showToast("Clic en Favoritos");
+
                         return true;
 
                     case "Añadir":
-                        //Intent intent2 = new Intent(HomeActivity.this, ReviewActivity.class);
-                        // Iniciar la nueva actividad
-                        //startActivity(intent2);
+
                         return true;
 
                     case "Perfil":
@@ -117,15 +117,14 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("¿Estás seguro de que deseas cerrar sesión?")
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        // Si el usuario hace clic en "Sí", cierra la aplicación
+                        // Si el usuario hace clic en "Sí", cierra la sesión y vuelve a la pantalla de inicio de sesión
                         Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
                         startActivity(intent);
+                        finish(); // Cierra la actividad actual
                     }
                 })
                 .setNegativeButton("No", new DialogInterface.OnClickListener() {
@@ -154,6 +153,8 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
     }
+
+
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

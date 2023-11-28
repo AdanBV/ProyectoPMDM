@@ -52,13 +52,11 @@ public class ProfileActivity extends AppCompatActivity {
                         return true;
 
                     case "Favoritos":
-                        showToast("Clic en Favoritos");
+
                         return true;
 
                     case "Añadir":
-                        //Intent intent2 = new Intent(HomeActivity.this, ReviewActivity.class);
-                        // Iniciar la nueva actividad
-                        //startActivity(intent2);
+
                         return true;
 
                     case "Perfil":
@@ -71,6 +69,13 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    @Override
+    public void onBackPressed() {
+
+    }
+
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
