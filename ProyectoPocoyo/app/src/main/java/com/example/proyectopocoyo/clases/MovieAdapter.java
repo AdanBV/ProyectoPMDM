@@ -1,6 +1,8 @@
 package com.example.proyectopocoyo.clases;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Movie;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,11 +14,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.proyectopocoyo.R;
+import com.example.proyectopocoyo.activities.MovieActivity;
+import com.example.proyectopocoyo.db.DataBaseHelper;
 
 import java.util.ArrayList;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.PeliculaViewHolder> {
     private Context context;
+    DataBaseHelper dbHelper = new DataBaseHelper(context);
     private final ArrayList<String> Movie_image, Movie_title;
 
     public MovieAdapter(Context context, ArrayList<String> Movie_image, ArrayList<String> Movie_title) {
@@ -38,6 +43,20 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.PeliculaView
         //"http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg";
         Glide.with(context).load(url).into(holder.imagenPelicula);
         holder.titleTextView.setText(Movie_title.get(position));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String movieTitle = Movie_title.get(position);
+
+                //Movie movie = dbHelper.getMovieDetails(movieTitle);
+
+                // Iniciar la nueva Activity y pasar los detalles de la película
+                Intent intent = new Intent(context, MovieActivity.class);
+                intent.putExtra("movie", movieTitle);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

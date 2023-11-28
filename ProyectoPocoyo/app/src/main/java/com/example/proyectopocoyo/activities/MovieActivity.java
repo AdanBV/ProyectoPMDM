@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Movie;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,6 +27,9 @@ public class MovieActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+
+        Intent intent = getIntent();
+        Movie movie = (Movie) intent.getSerializableExtra("movie");
 
         idTitulo = findViewById(R.id.idTitulo);
         txtTitulo = findViewById(R.id.txtTitulo);
