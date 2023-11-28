@@ -40,7 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.PeliculaView
     @Override
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
         String url = Movie_image.get(position);
-        Glide.with(context).load(Movie_image.get(position)).into(holder.imagenPelicula);
+        Glide.with(context).load(url).into(holder.imagenPelicula);
         holder.titleTextView.setText(Movie_title.get(position));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
