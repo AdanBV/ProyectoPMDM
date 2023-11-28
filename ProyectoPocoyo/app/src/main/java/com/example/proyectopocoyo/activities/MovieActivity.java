@@ -1,5 +1,6 @@
 package com.example.proyectopocoyo.activities;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -19,7 +20,8 @@ import com.example.proyectopocoyo.db.DataBaseHelper;
 public class MovieActivity extends AppCompatActivity {
     DataBaseHelper myDb;
     String title;
-
+    boolean favorito = false;
+    ImageButton imgBtn;
     TextView idTitulo;
     TextView txtTitulo;
     TextView txtDescription;
@@ -38,6 +40,7 @@ public class MovieActivity extends AppCompatActivity {
         txtDescription = findViewById(R.id.txtDescription);
         txtDirector = findViewById(R.id.txtDirector);
         txtValoracion = findViewById(R.id.txtValoracion);
+        imgBtn = findViewById(R.id.imageButton);
 
         title = "Star Wars: Episode I";
 
@@ -45,17 +48,17 @@ public class MovieActivity extends AppCompatActivity {
 
         mostrarDatos(movie);
 
-        ImageButton imageButton = findViewById(R.id.imageButton);
-
-        imageButton.setOnClickListener(new View.OnClickListener() {
+        imgBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(!favorito) {
+                    imgBtn.setImageResource(android.R.drawable.btn_star_big_on);
+                    favorito = true;
+                } else {
+                    imgBtn.setImageResource(android.R.drawable.btn_star_big_off);
+                    favorito = false;
+                }
 
-                Intent intent2 = new Intent(MovieActivity.this,
-                        HomeActivity.class);
-
-                // Iniciar la nueva actividad
-                startActivity(intent2);
             }
         });
 

@@ -214,6 +214,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public boolean addReview(int reviewId, String reviewText, float reviewRating, int userId, int movieId) {
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 

@@ -10,41 +10,35 @@
         android:id="@+id/idTitulo"
         android:layout_width="292dp"
         android:layout_height="96dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:background="#27BBC1"
         android:gravity="center"
         android:text="Nombre de Pelicula"
         android:textColor="@color/white"
         android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.957"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="80dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/idTitulo"
-        app:layout_constraintHorizontal_bias="0.363"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="102dp"
+        android:layout_height="89dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/idTitulo"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_revert" />
+        app:srcCompat="@android:drawable/star_big_off" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="161dp"
         android:layout_height="266dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idTitulo"
-        app:srcCompat="@drawable/anadir" />
+        app:layout_constraintTop_toBottomOf="@+id/idTitulo" />
 
     <Button
         android:id="@+id/añadirReseña"
@@ -71,7 +65,6 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ListView
-        android:id="@+id/listviewReview"
         android:layout_width="373dp"
         android:layout_height="189dp"
         android:layout_marginStart="19dp"
@@ -119,7 +112,6 @@
         android:layout_marginTop="84dp"
         android:layout_marginBottom="19dp"
         android:text="Descripcion"
-        app:layout_constraintBottom_toTopOf="@+id/listviewReview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toEndOf="@+id/imageView3"

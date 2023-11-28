@@ -39,10 +39,6 @@ public class HomeActivity extends AppCompatActivity {
         // VISTA XML QUE SE VA A MOSTRAR
         setContentView(R.layout.activity_home);
 
-
-
-        final int[] posicion = new int[]{0, 1, 2, 3};
-
         // REFERENCIA A LA BARRA DE NAVEGACIÓN INFERIOR
         BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
@@ -114,7 +110,6 @@ public class HomeActivity extends AppCompatActivity {
         movieAdapter = new MovieAdapter(this, Movie_image, Movie_title);
         recyclerView.setAdapter(movieAdapter);
     }
-
     @Override
     public void onBackPressed() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -138,7 +133,6 @@ public class HomeActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-
     private void storeDBInfo(){
         Cursor cursor = dbHelper.readDB();
         if(cursor.getCount() == 0){
@@ -153,9 +147,6 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }

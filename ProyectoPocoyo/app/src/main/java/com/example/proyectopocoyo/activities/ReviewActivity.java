@@ -17,7 +17,7 @@ import com.example.proyectopocoyo.db.DataBaseHelper;
 
 public class ReviewActivity extends AppCompatActivity {
 
-    EditText reviewId,textReview,ratingReview,userId,movieId;
+    EditText reviewId,textReview,userId,movieId;
     Button btnReview;
 
     TextView txtPuntuacion;
@@ -52,6 +52,7 @@ public class ReviewActivity extends AppCompatActivity {
             }
         });
 
+        txtPuntuacion = findViewById(R.id.txtPuntuacion);
         reviewId = findViewById(R.id.txtIdReview);
         textReview = findViewById(R.id.txtTexto);
         userId = findViewById(R.id.txtIdUser);
@@ -63,7 +64,7 @@ public class ReviewActivity extends AppCompatActivity {
                 DataBaseHelper db = new DataBaseHelper(ReviewActivity.this);
                 db.addReview(Integer.valueOf(reviewId.getText().toString().trim()),
                         textReview.getText().toString().trim(),
-                        Float.valueOf(ratingReview.getText().toString().trim()),
+                        Float.valueOf(txtPuntuacion.getText().toString().trim()),
                         Integer.valueOf(userId.getText().toString().trim()),
                         Integer.valueOf(movieId.getText().toString().trim()));
             }
