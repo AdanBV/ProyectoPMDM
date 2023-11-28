@@ -89,7 +89,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onLongItemClick(View view, int position) {
                 Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
-
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }
