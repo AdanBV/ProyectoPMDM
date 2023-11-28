@@ -40,21 +40,21 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.PeliculaView
     @Override
     public void onBindViewHolder(@NonNull PeliculaViewHolder holder, int position) {
         String url = Movie_image.get(position);
-        //"http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg";
-        Glide.with(context).load(url).into(holder.imagenPelicula);
+        Glide.with(context).load(Movie_image.get(position)).into(holder.imagenPelicula);
         holder.titleTextView.setText(Movie_title.get(position));
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String movieTitle = Movie_title.get(position);
+                int clickedPosition = holder.getAdapterPosition();
+                if (clickedPosition != RecyclerView.NO_POSITION) {
+                    String movieTitle = Movie_title.get(clickedPosition);
 
-                //Movie movie = dbHelper.getMovieDetails(movieTitle);
-
-                // Iniciar la nueva Activity y pasar los detalles de la película
-                Intent intent = new Intent(context, MovieActivity.class);
-                intent.putExtra("movie", movieTitle);
-                context.startActivity(intent);
+                    // Iniciar la nueva Activity y pasar los detalles de la película
+                    Intent intent = new Intent(context, MovieActivity.class);
+                    intent.putExtra("movie", movieTitle);
+                    context.startActivity(intent);
+                }
             }
         });
     }

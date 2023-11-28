@@ -29,7 +29,7 @@ public class MovieActivity extends AppCompatActivity {
         setContentView(R.layout.activity_movie);
 
         Intent intent = getIntent();
-        Movie movie = (Movie) intent.getSerializableExtra("movie");
+        String movie = (String)intent.getSerializableExtra("movie");
 
         idTitulo = findViewById(R.id.idTitulo);
         txtTitulo = findViewById(R.id.txtTitulo);
@@ -41,7 +41,7 @@ public class MovieActivity extends AppCompatActivity {
 
         myDb = new DataBaseHelper(this);
 
-        mostrarDatos();
+        mostrarDatos(movie);
 
         ImageButton imageButton = findViewById(R.id.imageButton);
 
@@ -72,8 +72,8 @@ public class MovieActivity extends AppCompatActivity {
 
 
     }
-    private void mostrarDatos() {
-        Cursor cursor = DataBaseHelper.obtenerPelis(myDb, title);
+    private void mostrarDatos(String movie) {
+        Cursor cursor = DataBaseHelper.obtenerPelis(myDb, movie);
 
         if (cursor != null && cursor.moveToFirst()) {
             String titulo;

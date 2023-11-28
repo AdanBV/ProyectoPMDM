@@ -86,7 +86,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "y su aprendiz Obi-Wan Kenobi, escoltan y protegen a la Reina " +
                 "Amidala con la esperanza de encontrar una salida pacífica.");
         cv.put("Movie_rating", 8.5);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
+        cv.put("Movie_image", "https://loremflickr.com/320/240");
         db.insert("Movie", null, cv);
 
         cv.clear();
