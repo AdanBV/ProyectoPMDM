@@ -44,7 +44,7 @@
         android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idTitulo"
-        app:srcCompat="@drawable/episodio1" />
+        app:srcCompat="@drawable/anadir" />
 
     <Button
         android:id="@+id/añadirReseña"
@@ -71,6 +71,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ListView
+        android:id="@+id/listviewReview"
         android:layout_width="373dp"
         android:layout_height="189dp"
         android:layout_marginStart="19dp"
@@ -118,7 +119,7 @@
         android:layout_marginTop="84dp"
         android:layout_marginBottom="19dp"
         android:text="Descripcion"
-        app:layout_constraintBottom_toTopOf="@+id/_dynamic"
+        app:layout_constraintBottom_toTopOf="@+id/listviewReview"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.032"
         app:layout_constraintStart_toEndOf="@+id/imageView3"

@@ -86,7 +86,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "y su aprendiz Obi-Wan Kenobi, escoltan y protegen a la Reina " +
                 "Amidala con la esperanza de encontrar una salida pacífica.");
         cv.put("Movie_rating", 8.5);
-        cv.put("Movie_image", "https://loremflickr.com/320/240");
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode1.jpg?raw=true");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -97,7 +97,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("Movie_description", "Attack of the Clones" + "\n" + "Diez años después " +
                 "La galaxia se encuentra al borde de una guerra civil.");
         cv.put("Movie_rating", 8.0);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode2.jpg?raw=true");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -109,7 +109,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "esparcido por toda la galaxia, dirigiendo un ejército clon masivo para " +
                 "enfrentar a los Separatistas Galácticos.");
         cv.put("Movie_rating", 8.2);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode3.jpg?raw=true");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -121,7 +121,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "la Alianza Rebelde, cuyo objetivo es destruir la estación espacial " +
                 "Estrella de la Muerte.");
         cv.put("Movie_rating", 9.0);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode4.jpg?raw=true");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -133,7 +133,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "destrucción de la estación espacial de combate conocida como la " +
                 "Estrella de la Muerte.");
         cv.put("Movie_rating", 9.3);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode5.jpg?raw=true");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -145,7 +145,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "construcción de una nueva estación espacial blindada, incluso más " +
                 "poderosa que la primera y temida Estrella de la Muerte.");
         cv.put("Movie_rating", 8.8);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode6.jpg?raw=true");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -156,7 +156,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("Movie_description", "The Force Awakens" + "\n" + "Cuando el desertor Finn llega a un planeta desierto conoce a Rey, " +
                 "cuyo androide contiene un mapa secreto.");
         cv.put("Movie_rating", 8.0);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode7.jpg?raw=true");
         db.insert("Movie", null, cv);
 
         cv.clear();
@@ -168,34 +168,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "ha logrado contener temporalmente a la siniestra Primera Orden, " +
                 "un nuevo grupo militar nacido de las cenizas del Imperio Galáctico");
         cv.put("Movie_rating", 7.9);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
-        db.insert("Movie", null, cv);
-        // Episode VIII
-        cv.put("Movie_title", "Star Wars: Episode VIII");
-        cv.put("Movie_director", "Rian Johnson");
-        cv.put("Movie_description", "The Last Jedi" + "\n" + "La Resistencia encabezada por la general Leia Organa (Carrie Fisher) " +
-                "ha logrado contener temporalmente a la siniestra Primera Orden, " +
-                "un nuevo grupo militar nacido de las cenizas del Imperio Galáctico");
-        cv.put("Movie_rating", 7.9);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
-        db.insert("Movie", null, cv);
-        // Episode VIII
-        cv.put("Movie_title", "Star Wars: Episode VIII");
-        cv.put("Movie_director", "Rian Johnson");
-        cv.put("Movie_description", "The Last Jedi" + "\n" + "La Resistencia encabezada por la general Leia Organa (Carrie Fisher) " +
-                "ha logrado contener temporalmente a la siniestra Primera Orden, " +
-                "un nuevo grupo militar nacido de las cenizas del Imperio Galáctico");
-        cv.put("Movie_rating", 7.9);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
-        db.insert("Movie", null, cv);
-        // Episode VIII
-        cv.put("Movie_title", "Star Wars: Episode VIII");
-        cv.put("Movie_director", "Rian Johnson");
-        cv.put("Movie_description", "The Last Jedi" + "\n" + "La Resistencia encabezada por la general Leia Organa (Carrie Fisher) " +
-                "ha logrado contener temporalmente a la siniestra Primera Orden, " +
-                "un nuevo grupo militar nacido de las cenizas del Imperio Galáctico");
-        cv.put("Movie_rating", 7.9);
-        cv.put("Movie_image", "http://www.impawards.com/1999/posters/star_wars_episode_one_the_phantom_menace_ver2.jpg");
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode8.jpg?raw=true");
         db.insert("Movie", null, cv);
     }
 
