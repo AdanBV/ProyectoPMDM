@@ -14,15 +14,16 @@ import com.example.starfilms.R;
 import com.example.starfilms.db.DataBaseHelper;
 
 public class MovieActivity extends AppCompatActivity {
+
     // Ayudante de Base De Datos
     DataBaseHelper myDb;
 
-    // Variable para el manejo de favoritos
+    // Variables para el manejo de favoritos
+    String title;
     boolean favorito = false;
 
     // Elementos de la interfaz de usuario
     ImageButton imgBtn;
-    String title;
     TextView idTitulo, txtTitulo, txtDescription, txtDirector, txtValoracion;
 
     @Override
@@ -32,7 +33,7 @@ public class MovieActivity extends AppCompatActivity {
 
         // Obtener la información de la película desde el Intent
         Intent intent = getIntent();
-        String movie = (String)intent.getSerializableExtra("movie");
+        String movie = (String) intent.getSerializableExtra("movie");
 
         // Referencias a elementos de la interfaz de usuario
         idTitulo = findViewById(R.id.idTitulo);
@@ -82,7 +83,6 @@ public class MovieActivity extends AppCompatActivity {
         });
     }
 
-
     // Método para mostrar los datos de la película en la interfaz de usuario
     private void mostrarDatos(String movie) {
         // Obtener información de la película desde la Base De Datos
@@ -121,5 +121,3 @@ public class MovieActivity extends AppCompatActivity {
         }
     }
 }
-
-

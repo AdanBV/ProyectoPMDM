@@ -17,6 +17,7 @@ import com.example.starfilms.R;
 import com.example.starfilms.db.DataBaseHelper;
 
 public class LoginActivity extends AppCompatActivity {
+
     // Referencias a los elementos de la interfaz de usuario
     Button button_LogIn, button_register;
     EditText editText_UserId, editText_Password;
@@ -79,39 +80,38 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void IniciarSesion(View v) {
-
         // Ayudante de Base de Datos
         DataBaseHelper dbHelper = new DataBaseHelper(this);
         // Base de Datos para lectura
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
-        // Usuario y Contraseña de la activity
+        // Obtener el nombre de usuario y la contraseña de la interfaz de usuario
         String User = editText_UserId.getText().toString();
         String Password = editText_Password.getText().toString();
 
-        // Comprobamos si existe alguna entrada en la BD que concuerde con los datos dados
+        // Comprobar si existe alguna entrada en la BD que coincida con los datos dados
         Cursor cursor = db.rawQuery("SELECT User_id, User_password FROM User WHERE User_Id = '"
                 + User + "' AND User_password = '"
                 + Password + "'", null);
 
         try {
-            // Si se pudo encontrar datos que concuerdan
+            // Si se encontraron datos que coinciden
             if (cursor.moveToFirst()) {
-                // Comprobamos que se corresponda la contraseña con el usuario e iniciamos sesion
+                // Comprobar que la contraseña coincide con el usuario e iniciar sesión
                 if (User.equals(cursor.getString(0)) && Password.equals(cursor.getString(1))) {
                     Intent intent = new Intent(this, HomeActivity.class);
                     startActivity(intent);
                 }
             }
-            // Si no se encontraron datos que concordasen
+            // Si no se encontraron datos que coincidieran
             else {
-                // Avisamos de que los Datos son incorrectos
+                // Avisar de que los datos son incorrectos
                 Toast toast = Toast.makeText(this, "Datos incorrectos", Toast.LENGTH_LONG);
                 toast.show();
             }
         } catch (Exception e) {
             // Mostrar un mensaje de error en caso de excepción
-            Toast toast = Toast.makeText(this, "Error al iniciar sesión. Intentalo de nuevo."
+            Toast toast = Toast.makeText(this, "Error al iniciar sesión. Inténtalo de nuevo. "
                     + e.getMessage(), Toast.LENGTH_LONG);
             toast.show();
         } finally {

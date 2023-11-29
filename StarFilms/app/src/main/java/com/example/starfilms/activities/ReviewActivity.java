@@ -21,12 +21,12 @@ public class ReviewActivity extends AppCompatActivity {
     EditText reviewId, textReview, userId, movieId;
     Button btnReview;
     TextView txtPuntuacion;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // Establecer el diseño de la interfaz de usuario
         setContentView(R.layout.activity_review);
-
 
         // Obtener el Intent que inició esta actividad
         Intent intent = getIntent();
@@ -40,7 +40,6 @@ public class ReviewActivity extends AppCompatActivity {
             TextView textView = findViewById(R.id.idTitulo);
             textView.setText(cadenaRecibida);
         }
-
 
         // Configurar el botón de volver
         ImageButton btnVolver = findViewById(R.id.imageButton);
@@ -63,15 +62,21 @@ public class ReviewActivity extends AppCompatActivity {
         movieId = findViewById(R.id.txtIdMovie);
         btnReview = findViewById(R.id.btnReseña);
 
-        btnReview.setOnClickListener(new View.OnClickListener(){
+        // Configurar el clic del botón para agregar una reseña
+        btnReview.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
+                // Ayudante de Base de Datos
                 DataBaseHelper db = new DataBaseHelper(ReviewActivity.this);
-                db.addReview(Integer.valueOf(reviewId.getText().toString().trim()),
+
+                // Intentar agregar una nueva reseña a la base de datos
+                db.addReview(
+                        Integer.valueOf(reviewId.getText().toString().trim()),
                         textReview.getText().toString().trim(),
                         Float.valueOf(txtPuntuacion.getText().toString().trim()),
                         Integer.valueOf(userId.getText().toString().trim()),
-                        Integer.valueOf(movieId.getText().toString().trim()));
+                        Integer.valueOf(movieId.getText().toString().trim())
+                );
             }
         });
 
@@ -87,7 +92,7 @@ public class ReviewActivity extends AppCompatActivity {
 
     // Método para mostrar el menú de puntuación
     public void mostrarMenu(View view) {
-        txtPuntuacion=findViewById(R.id.txtPuntuacion);
+        txtPuntuacion = findViewById(R.id.txtPuntuacion);
         PopupMenu popupMenu = new PopupMenu(this, view);
         popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
 

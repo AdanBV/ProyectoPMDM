@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
-
+import com.example.starfilms.clases.MovieAdapter;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,13 +17,13 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.starfilms.R;
-import com.example.starfilms.clases.MovieAdapter;
 import com.example.starfilms.db.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
+
     // Ayudante de Base De Datos
     DataBaseHelper dbHelper;
 
@@ -36,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         // VISTA XML QUE SE VA A MOSTRAR
         setContentView(R.layout.activity_home);
 
@@ -48,18 +49,19 @@ public class HomeActivity extends AppCompatActivity {
                 String t = (String) menuItem.getTitle();
                 switch (t) {
                     case "Inicio":
-
+                        // Lógica para la opción "Inicio"
                         return true;
 
                     case "Favoritos":
-
+                        // Lógica para la opción "Favoritos"
                         return true;
 
                     case "Añadir":
-
+                        // Lógica para la opción "Añadir"
                         return true;
 
                     case "Perfil":
+                        // Lógica para la opción "Perfil"
                         Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
                         // Iniciar la nueva actividad
                         startActivity(intent);
@@ -73,8 +75,10 @@ public class HomeActivity extends AppCompatActivity {
 
         // REFERENCIA AL RECYCLERVIEW
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+
         // PRESENTACIÓN DE LOS ELEMENTOS DENTRO DEL RECYCLERVIEW
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
+
         // EVENTO CLICK SOBRE ELEMENTOS DE RECYCLERVIEW
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, recyclerView, new RecyclerItemClickListener.OnItemClickListener() {
 
@@ -88,14 +92,14 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onLongItemClick(View view, int position) {
-                //Acción al mantener pulsado un elemento del RecyclerView
+                // Acción al mantener pulsado un elemento del RecyclerView
                 Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }
         }));
 
-        // MOSTRAR PELICULAs
+        // MOSTRAR PELÍCULAS
         dbHelper = new DataBaseHelper(HomeActivity.this);
 
         Movie_title = new ArrayList<>();
@@ -107,10 +111,11 @@ public class HomeActivity extends AppCompatActivity {
         // Obtener datos de la base de datos y almacenarlos en las listas
         storeDBInfo();
 
-        //Crear y configurar el adaptador para el RecyclerView
+        // Crear y configurar el adaptador para el RecyclerView
         movieAdapter = new MovieAdapter(this, Movie_image, Movie_title);
         recyclerView.setAdapter(movieAdapter);
     }
+
     @Override
     public void onBackPressed() {
         // Alerta al presionar el botón de retroceso
@@ -135,7 +140,8 @@ public class HomeActivity extends AppCompatActivity {
         AlertDialog dialog = builder.create();
         dialog.show();
     }
-    private void storeDBInfo(){
+
+    private void storeDBInfo() {
         // Obtener datos de la base de datos y almacenarlos en las listas
         Cursor cursor = dbHelper.readDB();
         if (cursor.getCount() == 0) {
@@ -152,8 +158,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
     }
+
     private void showToast(String message) {
-        // Método para mostrar mensajes de toast
+        // Método para mostrar mensajes de tostada
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
