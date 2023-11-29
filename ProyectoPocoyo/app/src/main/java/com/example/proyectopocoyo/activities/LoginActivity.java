@@ -17,35 +17,39 @@ import com.example.proyectopocoyo.R;
 import com.example.proyectopocoyo.db.DataBaseHelper;
 
 public class LoginActivity extends AppCompatActivity {
+    // Referencias a los elementos de la interfaz de usuario
     Button button_LogIn, button_register;
     EditText editText_UserId, editText_Password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Establecer el diseño de la interfaz de usuario
         setContentView(R.layout.activity_login);
 
+        // Obtener referencias a los elementos de la interfaz de usuario
         editText_UserId = findViewById(R.id.editText_UserID);
         editText_Password = findViewById(R.id.editText_Password);
 
+        // Configurar el botón de registro para abrir la actividad de registro
         button_register = findViewById(R.id.button_Register);
         button_register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Crear un Intent para abrir la nueva actividad
-                Intent intent = new Intent(LoginActivity.this,
-                        RegisterActivity.class);
-
+                // Crear un Intent para abrir la nueva actividad de registro
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 // Iniciar la nueva actividad
                 startActivity(intent);
             }
         });
 
+        // Configurar el botón de inicio de sesión para llamar al método IniciarSesion
         button_LogIn = findViewById(R.id.button_LogIn);
         button_LogIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Iniciar Sesion
+                // Iniciar Sesión
                 IniciarSesion(v);
             }
         });
@@ -53,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        // Alerta al presionar el botón de retroceso
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("¿Estás seguro de que quieres cerrar la aplicación?")
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
@@ -74,7 +79,10 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void IniciarSesion(View v) {
+
+        // Ayudante de Base de Datos
         DataBaseHelper dbHelper = new DataBaseHelper(this);
+        // Base de Datos para lectura
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         // Usuario y Contraseña de la activity
@@ -102,6 +110,7 @@ public class LoginActivity extends AppCompatActivity {
                 toast.show();
             }
         } catch (Exception e) {
+            // Mostrar un mensaje de error en caso de excepción
             Toast toast = Toast.makeText(this, "Error al iniciar sesión. Intentalo de nuevo."
                     + e.getMessage(), Toast.LENGTH_LONG);
             toast.show();

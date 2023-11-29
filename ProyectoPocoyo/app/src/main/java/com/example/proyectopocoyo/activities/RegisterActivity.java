@@ -14,43 +14,50 @@ import com.example.proyectopocoyo.db.DataBaseHelper;
 
 public class RegisterActivity extends AppCompatActivity {
 
+    // Elementos de la interfaz de usuario
     EditText editText_UserID, editText_Password, editText_RepeatPassword;
     Button button_Register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Establecer el diseño de la interfaz de usuario
         setContentView(R.layout.activity_register);
 
+        // Obtener referencias a los elementos de la interfaz de usuario
         editText_UserID = findViewById(R.id.editText_UserID);
         editText_Password = findViewById(R.id.editText_Password);
         editText_RepeatPassword = findViewById(R.id.editText_RepeatPassword);
         button_Register = findViewById(R.id.button_Register);
+
+        // Configurar el clic del botón para registrar un nuevo usuario
         button_Register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Ayudante de Base de Datos
                 DataBaseHelper db = new DataBaseHelper(RegisterActivity.this);
 
-                // Si las contraseñas coinciden
-                if (editText_Password.getText().toString().trim().equals
-                        (editText_RepeatPassword.getText().toString().trim())) {
+                // Verificar si las contraseñas coinciden
+                if (editText_Password.getText().toString().trim().equals(editText_RepeatPassword.getText().toString().trim())) {
 
-                    // Si se puede crear usuario
-                    if (db.addUser(editText_UserID.getText().toString().trim(),
-                            null,
+                    // Intentar agregar un nuevo usuario a la base de datos
+                    if (db.addUser(
+                            editText_UserID.getText().toString().trim(),
+                            null, // Puedes agregar otros campos si es necesario
                             null,
                             editText_Password.getText().toString().trim())) {
 
-                        // Si consigue crearlo iniciamos la actividad principal
-                        Intent intent = new Intent(RegisterActivity.this,
-                                HomeActivity.class);
+                        // Si se pudo crear el usuario, iniciar la actividad principal
+                        Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
                         startActivity(intent);
 
-                        // Si no puede crearlo no hacemos nada.
-                    } else {}
+                        // En caso de que no se pueda crear el usuario, no hacer nada en este bloque
+                    } else {
+                        // Puedes agregar lógica aquí si es necesario
+                    }
 
-                    // Si no coinciden entonces se avisa
                 } else {
+                    // Mostrar un mensaje de error si las contraseñas no coinciden
                     editText_RepeatPassword.setError("Contraseñas diferentes");
                     Toast.makeText(RegisterActivity.this,
                             "Failed to create user, passwords don't match",

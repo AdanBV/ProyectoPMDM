@@ -17,14 +17,16 @@ import com.example.proyectopocoyo.db.DataBaseHelper;
 
 public class ReviewActivity extends AppCompatActivity {
 
-    EditText reviewId,textReview,userId,movieId;
+    // Elementos de la interfaz de usuario
+    EditText reviewId, textReview, userId, movieId;
     Button btnReview;
-
     TextView txtPuntuacion;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Establecer el diseño de la interfaz de usuario
         setContentView(R.layout.activity_review);
+
 
         // Obtener el Intent que inició esta actividad
         Intent intent = getIntent();
@@ -34,30 +36,33 @@ public class ReviewActivity extends AppCompatActivity {
             // Obtener la cadena del extra
             String cadenaRecibida = intent.getStringExtra("NomMovie");
 
+            // Establecer el texto del TextView con el título de la película
             TextView textView = findViewById(R.id.idTitulo);
             textView.setText(cadenaRecibida);
         }
 
 
+        // Configurar el botón de volver
         ImageButton btnVolver = findViewById(R.id.imageButton);
         btnVolver.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Intent intent2 = new Intent(ReviewActivity.this,
-                        HomeActivity.class);
+                // Crear un Intent para volver a la actividad Home
+                Intent intent2 = new Intent(ReviewActivity.this, HomeActivity.class);
 
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }
         });
 
+        // Referencias a elementos de la interfaz de usuario para la funcionalidad de reseñas
         txtPuntuacion = findViewById(R.id.txtPuntuacion);
         reviewId = findViewById(R.id.txtIdReview);
         textReview = findViewById(R.id.txtTexto);
         userId = findViewById(R.id.txtIdUser);
         movieId = findViewById(R.id.txtIdMovie);
         btnReview = findViewById(R.id.btnReseña);
+
         btnReview.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -70,17 +75,17 @@ public class ReviewActivity extends AppCompatActivity {
             }
         });
 
+        // Configurar el botón para mostrar el menú de puntuación
         Button btnMostrarMenu = findViewById(R.id.btnMostrarMenu);
-
         btnMostrarMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mostrarMenu(v);
             }
         });
-
-
     }
+
+    // Método para mostrar el menú de puntuación
     public void mostrarMenu(View view) {
         txtPuntuacion=findViewById(R.id.txtPuntuacion);
         PopupMenu popupMenu = new PopupMenu(this, view);

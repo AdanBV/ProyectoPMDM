@@ -80,14 +80,15 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(View view, int position) {
+                // Acción al hacer clic en un elemento del RecyclerView
                 Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
-
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }
 
             @Override
             public void onLongItemClick(View view, int position) {
+                //Acción al mantener pulsado un elemento del RecyclerView
                 Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
@@ -103,14 +104,16 @@ public class HomeActivity extends AppCompatActivity {
         Movie_rating = new ArrayList<>();
         Movie_image = new ArrayList<>();
 
+        // Obtener datos de la base de datos y almacenarlos en las listas
         storeDBInfo();
 
-        //
+        //Crear y configurar el adaptador para el RecyclerView
         movieAdapter = new MovieAdapter(this, Movie_image, Movie_title);
         recyclerView.setAdapter(movieAdapter);
     }
     @Override
     public void onBackPressed() {
+        // Alerta al presionar el botón de retroceso
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("¿Estás seguro de que deseas cerrar sesión?")
                 .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
@@ -133,11 +136,14 @@ public class HomeActivity extends AppCompatActivity {
         dialog.show();
     }
     private void storeDBInfo(){
+        // Obtener datos de la base de datos y almacenarlos en las listas
         Cursor cursor = dbHelper.readDB();
-        if(cursor.getCount() == 0){
+        if (cursor.getCount() == 0) {
+            // Mensaje si no hay datos en la base de datos
             Toast.makeText(this, "No Data", Toast.LENGTH_LONG).show();
-        }else{
-            while (cursor.moveToNext()){
+        } else {
+            // Almacenar datos en las listas desde la base de datos
+            while (cursor.moveToNext()) {
                 Movie_title.add(cursor.getString(1));
                 Movie_director.add(cursor.getString(2));
                 Movie_description.add(cursor.getString(3));
@@ -147,6 +153,7 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
     private void showToast(String message) {
+        // Método para mostrar mensajes de toast
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
