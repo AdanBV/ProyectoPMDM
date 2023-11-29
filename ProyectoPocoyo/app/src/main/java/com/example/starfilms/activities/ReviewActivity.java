@@ -1,4 +1,4 @@
-package com.example.proyectopocoyo.activities;
+package com.example.starfilms.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,8 +12,8 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 
-import com.example.proyectopocoyo.R;
-import com.example.proyectopocoyo.db.DataBaseHelper;
+import com.example.starfilms.R;
+import com.example.starfilms.db.DataBaseHelper;
 
 public class ReviewActivity extends AppCompatActivity {
 

@@ -1,8 +1,7 @@
-package com.example.proyectopocoyo.clases;
+package com.example.starfilms.clases;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Movie;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +12,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.example.proyectopocoyo.R;
-import com.example.proyectopocoyo.activities.MovieActivity;
-import com.example.proyectopocoyo.db.DataBaseHelper;
+import com.example.starfilms.R;
+import com.example.starfilms.activities.MovieActivity;
+import com.example.starfilms.db.DataBaseHelper;
 
 import java.util.ArrayList;
 

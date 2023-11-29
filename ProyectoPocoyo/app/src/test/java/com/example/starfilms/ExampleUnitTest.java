@@ -1,4 +1,4 @@
-package com.example.proyectopocoyo;
+package com.example.starfilms;
 
 import org.junit.Test;
 

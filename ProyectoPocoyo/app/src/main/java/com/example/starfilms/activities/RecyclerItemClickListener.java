@@ -1,13 +1,6 @@
-package com.example.proyectopocoyo.activities;
+package com.example.starfilms.activities;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Context;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-
 
 import android.content.Context;
 import android.view.GestureDetector;

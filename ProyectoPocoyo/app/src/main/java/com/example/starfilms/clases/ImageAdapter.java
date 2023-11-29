@@ -1,4 +1,4 @@
-package com.example.proyectopocoyo.clases;
+package com.example.starfilms.clases;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.proyectopocoyo.R;
+import com.example.starfilms.R;
 
 public class ImageAdapter extends RecyclerView.Adapter<ImageAdapter.ImageViewHolder> {
     private Context context;

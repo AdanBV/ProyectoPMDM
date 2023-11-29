@@ -1,4 +1,4 @@
-package com.example.proyectopocoyo.activities;
+package com.example.starfilms.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.proyectopocoyo.R;
-import com.example.proyectopocoyo.db.DataBaseHelper;
+import com.example.starfilms.R;
+import com.example.starfilms.db.DataBaseHelper;
 
 public class RegisterActivity extends AppCompatActivity {
 

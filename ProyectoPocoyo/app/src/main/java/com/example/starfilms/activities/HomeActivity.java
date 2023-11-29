@@ -1,6 +1,6 @@
 // PÁGINA PRINCIPAL DE LA APP (INICIO)
 
-package com.example.proyectopocoyo.activities;
+package com.example.starfilms.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -16,9 +16,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.proyectopocoyo.R;
-import com.example.proyectopocoyo.clases.MovieAdapter;
-import com.example.proyectopocoyo.db.DataBaseHelper;
+import com.example.starfilms.R;
+import com.example.starfilms.clases.MovieAdapter;
+import com.example.starfilms.db.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

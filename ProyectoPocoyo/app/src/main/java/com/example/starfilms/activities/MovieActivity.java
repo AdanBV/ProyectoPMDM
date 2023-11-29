@@ -1,21 +1,17 @@
-package com.example.proyectopocoyo.activities;
+package com.example.starfilms.activities;
 
-import androidx.annotation.DrawableRes;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Movie;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.example.proyectopocoyo.R;
-import com.example.proyectopocoyo.db.DataBaseHelper;
+import com.example.starfilms.R;
+import com.example.starfilms.db.DataBaseHelper;
 
 public class MovieActivity extends AppCompatActivity {
     DataBaseHelper myDb;
