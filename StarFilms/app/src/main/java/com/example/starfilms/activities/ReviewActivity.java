@@ -115,7 +115,7 @@ public class ReviewActivity extends AppCompatActivity {
                 db.addReview(
                         Integer.valueOf(reviewId.getText().toString().trim()),
                         textReview.getText().toString().trim(),
-                        Float.valueOf(txtPuntuacion.getText().toString().trim()),
+                        Integer.valueOf(txtPuntuacion.getText().toString().trim()),
                         Integer.valueOf(userId.getText().toString().trim()),
                         Integer.valueOf(movieId.getText().toString().trim())
                 );
@@ -143,31 +143,31 @@ public class ReviewActivity extends AppCompatActivity {
             public boolean onMenuItemClick(MenuItem item) {
                 if (item.getItemId() == R.id.review0) {
                     // Acción al hacer clic en la opción 1
-                    txtPuntuacion.setText("0/5");
+                    txtPuntuacion.setText("0");
                     return true;
                 } else if (item.getItemId() == R.id.review1) {
                     // Acción al hacer clic en la opción 2
-                    txtPuntuacion.setText("1/5");
+                    txtPuntuacion.setText("1");
                     return true;
                 }
                 else if (item.getItemId() == R.id.review2) {
                     // Acción al hacer clic en la opción 2
-                    txtPuntuacion.setText("2/5");
+                    txtPuntuacion.setText("2");
                     return true;
                 }
                 else if (item.getItemId() == R.id.review3) {
                     // Acción al hacer clic en la opción 2
-                    txtPuntuacion.setText("3/5");
+                    txtPuntuacion.setText("3");
                     return true;
                 }
                 else if (item.getItemId() == R.id.review4) {
                     // Acción al hacer clic en la opción 2
-                    txtPuntuacion.setText("4/5");
+                    txtPuntuacion.setText("4");
                     return true;
                 }
                 else if (item.getItemId() == R.id.review5) {
                     // Acción al hacer clic en la opción 2
-                    txtPuntuacion.setText("5/5");
+                    txtPuntuacion.setText("5");
                     return true;
                 }
                 return false;

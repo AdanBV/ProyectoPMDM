@@ -45,7 +45,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // SENTENCIA CREACIÓN TABLA (Review)
         db.execSQL("CREATE TABLE Review (Review_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "Review_text TEXT, " +
-                "Review_rating REAL NOT NULL, " +
+                "Review_rating INTEGER NOT NULL, " +
                 "User_id INTEGER NOT NULL, " +
                 "Movie_id INTEGER NOT NULL, " +
                 "CHECK(Review_rating >= 0.0 AND Review_rating <= 5.0), " +
@@ -213,7 +213,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addReview(int reviewId, String reviewText, float reviewRating, int userId, int movieId) {
+    public boolean addReview(int reviewId, String reviewText, int reviewRating, int userId, int movieId) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
