@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -61,6 +63,46 @@ public class ReviewActivity extends AppCompatActivity {
         userId = findViewById(R.id.txtIdUser);
         movieId = findViewById(R.id.txtIdMovie);
         btnReview = findViewById(R.id.btnReseña);
+
+
+        reviewId.setFilters(new InputFilter[]{new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    // Permitir solo caracteres numéricos
+                    if (!Character.isDigit(source.charAt(i))) {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        }});
+
+        movieId.setFilters(new InputFilter[]{new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    // Permitir solo caracteres numéricos
+                    if (!Character.isDigit(source.charAt(i))) {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        }});
+
+        userId.setFilters(new InputFilter[]{new InputFilter() {
+            @Override
+            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
+                for (int i = start; i < end; i++) {
+                    // Permitir solo caracteres numéricos
+                    if (!Character.isDigit(source.charAt(i))) {
+                        return "";
+                    }
+                }
+                return null;
+            }
+        }});
 
         // Configurar el clic del botón para agregar una reseña
         btnReview.setOnClickListener(new View.OnClickListener() {
