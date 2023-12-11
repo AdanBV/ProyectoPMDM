@@ -2,14 +2,21 @@ package com.example.starfilms.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.TypedValue;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
-
+import android.util.Log;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,9 +28,11 @@ public class LoginActivity extends AppCompatActivity {
     // Referencias a los elementos de la interfaz de usuario
     Button button_LogIn, button_register;
     EditText editText_UserId, editText_Password;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        setAppTheme();
+
         super.onCreate(savedInstanceState);
 
         // Establecer el diseño de la interfaz de usuario
@@ -40,6 +49,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Crear un Intent para abrir la nueva actividad de registro
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+
                 // Iniciar la nueva actividad
                 startActivity(intent);
             }
@@ -54,6 +64,12 @@ public class LoginActivity extends AppCompatActivity {
                 IniciarSesion(v);
             }
         });
+
+
+    }
+
+    private void setAppTheme() {
+        setTheme(R.style.AppTheme_Light);
     }
 
     @Override
@@ -100,6 +116,8 @@ public class LoginActivity extends AppCompatActivity {
                 // Comprobar que la contraseña coincide con el usuario e iniciar sesión
                 if (User.equals(cursor.getString(0)) && Password.equals(cursor.getString(1))) {
                     Intent intent = new Intent(this, HomeActivity.class);
+                    String Nombre = editText_UserId.getText().toString();
+                    intent.putExtra("Nombre",Nombre);
                     startActivity(intent);
                 }
             }

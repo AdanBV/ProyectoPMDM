@@ -8,12 +8,15 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.starfilms.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    String User;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +26,12 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Referencia al botón de cierre de sesión
         Button btn = findViewById(R.id.btnLogOut);
+
+        Intent intent = getIntent();
+        User = intent.getStringExtra("Nombre");
+
+        TextView txt_user = findViewById(R.id.txtIdUsuario);
+        txt_user.setText(User);
 
         // Configurar el clic del botón para cerrar la sesión
         btn.setOnClickListener(new View.OnClickListener() {

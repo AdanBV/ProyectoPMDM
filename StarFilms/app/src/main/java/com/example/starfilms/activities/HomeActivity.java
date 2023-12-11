@@ -33,12 +33,17 @@ public class HomeActivity extends AppCompatActivity {
     // Adaptador para mostrar peliculas
     MovieAdapter movieAdapter;
 
+    String User;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         // VISTA XML QUE SE VA A MOSTRAR
         setContentView(R.layout.activity_home);
+
+        Intent intent = getIntent();
+        User = intent.getStringExtra("Nombre");
 
         // REFERENCIA A LA BARRA DE NAVEGACIÓN INFERIOR
         BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
@@ -63,6 +68,7 @@ public class HomeActivity extends AppCompatActivity {
                     case "Perfil":
                         // Lógica para la opción "Perfil"
                         Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+                        intent.putExtra("Nombre",User);
                         // Iniciar la nueva actividad
                         startActivity(intent);
                         return true;

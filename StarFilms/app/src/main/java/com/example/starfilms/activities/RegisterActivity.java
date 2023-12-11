@@ -49,6 +49,8 @@ public class RegisterActivity extends AppCompatActivity {
 
                         // Si se pudo crear el usuario, iniciar la actividad principal
                         Intent intent = new Intent(RegisterActivity.this, HomeActivity.class);
+                        String Nombre = editText_UserID.getText().toString();
+                        intent.putExtra("Nombre",Nombre);
                         startActivity(intent);
 
                         // En caso de que no se pueda crear el usuario, no hacer nada en este bloque

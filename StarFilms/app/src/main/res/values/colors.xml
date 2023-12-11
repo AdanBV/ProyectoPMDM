@@ -7,4 +7,14 @@
 
     <color name="grey">#FF808080</color>
     <color name="blue">#FF0000FF</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorPrimaryDarkLight">#757de8</color>
+    <color name="colorAccentLight">#f50057</color>
+
+    <color name="colorPrimaryDarkDark">#1a237e</color>
+    <color name="colorAccentDark">#d50000</color>
 </resources>
