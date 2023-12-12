@@ -8,6 +8,7 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.starfilms.clases.MovieAdapter;
 import androidx.annotation.NonNull;
@@ -90,16 +91,25 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(View view, int position) {
+
+                TextView txt = findViewById(R.id.movieTitle);
+                String h = txt.getText().toString();
+
                 // Acción al hacer clic en un elemento del RecyclerView
                 Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
+                intent2.putExtra("titulo",h);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }
 
             @Override
             public void onLongItemClick(View view, int position) {
-                // Acción al mantener pulsado un elemento del RecyclerView
+                TextView txt = findViewById(R.id.movieTitle);
+                String h = txt.getText().toString();
+
+                // Acción al hacer clic en un elemento del RecyclerView
                 Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
+                intent2.putExtra("titulo",h);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }

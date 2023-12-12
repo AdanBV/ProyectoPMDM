@@ -1,5 +1,6 @@
 package com.example.starfilms.activities;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,8 +9,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.starfilms.R;
 import com.example.starfilms.db.DataBaseHelper;
 
@@ -24,16 +27,13 @@ public class MovieActivity extends AppCompatActivity {
 
     // Elementos de la interfaz de usuario
     ImageButton imgBtn;
+    ImageView imgPeli;
     TextView idTitulo, txtTitulo, txtDescription, txtDirector, txtValoracion;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
-
-        // Obtener la información de la película desde el Intent
-        Intent intent = getIntent();
-        String movie = (String) intent.getSerializableExtra("movie");
 
         // Referencias a elementos de la interfaz de usuario
         idTitulo = findViewById(R.id.idTitulo);
@@ -42,15 +42,17 @@ public class MovieActivity extends AppCompatActivity {
         txtDirector = findViewById(R.id.txtDirector);
         txtValoracion = findViewById(R.id.txtValoracion);
         imgBtn = findViewById(R.id.imageButton);
+        imgPeli = findViewById(R.id.imageView3);
 
         // Título de prueba (puede ser reemplazado por el título real obtenido del Intent)
-        title = "Star Wars: Episode I";
+        Intent intent4 = getIntent();
+        title = intent4.getStringExtra("titulo");
 
         // Inicializar el ayudante de Base De Datos
         myDb = new DataBaseHelper(this);
 
         // Mostrar datos de la película en la interfaz de usuario
-        mostrarDatos(movie);
+        mostrarDatos(title);
 
         // Configurar el botón de favoritos
         imgBtn.setOnClickListener(new View.OnClickListener() {
@@ -90,29 +92,22 @@ public class MovieActivity extends AppCompatActivity {
 
         // Verificar si se obtuvieron datos y mover el cursor a la primera fila
         if (cursor != null && cursor.moveToFirst()) {
-            String titulo, director, descripcion;
+            String titulo, director, descripcion, img;
             double puntaje;
-            try {
-                // Obtener datos de las columnas correspondientes
-                titulo = cursor.getString(cursor.getColumnIndexOrThrow("Movie_title"));
-                director = cursor.getString(cursor.getColumnIndexOrThrow("Movie_director"));
-                descripcion = cursor.getString(cursor.getColumnIndexOrThrow("Movie_description"));
-                puntaje = cursor.getDouble(cursor.getColumnIndexOrThrow("Movie_rating"));
-            } catch (IllegalArgumentException e) {
-                // Manejo de la excepción aquí
-                e.printStackTrace();
-                titulo = "Columna no encontrada";
-                descripcion = "Columna no encontrada";
-                director = "Columna no encontrada";
-                puntaje = -1;
-            }
 
+            // Obtener datos de las columnas correspondientes
+            titulo = cursor.getString(cursor.getColumnIndexOrThrow("Movie_title"));
+            director = cursor.getString(cursor.getColumnIndexOrThrow("Movie_director"));
+            descripcion = cursor.getString(cursor.getColumnIndexOrThrow("Movie_description"));
+            puntaje = cursor.getDouble(cursor.getColumnIndexOrThrow("Movie_rating"));
+            img = cursor.getString(cursor.getColumnIndexOrThrow("Movie_image"));
             // Asignar los datos a los TextView en la interfaz de usuario
             idTitulo.setText(titulo);
             txtTitulo.setText(titulo);
             txtDescription.setText(descripcion);
             txtDirector.setText(director);
             txtValoracion.setText("Valoración Media: " + String.valueOf(puntaje));
+            Glide.with(this).load(img).into(imgPeli);
         }
 
         // Cerrar el cursor después de usarlo
