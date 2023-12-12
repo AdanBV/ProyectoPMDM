@@ -62,6 +62,7 @@ public class ProfileActivity extends AppCompatActivity {
                     case "Inicio":
                         // Crear un Intent para abrir la actividad de inicio
                         Intent intent = new Intent(ProfileActivity.this, HomeActivity.class);
+                        intent.putExtra("Nombre",User);
                         // Iniciar la nueva actividad
                         startActivity(intent);
                         return true;
