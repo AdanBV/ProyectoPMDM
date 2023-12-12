@@ -7,6 +7,7 @@
 
     <color name="grey">#FF808080</color>
     <color name="blue">#FF0000FF</color>
+    <color name="red">#FFFF0000</color>
 
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
