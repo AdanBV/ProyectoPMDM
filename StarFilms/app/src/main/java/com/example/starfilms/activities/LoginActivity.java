@@ -30,9 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText editText_UserId, editText_Password;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        setAppTheme();
-
         super.onCreate(savedInstanceState);
 
         // Establecer el diseño de la interfaz de usuario
@@ -66,10 +63,6 @@ public class LoginActivity extends AppCompatActivity {
         });
 
 
-    }
-
-    private void setAppTheme() {
-        setTheme(R.style.AppTheme_Light);
     }
 
     @Override
