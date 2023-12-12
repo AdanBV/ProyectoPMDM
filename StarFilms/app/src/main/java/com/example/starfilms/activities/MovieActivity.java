@@ -22,7 +22,7 @@ public class MovieActivity extends AppCompatActivity {
     DataBaseHelper myDb;
 
     // Variables para el manejo de favoritos
-    String title;
+    String title, user;
     boolean favorito = false;
 
     // Elementos de la interfaz de usuario
@@ -47,6 +47,7 @@ public class MovieActivity extends AppCompatActivity {
         // Título de prueba (puede ser reemplazado por el título real obtenido del Intent)
         Intent intent4 = getIntent();
         title = intent4.getStringExtra("titulo");
+        user = intent4.getStringExtra("Nombre");
 
         // Inicializar el ayudante de Base De Datos
         myDb = new DataBaseHelper(this);
@@ -77,8 +78,8 @@ public class MovieActivity extends AppCompatActivity {
                 // Crear un Intent para abrir la actividad de reseña
                 Intent intent2 = new Intent(MovieActivity.this, ReviewActivity.class);
                 // Obtener el título de la película y pasar a la siguiente actividad
-                String miCadena = idTitulo.getText().toString().trim();
-                intent2.putExtra("NomMovie", miCadena);
+                intent2.putExtra("titulo",title);
+                intent2.putExtra("Nombre",user);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }

@@ -20,10 +20,10 @@ import com.example.starfilms.db.DataBaseHelper;
 public class ReviewActivity extends AppCompatActivity {
 
     // Elementos de la interfaz de usuario
-    EditText reviewId, textReview, userId, movieId;
+    EditText textReview;
     Button btnReview;
-    TextView txtPuntuacion;
-
+    TextView txtPuntuacion, userId;
+    String title, user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,16 +32,11 @@ public class ReviewActivity extends AppCompatActivity {
 
         // Obtener el Intent que inició esta actividad
         Intent intent = getIntent();
+        title = intent.getStringExtra("titulo");
+        user = intent.getStringExtra("Nombre");
 
-        // Verificar si hay un extra con la clave "NomMovie"
-        if (intent.hasExtra("NomMovie")) {
-            // Obtener la cadena del extra
-            String cadenaRecibida = intent.getStringExtra("NomMovie");
-
-            // Establecer el texto del TextView con el título de la película
-            TextView textView = findViewById(R.id.idTitulo);
-            textView.setText(cadenaRecibida);
-        }
+        userId = findViewById(R.id.idTitulo);
+        userId.setText(title);
 
         // Configurar el botón de volver
         ImageButton btnVolver = findViewById(R.id.imageButton);
@@ -58,51 +53,9 @@ public class ReviewActivity extends AppCompatActivity {
 
         // Referencias a elementos de la interfaz de usuario para la funcionalidad de reseñas
         txtPuntuacion = findViewById(R.id.txtPuntuacion);
-        reviewId = findViewById(R.id.txtIdReview);
         textReview = findViewById(R.id.txtTexto);
-        userId = findViewById(R.id.txtIdUser);
-        movieId = findViewById(R.id.txtIdMovie);
         btnReview = findViewById(R.id.btnReseña);
 
-
-        reviewId.setFilters(new InputFilter[]{new InputFilter() {
-            @Override
-            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                for (int i = start; i < end; i++) {
-                    // Permitir solo caracteres numéricos
-                    if (!Character.isDigit(source.charAt(i))) {
-                        return "";
-                    }
-                }
-                return null;
-            }
-        }});
-
-        movieId.setFilters(new InputFilter[]{new InputFilter() {
-            @Override
-            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                for (int i = start; i < end; i++) {
-                    // Permitir solo caracteres numéricos
-                    if (!Character.isDigit(source.charAt(i))) {
-                        return "";
-                    }
-                }
-                return null;
-            }
-        }});
-
-        userId.setFilters(new InputFilter[]{new InputFilter() {
-            @Override
-            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-                for (int i = start; i < end; i++) {
-                    // Permitir solo caracteres numéricos
-                    if (!Character.isDigit(source.charAt(i))) {
-                        return "";
-                    }
-                }
-                return null;
-            }
-        }});
 
         // Configurar el clic del botón para agregar una reseña
         btnReview.setOnClickListener(new View.OnClickListener() {
@@ -113,12 +66,10 @@ public class ReviewActivity extends AppCompatActivity {
 
                 // Intentar agregar una nueva reseña a la base de datos
                 db.addReview(
-                        Integer.valueOf(reviewId.getText().toString().trim()),
                         textReview.getText().toString().trim(),
                         Integer.valueOf(txtPuntuacion.getText().toString().trim()),
-                        Integer.valueOf(userId.getText().toString().trim()),
-                        Integer.valueOf(movieId.getText().toString().trim())
-                );
+                        user,
+                        title);
             }
         });
 

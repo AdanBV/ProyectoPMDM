@@ -92,12 +92,14 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, int position) {
 
-                TextView txt = findViewById(R.id.movieTitle);
+                TextView txt = view.findViewById(R.id.movieTitle);
                 String h = txt.getText().toString();
+
 
                 // Acción al hacer clic en un elemento del RecyclerView
                 Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
                 intent2.putExtra("titulo",h);
+                intent2.putExtra("Nombre",User);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }

@@ -46,8 +46,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("CREATE TABLE Review (Review_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 "Review_text TEXT, " +
                 "Review_rating INTEGER NOT NULL, " +
-                "User_id INTEGER NOT NULL, " +
-                "Movie_id INTEGER NOT NULL, " +
+                "User_id TEXT NOT NULL, " +
+                "Movie_id TEXT NOT NULL, " +
                 "CHECK(Review_rating >= 0.0 AND Review_rating <= 5.0), " +
                 "FOREIGN KEY(User_id) REFERENCES User(User_id), " +
                 "FOREIGN KEY(Movie_id) REFERENCES Movie(Movie_id));");
@@ -213,12 +213,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addReview(int reviewId, String reviewText, int reviewRating, int userId, int movieId) {
+    public boolean addReview(String reviewText, int reviewRating, String userId, String movieId) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put("Review_id", reviewId);
         cv.put("Review_text", reviewText);
         cv.put("Review_rating", reviewRating);
         cv.put("User_id", userId);
