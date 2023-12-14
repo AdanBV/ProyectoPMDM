@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- Agrega el permiso de Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -16,9 +15,12 @@
         android:theme="@style/Theme.StarFilms"
         tools:targetApi="31">
         <activity
+            android:name=".clases.AdapterReviewPeli"
+            android:exported="false" />
+        <activity
             android:name=".activities.ProfileActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activities.ReviewActivity"
             android:exported="false"
@@ -54,8 +56,8 @@
         </activity>
         <activity
             android:name=".activities.RegisterActivity"
-            android:exported="true"
             android:configChanges="uiMode"
+            android:exported="true"
             android:parentActivityName=".activities.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>

@@ -10,11 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.starfilms.R;
+import com.example.starfilms.clases.AdapterReviewPeli;
 import com.example.starfilms.db.DataBaseHelper;
+
+import java.util.ArrayList;
 
 public class MovieActivity extends AppCompatActivity {
 
@@ -29,6 +33,7 @@ public class MovieActivity extends AppCompatActivity {
     ImageButton imgBtn;
     ImageView imgPeli;
     TextView idTitulo, txtTitulo, txtDescription, txtDirector, txtValoracion;
+    ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,14 @@ public class MovieActivity extends AppCompatActivity {
         txtValoracion = findViewById(R.id.txtValoracion);
         imgBtn = findViewById(R.id.imageButton);
         imgPeli = findViewById(R.id.imageView3);
+        lv.findViewById(R.id.listaReviewsUsuario);
+
+        ArrayList<String> titulos = obtenerTitulosParaTuLista();
+        ArrayList<String> usuarios = obtenerUsuariosParaTuLista();
+
+        AdapterReviewPeli adapter = new AdapterReviewPeli(this, titulos, usuarios);
+
+        lv.setAdapter(adapter);
 
         // Título de prueba (puede ser reemplazado por el título real obtenido del Intent)
         Intent intent4 = getIntent();
@@ -84,6 +97,14 @@ public class MovieActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
+    }
+
+    private ArrayList<String> obtenerUsuariosParaTuLista() {
+
+    }
+
+    private ArrayList<String> obtenerTitulosParaTuLista() {
+
     }
 
     // Método para mostrar los datos de la película en la interfaz de usuario
