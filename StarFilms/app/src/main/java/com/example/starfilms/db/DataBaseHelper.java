@@ -260,13 +260,4 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM Movie WHERE Movie_title = '" + title + "';";
         return db.rawQuery(query, null);
     }
-
-    public Cursor obtenerReviewsPorPelicula(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        // Query para obtener las revisiones por nombre de película
-        String query = "SELECT * FROM Review WHERE Movie_id = '" + id + "';";
-
-        return db.rawQuery(query,null);
-    }
 }
