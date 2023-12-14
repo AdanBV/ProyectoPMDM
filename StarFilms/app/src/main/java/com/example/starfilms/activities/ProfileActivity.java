@@ -4,20 +4,25 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.starfilms.R;
+import com.example.starfilms.db.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class ProfileActivity extends AppCompatActivity {
 
     String User;
-
+    DataBaseHelper myDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +31,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         // Referencia al botón de cierre de sesión
         Button btn = findViewById(R.id.btnLogOut);
-
+        mostrarReviews();
         Intent intent = getIntent();
         User = intent.getStringExtra("Nombre");
 
@@ -85,7 +90,13 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
-
+    private void mostrarReviews() {
+        String[] columns = DataBaseHelper.obtenerReviews(myDb, User);
+        // Mostrar las columnas en un ListView
+        ListView listView = findViewById(R.id.listaReviewsUsuario);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, columns);
+        listView.setAdapter(adapter);
+    }
     @Override
     public void onBackPressed() {
         // No se ejecuta ninguna acción al presionar el botón de retroceso

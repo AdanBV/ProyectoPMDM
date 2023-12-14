@@ -47,7 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "Review_text TEXT, " +
                 "Review_rating INTEGER NOT NULL, " +
                 "User_id TEXT NOT NULL, " +
-                "Movie_id TEXT NOT NULL, " +
+                "Movie_id INTEGER NOT NULL, " +
                 "CHECK(Review_rating >= 0.0 AND Review_rating <= 5.0), " +
                 "FOREIGN KEY(User_id) REFERENCES User(User_id), " +
                 "FOREIGN KEY(Movie_id) REFERENCES Movie(Movie_id));");
@@ -213,7 +213,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    public boolean addReview(String reviewText, int reviewRating, String userId, String movieId) {
+    public boolean addReview(String reviewText, int reviewRating, String userId, int movieId) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -259,5 +259,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String query = "SELECT * FROM Movie WHERE Movie_title = '" + title + "';";
         return db.rawQuery(query, null);
+    }
+    public static Cursor obtenerIdPeli(@NonNull DataBaseHelper dbHelper, String title) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT Movie_id FROM Movie WHERE Movie_title = '" + title + "';";
+        return db.rawQuery(query, null);
+    }
+    public static String[] obtenerReviews(@NonNull DataBaseHelper dbHelper, String user) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM Review WHERE User_id = '" + user + "';";
+
+        Cursor cursor = db.rawQuery(query, null);
+        String[] columns = cursor.getColumnNames();
+
+        cursor.close();
+        db.close();
+
+        return columns;
     }
 }

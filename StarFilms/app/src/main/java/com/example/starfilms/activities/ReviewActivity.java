@@ -1,11 +1,12 @@
 package com.example.starfilms.activities;
 
+import static java.lang.Integer.parseInt;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.text.InputFilter;
-import android.text.Spanned;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class ReviewActivity extends AppCompatActivity {
     // Elementos de la interfaz de usuario
     EditText textReview;
     Button btnReview;
-    TextView txtPuntuacion, userId;
+    TextView txtPuntuacion, titleId;
     String title, user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,8 @@ public class ReviewActivity extends AppCompatActivity {
         title = intent.getStringExtra("titulo");
         user = intent.getStringExtra("Nombre");
 
-        userId = findViewById(R.id.idTitulo);
-        userId.setText(title);
+        titleId = findViewById(R.id.idTitulo);
+        titleId.setText(title);
 
         // Configurar el botón de volver
         ImageButton btnVolver = findViewById(R.id.imageButton);
@@ -63,13 +64,13 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Ayudante de Base de Datos
                 DataBaseHelper db = new DataBaseHelper(ReviewActivity.this);
+                Cursor cursor=DataBaseHelper.obtenerIdPeli(db,title);
 
+                int movieId=parseInt(cursor.getString(cursor.getColumnIndexOrThrow("Movie_id")));
                 // Intentar agregar una nueva reseña a la base de datos
                 db.addReview(
                         textReview.getText().toString().trim(),
-                        Integer.valueOf(txtPuntuacion.getText().toString().trim()),
-                        user,
-                        title);
+                        Integer.valueOf(txtPuntuacion.getText().toString().trim()), user, movieId);
             }
         });
 
