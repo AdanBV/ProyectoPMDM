@@ -9,4 +9,5 @@
     <string name="registrarse">Registrarse</string>
     <string name="app_logo">app_logo</string>
     <string name="register_PasswordRepeat">Repetir Contraseña</string>
+    <string name="title_activity_favoritos">FavoritosActivity</string>
 </resources>

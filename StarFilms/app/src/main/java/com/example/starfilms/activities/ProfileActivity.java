@@ -73,11 +73,10 @@ public class ProfileActivity extends AppCompatActivity {
                         return true;
 
                     case "Favoritos":
-                        // Lógica para la opción "Favoritos"
-                        return true;
-
-                    case "Añadir":
-                        // Lógica para la opción "Añadir"
+                        Intent intent2 = new Intent(ProfileActivity.this, FavoritosActivity.class);
+                        intent2.putExtra("Nombre",User);
+                        // Iniciar la nueva actividad
+                        startActivity(intent2);
                         return true;
 
                     case "Perfil":
