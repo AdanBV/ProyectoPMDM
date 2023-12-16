@@ -34,7 +34,7 @@
         android:id="@+id/txtTexto"
         android:layout_width="257dp"
         android:layout_height="229dp"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="92dp"
         android:background="@drawable/round_edit_text"
         android:ems="10"
         android:hint="Texto de la review"
@@ -43,7 +43,7 @@
         android:textColorHint="@color/grey"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/idTitulo" />
 

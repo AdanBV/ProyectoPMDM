@@ -48,22 +48,23 @@ public class MovieActivity extends AppCompatActivity {
         txtValoracion = findViewById(R.id.txtValoracion);
         imgBtn = findViewById(R.id.imageButton);
         imgPeli = findViewById(R.id.imageView3);
-        lv.findViewById(R.id.listaReviewsUsuario);
-
-        ArrayList<String> titulos = obtenerTitulosParaTuLista();
-        ArrayList<String> usuarios = obtenerUsuariosParaTuLista();
-
-        AdapterReviewPeli adapter = new AdapterReviewPeli(this, titulos, usuarios);
-
-        lv.setAdapter(adapter);
-
-        // Título de prueba (puede ser reemplazado por el título real obtenido del Intent)
-        Intent intent4 = getIntent();
-        title = intent4.getStringExtra("titulo");
-        user = intent4.getStringExtra("Nombre");
+        lv = findViewById(R.id.lvReview);
 
         // Inicializar el ayudante de Base De Datos
         myDb = new DataBaseHelper(this);
+
+        // Título de prueba (puede ser reemplazado por el título real obtenido del Intent)
+        Intent intent4 = getIntent();
+        title = intent4.getStringExtra("Titulo");
+        user = intent4.getStringExtra("Nombre");
+
+        String titulos = title;
+        ArrayList<String> usuarios = obtenerUsuariosParaTuLista(title);
+
+        AdapterReviewPeli adapter = new AdapterReviewPeli(this, usuarios, titulos);
+
+        lv.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
 
         // Mostrar datos de la película en la interfaz de usuario
         mostrarDatos(title);
@@ -99,13 +100,48 @@ public class MovieActivity extends AppCompatActivity {
         });
     }
 
-    private ArrayList<String> obtenerUsuariosParaTuLista() {
+    private ArrayList<String> obtenerUsuariosParaTuLista(String movie) {
+        ArrayList<String> miLista = new ArrayList<>();
 
+        int movieId = Buscarid(movie);
+        String usuario;
+
+        Cursor c = DataBaseHelper.obtenerReview(myDb, movieId);
+
+        if (c != null) {
+            while (c.moveToNext()) {
+                // Obtener datos de las columnas correspondientes
+                usuario = c.getString(c.getColumnIndexOrThrow("User_id"));
+
+                // Agregar el usuario a la lista
+                miLista.add(usuario);
+            }
+
+            // Cerrar el cursor después de usarlo
+            c.close();
+        }
+
+        return miLista;
     }
 
-    private ArrayList<String> obtenerTitulosParaTuLista() {
+    private int Buscarid(String movie){
+        int movieId = 1;
 
+        // Utiliza myDb.obtenerPelis en lugar de DataBaseHelper.obtenerPelis
+        Cursor cursor = myDb.obtenerPelis(myDb, movie);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                // Obtener datos de las columnas correspondientes
+                movieId = cursor.getInt(cursor.getColumnIndexOrThrow("Movie_id"));
+            }
+            // Cerrar el cursor después de usarlo
+            cursor.close();
+        }
+
+        return movieId;
     }
+
 
     // Método para mostrar los datos de la película en la interfaz de usuario
     private void mostrarDatos(String movie) {

@@ -62,10 +62,6 @@ public class HomeActivity extends AppCompatActivity {
                         // Lógica para la opción "Favoritos"
                         return true;
 
-                    case "Añadir":
-                        // Lógica para la opción "Añadir"
-                        return true;
-
                     case "Perfil":
                         // Lógica para la opción "Perfil"
                         Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
@@ -91,14 +87,10 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onItemClick(View view, int position) {
-
-                TextView txt = view.findViewById(R.id.movieTitle);
-                String h = txt.getText().toString();
-
-
                 // Acción al hacer clic en un elemento del RecyclerView
                 Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
-                intent2.putExtra("titulo",h);
+                TextView txt = view.findViewById(R.id.movieTitle);
+                intent2.putExtra("Titulo",txt.getText());
                 intent2.putExtra("Nombre",User);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
@@ -106,12 +98,8 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onLongItemClick(View view, int position) {
-                TextView txt = findViewById(R.id.movieTitle);
-                String h = txt.getText().toString();
-
-                // Acción al hacer clic en un elemento del RecyclerView
+                // Acción al mantener pulsado un elemento del RecyclerView
                 Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
-                intent2.putExtra("titulo",h);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }

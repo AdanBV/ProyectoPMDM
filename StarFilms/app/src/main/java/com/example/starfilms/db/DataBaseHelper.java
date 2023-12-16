@@ -23,6 +23,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
+    public static String[] obtenerReviews(DataBaseHelper myDb, String user) {
+        return new String[0];
+    }
+
     // CREACIÓN BD Y TABLAS
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -256,8 +260,26 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     public static Cursor obtenerPelis(@NonNull DataBaseHelper dbHelper, String title) {
+        if (dbHelper == null) {
+            // Manejar la situación donde dbHelper es nulo
+            return null;
+        }
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String query = "SELECT * FROM Movie WHERE Movie_title = '" + title + "';";
         return db.rawQuery(query, null);
     }
+
+    public static Cursor obtenerReview(@NonNull DataBaseHelper dbHelper, int id) {
+        SQLiteDatabase db;
+        if (dbHelper != null) {
+            db = dbHelper.getReadableDatabase();
+        } else {
+            // Manejar la situación donde dbHelper es nulo
+            return null;
+        }
+
+        String query = "SELECT * FROM Review WHERE Movie_id = " + id;
+        return db.rawQuery(query, null);
+    }
+
 }

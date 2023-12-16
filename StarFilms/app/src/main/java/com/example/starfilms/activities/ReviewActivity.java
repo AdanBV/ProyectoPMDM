@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -64,13 +65,21 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Ayudante de Base de Datos
                 DataBaseHelper db = new DataBaseHelper(ReviewActivity.this);
-                Cursor cursor=DataBaseHelper.obtenerIdPeli(db,title);
+                Cursor cursor=DataBaseHelper.obtenerPelis(db,title);
 
-                int movieId=parseInt(cursor.getString(cursor.getColumnIndexOrThrow("Movie_id")));
-                // Intentar agregar una nueva reseña a la base de datos
-                db.addReview(
-                        textReview.getText().toString().trim(),
-                        Integer.valueOf(txtPuntuacion.getText().toString().trim()), user, movieId);
+                if (cursor != null && cursor.moveToFirst()) {
+                    int movieId = cursor.getInt(cursor.getColumnIndexOrThrow("Movie_id"));
+
+                    // Intentar agregar una nueva reseña a la base de datos
+                    db.addReview(
+                            textReview.getText().toString().trim(),
+                            Integer.valueOf(txtPuntuacion.getText().toString().trim()), user, movieId);
+                }
+
+                // Cerrar el cursor después de usarlo
+                if (cursor != null) {
+                    cursor.close();
+                }
             }
         });
 
