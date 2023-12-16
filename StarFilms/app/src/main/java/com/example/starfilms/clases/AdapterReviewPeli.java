@@ -24,8 +24,8 @@ public class AdapterReviewPeli extends ArrayAdapter<String> {
 
     private Context context;
     private final ArrayList<String> user;
-    private final String movieTitle;
-    public AdapterReviewPeli(Context context, ArrayList<String> User, String Movie_title) {
+    private final ArrayList<String> movieTitle;
+    public AdapterReviewPeli(Context context, ArrayList<String> User, ArrayList<String> Movie_title) {
         super(context,0);
 
         this.context = context;
@@ -45,7 +45,7 @@ public class AdapterReviewPeli extends ArrayAdapter<String> {
         TextView txtUser = convertView.findViewById(R.id.txtUser);
 
         // Establecer los valores de las vistas con los datos del elemento
-        txtTitRev.setText(movieTitle);
+        txtTitRev.setText(movieTitle.get(position));
         txtUser.setText(user.get(position));
 
         return convertView;

@@ -58,7 +58,7 @@ public class MovieActivity extends AppCompatActivity {
         title = intent4.getStringExtra("Titulo");
         user = intent4.getStringExtra("Nombre");
 
-        String titulos = title;
+        ArrayList<String> titulos = obtenerReviwParaTuLista(title);
         ArrayList<String> usuarios = obtenerUsuariosParaTuLista(title);
 
         AdapterReviewPeli adapter = new AdapterReviewPeli(this, usuarios, titulos);
@@ -115,6 +115,29 @@ public class MovieActivity extends AppCompatActivity {
 
                 // Agregar el usuario a la lista
                 miLista.add(usuario);
+            }
+
+            // Cerrar el cursor después de usarlo
+            c.close();
+        }
+
+        return miLista;
+    }
+    private ArrayList<String> obtenerReviwParaTuLista(String movie) {
+        ArrayList<String> miLista = new ArrayList<>();
+
+        int movieId = Buscarid(movie);
+        String review;
+
+        Cursor c = DataBaseHelper.obtenerReview(myDb, movieId);
+
+        if (c != null) {
+            while (c.moveToNext()) {
+                // Obtener datos de las columnas correspondientes
+                review = c.getString(c.getColumnIndexOrThrow("Review_text"));
+
+                // Agregar el usuario a la lista
+                miLista.add(review);
             }
 
             // Cerrar el cursor después de usarlo
