@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 // CLASE AYUDANTE PARA MANEJAR LA BD
 public class DataBaseHelper extends SQLiteOpenHelper {
     private final Context context;
@@ -23,9 +25,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
-    public static String[] obtenerReviews(DataBaseHelper myDb, String user) {
-        return new String[0];
-    }
+
 
     // CREACIÓN BD Y TABLAS
     @Override
@@ -277,6 +277,32 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public static Cursor obtenerReview(@NonNull DataBaseHelper dbHelper, int id) {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String query = "SELECT * FROM Review WHERE Movie_id = " + id + ";";
+        return db.rawQuery(query, null);
+    }
+
+    public static Cursor obtenerReviews(@NonNull DataBaseHelper myDb, String user) {
+        SQLiteDatabase db = myDb.getReadableDatabase();
+        String query = "SELECT * FROM Review WHERE User_id = '" + user + "';";
+        return db.rawQuery(query, null);
+    }
+
+    public static Cursor obtenerReviewporID(@NonNull DataBaseHelper dbHelper, ArrayList<Integer> ids) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        // Construir la cláusula WHERE con los IDs de la lista
+        StringBuilder whereClause = new StringBuilder("Movie_id IN (");
+        for (int i = 0; i < ids.size(); i++) {
+            whereClause.append(ids.get(i));
+            if (i < ids.size() - 1) {
+                whereClause.append(", ");
+            }
+        }
+        whereClause.append(")");
+
+        // Construir la consulta SQL con la cláusula WHERE dinámica
+        String query = "SELECT * FROM Movie WHERE " + whereClause.toString() + ";";
+
+        // Ejecutar la consulta y devolver el cursor
         return db.rawQuery(query, null);
     }
 }

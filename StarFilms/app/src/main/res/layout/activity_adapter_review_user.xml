@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txtUser"
+        android:id="@+id/txtTitPeli"
         android:layout_width="0dp"
         android:layout_height="31dp"
         android:layout_marginTop="4dp"
@@ -26,4 +26,5 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitRev" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
