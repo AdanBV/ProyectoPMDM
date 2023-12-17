@@ -54,12 +54,17 @@ public class MovieActivity extends AppCompatActivity {
         // Inicializar el ayudante de Base De Datos
         myDb = new DataBaseHelper(this);
 
+
+
         // Título de prueba (puede ser reemplazado por el título real obtenido del Intent)
         Intent intent4 = getIntent();
         title = intent4.getStringExtra("Titulo");
         user = intent4.getStringExtra("Nombre");
 
-        ComprobarFav(title);
+        // Mostrar datos de la película en la interfaz de usuario
+        mostrarDatos(title);
+
+        ComprobarFav(user);
 
         ArrayList<String> titulos = obtenerReviwParaTuLista(title);
         ArrayList<String> usuarios = obtenerUsuariosParaTuLista(title);
@@ -69,8 +74,7 @@ public class MovieActivity extends AppCompatActivity {
         lv.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
-        // Mostrar datos de la película en la interfaz de usuario
-        mostrarDatos(title);
+
 
         // Configurar el botón de favoritos
         imgBtn.setOnClickListener(new View.OnClickListener() {
@@ -107,12 +111,12 @@ public class MovieActivity extends AppCompatActivity {
         });
     }
 
-    private void ComprobarFav(String title){
-        int id = Buscarid(title);
+    private void ComprobarFav(String user){
+        int id = BuscarPeli(user);
 
-        boolean fav = isMovieInFavorites(id);
+        String tit = BuscarTitulo(id);
 
-        if(fav){
+        if (title != null && title.equals(tit)) {
             imgBtn.setImageResource(android.R.drawable.btn_star_big_on);
             favorito = true;
         } else {
@@ -121,19 +125,40 @@ public class MovieActivity extends AppCompatActivity {
         }
     }
 
-    public boolean isMovieInFavorites( int movieId) {
+    private String BuscarTitulo(int id){
+        String tit = null;
 
-        // Ejecuta la consulta
-        Cursor cursor = myDb.obtenerFavId(myDb,movieId);
+        // Utiliza myDb.obtenerPelis en lugar de DataBaseHelper.obtenerPelis
+        Cursor cursor = myDb.obtenerPeliId(myDb, id);
 
-        // Verifica si se encontraron resultados
-        boolean isMovieInFavorites = cursor.moveToFirst();
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                // Obtener datos de las columnas correspondientes
+                tit = cursor.getString(cursor.getColumnIndexOrThrow("Movie_title"));
+            }
+            // Cerrar el cursor después de usarlo
+            cursor.close();
+        }
 
-        // Cierra el cursor y la base de datos
-        cursor.close();
+        return tit;
+    }
 
-        // Devuelve el resultado
-        return isMovieInFavorites;
+    private int BuscarPeli(String user){
+        int movieId = 0;
+
+        // Utiliza myDb.obtenerPelis en lugar de DataBaseHelper.obtenerPelis
+        Cursor cursor = myDb.obtenerFav(myDb, user);
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                // Obtener datos de las columnas correspondientes
+                movieId = cursor.getInt(cursor.getColumnIndexOrThrow("Movie_id"));
+            }
+            // Cerrar el cursor después de usarlo
+            cursor.close();
+        }
+
+        return movieId;
     }
 
     private ArrayList<String> obtenerUsuariosParaTuLista(String movie) {

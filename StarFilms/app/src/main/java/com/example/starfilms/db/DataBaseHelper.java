@@ -347,11 +347,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return db.rawQuery(query, null);
     }
 
-    public static Cursor obtenerFavId(@NonNull DataBaseHelper myDb, int id) {
-        SQLiteDatabase db = myDb.getReadableDatabase();
-        String query = "SELECT * FROM Favourites WHERE Movie_id = " + id + ";";
+    public static Cursor obtenerPeliId(@NonNull DataBaseHelper dbHelper, int id) {
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM Movie WHERE Movie_id = " + id + ";";
         return db.rawQuery(query, null);
     }
-
-
 }
