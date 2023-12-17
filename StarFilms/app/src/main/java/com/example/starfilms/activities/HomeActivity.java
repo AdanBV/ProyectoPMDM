@@ -153,7 +153,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void storeDBInfo() {
         // Obtener datos de la base de datos y almacenarlos en las listas
-        Cursor cursor = dbHelper.readDB();
+        Cursor cursor = dbHelper.readAllMoviesFromDB();
         if (cursor.getCount() == 0) {
             // Mensaje si no hay datos en la base de datos
             Toast.makeText(this, "No Data", Toast.LENGTH_LONG).show();

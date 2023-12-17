@@ -82,7 +82,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         cv.clear();
 
-        // DATOS TABLA (Movies) /* CHATGPT GENERATED */
+        // DATOS TABLA (Movies) /* PARCIALMENTE GENERADO CON CHATGPT */
         // Episode I
         cv.put("Movie_title", "Star Wars: Episode I");
         cv.put("Movie_director", "George Lucas");
@@ -180,48 +180,56 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public boolean addUser(String userId, String userName, String userSurname, String userPassword) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
+        Cursor cursor = null;
 
-        // Consulta si existe el usuario
-        Cursor cursor = db.query("User", new String[]{"User_id"}, "User_id = ?",
-                new String[]{userId}, null, null, null);
+        try {
+            // Consulta si existe el usuario
+            cursor = db.query("User", new String[]{"User_id"}, "User_id = ?",
+                    new String[]{userId}, null, null, null);
 
-        if (cursor.moveToFirst()) {
-            // Si el usuario ya existe se avisa
-            Toast.makeText(context, "User already in use", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            // Si no existe intenta crear el usuario
-            cv.put("User_id", userId);
-            cv.put("User_name", userName);
-            cv.put("User_surname", userSurname);
-            cv.put("User_password", userPassword);
-
-            long result = db.insert("User", null, cv);
-
-            if (result == -1) {
-                // Si no puede crear el usuario se aivsa
-                if (userPassword.equals("")) {
-                    Toast.makeText(context, "Failed to create user, password should be " +
-                            "at least 5 digits lenght.", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(context, "Failed to create user, password should be \" +\n" +
-                            "                            \"at least 5 digits lenght.", Toast.LENGTH_LONG).show();
-                }
+            if (cursor.moveToFirst()) {
+                // Si el usuario ya existe se avisa
+                Toast.makeText(context, "User already in use", Toast.LENGTH_LONG).show();
                 return false;
-
             } else {
-                // Si puede crear el usuario se indica
-                Toast.makeText(context, "New user successfully registered", Toast.LENGTH_LONG).show();
-                return true;
+                // Si no existe intenta crear el usuario
+                cv.put("User_id", userId);
+                cv.put("User_name", userName);
+                cv.put("User_surname", userSurname);
+                cv.put("User_password", userPassword);
+
+                long result = db.insert("User", null, cv);
+
+                if (result == -1) {
+                    // Si no puede crear el usuario se aivsa
+                    if (userPassword.equals("")) {
+                        Toast.makeText(context, "Failed to create user, password should be " +
+                                "at least 5 digits lenght.", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
+                    }
+                    return false;
+
+                } else {
+                    // Si puede crear el usuario se indica
+                    Toast.makeText(context, "New user successfully registered", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+            }
+        } finally {
+            if (cursor != null) {
+                cursor.close();
             }
         }
+
     }
 
+    // INSERTAR NUEVA RESEÑA EN LA TABLA (Review)
     public boolean addReview(String reviewText, int reviewRating, String userId, int movieId) {
-
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
+        // Intenta crear la reseña
         cv.put("Review_text", reviewText);
         cv.put("Review_rating", reviewRating);
         cv.put("User_id", userId);
@@ -230,26 +238,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         long result = db.insert("Review", null, cv);
 
         if (result == -1) {
+            // Error de creación
             Toast.makeText(context, "Failed to create review", Toast.LENGTH_LONG).show();
             return false;
         } else {
+            // Exito de creación
             Toast.makeText(context, "New review successfully created", Toast.LENGTH_LONG).show();
             return true;
         }
     }
 
-    public void addMovie(int Movie_id, String Movie_title, String Movie_director, String Movie_description, Double Movie_rating) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues cv = new ContentValues();
-
-        cv.put("Movie_id", Movie_id);
-        cv.put("Movie_title", Movie_title);
-        cv.put("Movie_director", Movie_director);
-        cv.put("Movie_description", Movie_description);
-        cv.put("Movie_rating", Movie_rating);
-    }
-
-    public Cursor readDB() {
+    // Obtiene todas las peliculas almacenadas en la BD
+    public Cursor readAllMoviesFromDB() {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = null;
 
@@ -259,27 +259,17 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         return cursor;
     }
 
+    // Obtiene todos los datos de una pelicula a partir del titulo de la pelicula
     public static Cursor obtenerPelis(@NonNull DataBaseHelper dbHelper, String title) {
-        if (dbHelper == null) {
-            // Manejar la situación donde dbHelper es nulo
-            return null;
-        }
         SQLiteDatabase db = dbHelper.getReadableDatabase();
         String query = "SELECT * FROM Movie WHERE Movie_title = '" + title + "';";
         return db.rawQuery(query, null);
     }
 
+    // Obtiene la reseña de una pelicula a partir del identificador de la pelicula
     public static Cursor obtenerReview(@NonNull DataBaseHelper dbHelper, int id) {
-        SQLiteDatabase db;
-        if (dbHelper != null) {
-            db = dbHelper.getReadableDatabase();
-        } else {
-            // Manejar la situación donde dbHelper es nulo
-            return null;
-        }
-
-        String query = "SELECT * FROM Review WHERE Movie_id = " + id;
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+        String query = "SELECT * FROM Review WHERE Movie_id = " + id + ";";
         return db.rawQuery(query, null);
     }
-
 }
