@@ -47,12 +47,19 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "CHECK (Movie_rating >= 0.0 AND Movie_rating <= 5.0));");
 
         // SENTENCIA CREACIÓN TABLA (Review)
-        db.execSQL("CREATE TABLE Review (Review_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "Review_text TEXT, " +
+        db.execSQL("CREATE TABLE Review (Review_text TEXT, " +
                 "Review_rating INTEGER NOT NULL, " +
                 "User_id TEXT NOT NULL, " +
                 "Movie_id INTEGER NOT NULL, " +
                 "CHECK(Review_rating >= 0.0 AND Review_rating <= 5.0), " +
+                "PRIMARY KEY(User_id, Movie_id), " +
+                "FOREIGN KEY(User_id) REFERENCES User(User_id), " +
+                "FOREIGN KEY(Movie_id) REFERENCES Movie(Movie_id));");
+
+        // SENTENCIA CREACIÓN TABLA (Favourites)
+        db.execSQL("CREATE TABLE Favourites (User_id TEXT NOT NULL, " +
+                "Movie_id INTEGER NOT NULL, " +
+                "PRIMARY KEY(User_id, Movie_id), " +
                 "FOREIGN KEY(User_id) REFERENCES User(User_id), " +
                 "FOREIGN KEY(Movie_id) REFERENCES Movie(Movie_id));");
 
@@ -66,6 +73,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS User");
         db.execSQL("DROP TABLE IF EXISTS Movie");
         db.execSQL("DROP TABLE IF EXISTS Review");
+        db.execSQL("DROP TABLE IF EXISTS Favourites");
         onCreate(db);
     }
 
