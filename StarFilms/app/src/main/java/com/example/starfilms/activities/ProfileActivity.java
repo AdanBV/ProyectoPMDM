@@ -132,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity {
         int id = 0;
 
         // Utiliza myDb.obtenerPelis en lugar de DataBaseHelper.obtenerPelis
-        Cursor c = DataBaseHelper.obtenerReviews(myDb, user);
+        Cursor c = myDb.obtenerReviews(myDb, user);
 
         if (c != null) {
             while (c.moveToNext()) {
@@ -160,7 +160,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         myDb = new DataBaseHelper(ProfileActivity.this);
 
-        Cursor c = DataBaseHelper.obtenerReviewporID(myDb, movieId);
+        Cursor c = myDb.obtenerReviewporID(myDb, movieId);
 
         if (c != null) {
             while (c.moveToNext()) {
