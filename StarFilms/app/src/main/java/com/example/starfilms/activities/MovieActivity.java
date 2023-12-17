@@ -27,6 +27,7 @@ public class MovieActivity extends AppCompatActivity {
 
     // Variables para el manejo de favoritos
     String title, user;
+    int movieid;
     boolean favorito = false;
 
     // Elementos de la interfaz de usuario
@@ -58,6 +59,8 @@ public class MovieActivity extends AppCompatActivity {
         title = intent4.getStringExtra("Titulo");
         user = intent4.getStringExtra("Nombre");
 
+        ComprobarFav(title);
+
         ArrayList<String> titulos = obtenerReviwParaTuLista(title);
         ArrayList<String> usuarios = obtenerUsuariosParaTuLista(title);
 
@@ -77,9 +80,13 @@ public class MovieActivity extends AppCompatActivity {
                 if (!favorito) {
                     imgBtn.setImageResource(android.R.drawable.btn_star_big_on);
                     favorito = true;
+                    movieid = Buscarid(title);
+                    myDb.addFav(user, movieid);
                 } else {
                     imgBtn.setImageResource(android.R.drawable.btn_star_big_off);
                     favorito = false;
+                    movieid = Buscarid(title);
+                    myDb.deleteFavourite(user, movieid);
                 }
             }
         });
@@ -98,6 +105,35 @@ public class MovieActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
+    }
+
+    private void ComprobarFav(String title){
+        int id = Buscarid(title);
+
+        boolean fav = isMovieInFavorites(id);
+
+        if(fav){
+            imgBtn.setImageResource(android.R.drawable.btn_star_big_on);
+            favorito = true;
+        } else {
+            imgBtn.setImageResource(android.R.drawable.btn_star_big_off);
+            favorito = false;
+        }
+    }
+
+    public boolean isMovieInFavorites( int movieId) {
+
+        // Ejecuta la consulta
+        Cursor cursor = myDb.obtenerFavId(myDb,movieId);
+
+        // Verifica si se encontraron resultados
+        boolean isMovieInFavorites = cursor.moveToFirst();
+
+        // Cierra el cursor y la base de datos
+        cursor.close();
+
+        // Devuelve el resultado
+        return isMovieInFavorites;
     }
 
     private ArrayList<String> obtenerUsuariosParaTuLista(String movie) {

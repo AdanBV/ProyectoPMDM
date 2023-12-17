@@ -255,6 +255,41 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public boolean addFav(String userid, int movieid) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        // Intenta crear la reseña
+        cv.put("User_id", userid);
+        cv.put("Movie_id", movieid);
+
+
+        long result = db.insert("Favourites", null, cv);
+
+        if (result == -1) {
+            // Error de creación
+            Toast.makeText(context, "Failed to add Favourite", Toast.LENGTH_LONG).show();
+            return false;
+        } else {
+            // Exito de creación
+            Toast.makeText(context, "New Favourite successfully added", Toast.LENGTH_LONG).show();
+            return true;
+        }
+    }
+
+    public void deleteFavourite(String userId, int movieId) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String whereClause = "User_id = ? AND Movie_id = ?";
+        String[] whereArgs = {userId, String.valueOf(movieId)};
+
+        // Utilizamos el método delete para borrar la fila que cumple con la condición
+        db.delete("Favourites", whereClause, whereArgs);
+
+        // Cerrar la conexión de la base de datos después de usarla
+        db.close();
+    }
+
     // Obtiene todas las peliculas almacenadas en la BD
     public Cursor readAllMoviesFromDB() {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -305,4 +340,18 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Ejecutar la consulta y devolver el cursor
         return db.rawQuery(query, null);
     }
+
+    public static Cursor obtenerFav(@NonNull DataBaseHelper myDb, String user) {
+        SQLiteDatabase db = myDb.getReadableDatabase();
+        String query = "SELECT * FROM Favourites WHERE User_id = '" + user + "';";
+        return db.rawQuery(query, null);
+    }
+
+    public static Cursor obtenerFavId(@NonNull DataBaseHelper myDb, int id) {
+        SQLiteDatabase db = myDb.getReadableDatabase();
+        String query = "SELECT * FROM Favourites WHERE Movie_id = " + id + ";";
+        return db.rawQuery(query, null);
+    }
+
+
 }

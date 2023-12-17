@@ -47,7 +47,8 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Crear un Intent para volver a la actividad Home
                 Intent intent2 = new Intent(ReviewActivity.this, HomeActivity.class);
-
+                intent2.putExtra("titulo",title);
+                intent2.putExtra("Nombre",intent.getStringExtra("Nombre"));
                 // Iniciar la nueva actividad
                 startActivity(intent2);
             }
@@ -75,7 +76,9 @@ public class ReviewActivity extends AppCompatActivity {
                     // Intentar agregar una nueva reseña a la base de datos
                     db.addReview(
                             textReview.getText().toString().trim(),
-                            Integer.valueOf(txtPuntuacion.getText().toString().trim()), user, movieId);
+                            Integer.valueOf(txtPuntuacion.getText().toString().trim()),
+                            user,
+                            movieId);
                 }
 
                 // Cerrar el cursor después de usarlo
