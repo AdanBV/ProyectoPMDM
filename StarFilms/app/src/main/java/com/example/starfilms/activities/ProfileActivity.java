@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
 import com.example.starfilms.R;
 import com.example.starfilms.db.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -54,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
 
         // Establecer el ítem seleccionado en la barra de navegación inferior como "Perfil"
-        bottomNavigationView.setSelectedItemId(R.id.perfil);
+        bottomNavigationView.setSelectedItemId(R.id.profile);
 
         // Agregar un escuchador de eventos para la barra de navegación inferior
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
@@ -98,6 +96,7 @@ public class ProfileActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
         // No se ejecuta ninguna acción al presionar el botón de retroceso
     }
 

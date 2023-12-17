@@ -176,7 +176,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.insert("Movie", null, cv);
     }
 
-    // INSERTAR NUEVO USUARIO EN TABLA (User)
+    // INSERTAR NUEVO USUARIO EN TABLA (User) ~ "Registrarse"
     public boolean addUser(String userId, String userName, String userSurname, String userPassword) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
@@ -221,7 +221,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 cursor.close();
             }
         }
-
     }
 
     // INSERTAR NUEVA RESEÑA EN LA TABLA (Review)

@@ -28,7 +28,7 @@ public class FavoritosActivity extends AppCompatActivity {
         BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
 
         // Establecer el ítem seleccionado en la barra de navegación inferior como "Perfil"
-        bottomNavigationView.setSelectedItemId(R.id.perfil);
+        bottomNavigationView.setSelectedItemId(R.id.favourites);
 
         // Agregar un escuchador de eventos para la barra de navegación inferior
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {

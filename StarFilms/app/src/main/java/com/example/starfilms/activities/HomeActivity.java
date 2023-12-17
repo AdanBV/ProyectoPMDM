@@ -48,12 +48,13 @@ public class HomeActivity extends AppCompatActivity {
 
         // REFERENCIA A LA BARRA DE NAVEGACIÓN INFERIOR
         BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
+        bottomNavigationView.setSelectedItemId(R.id.home);
         bottomNavigationView.setOnItemSelectedListener(new BottomNavigationView.OnItemSelectedListener() {
 
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                String t = (String) menuItem.getTitle();
-                switch (t) {
+                String menuItemTitle = (String) menuItem.getTitle();
+                switch (menuItemTitle) {
                     case "Inicio":
                         // Lógica para la opción "Inicio"
                         return true;
@@ -73,7 +74,6 @@ public class HomeActivity extends AppCompatActivity {
                         // Iniciar la nueva actividad
                         startActivity(intent);
                         return true;
-
                     default:
                         return false;
                 }
@@ -128,6 +128,8 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        super.onBackPressed();
+
         // Alerta al presionar el botón de retroceso
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("¿Estás seguro de que deseas cerrar sesión?")
