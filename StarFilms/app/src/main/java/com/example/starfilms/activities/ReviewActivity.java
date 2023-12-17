@@ -65,7 +65,9 @@ public class ReviewActivity extends AppCompatActivity {
             public void onClick(View v) {
                 // Ayudante de Base de Datos
                 DataBaseHelper db = new DataBaseHelper(ReviewActivity.this);
-                Cursor cursor=DataBaseHelper.obtenerPelis(db,title);
+
+                // Cambia la línea para obtener el Cursor usando la instancia del DBHelper
+                Cursor cursor = db.obtenerPelis(db, title);
 
                 if (cursor != null && cursor.moveToFirst()) {
                     int movieId = cursor.getInt(cursor.getColumnIndexOrThrow("Movie_id"));

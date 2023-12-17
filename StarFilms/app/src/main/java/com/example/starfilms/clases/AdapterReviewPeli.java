@@ -22,33 +22,29 @@ import java.util.List;
 
 public class AdapterReviewPeli extends ArrayAdapter<String> {
 
-    private Context context;
     private final ArrayList<String> user;
     private final ArrayList<String> movieTitle;
     public AdapterReviewPeli(Context context, ArrayList<String> User, ArrayList<String> Movie_title) {
-        super(context,0);
+        super(context,R.layout.activity_adapter_review_peli,User);
 
-        this.context = context;
         this.movieTitle = Movie_title;
         this.user = User;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Reutilizar la vista si está disponible, de lo contrario, inflarla
-        if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_adapter_review_peli, parent, false);
-        }
-
+        View view = convertView;
+        if(view == null) view = LayoutInflater.from(getContext()).inflate(R.layout.activity_adapter_review_peli, parent, false);
+        
         // Obtener referencias a las vistas en el diseño
-        TextView txtTitRev = convertView.findViewById(R.id.txtTitRev);
-        TextView txtUser = convertView.findViewById(R.id.txtUser);
+        TextView txtTitRev = view.findViewById(R.id.txtTitRev);
+        TextView txtUser = view.findViewById(R.id.txtUser);
 
         // Establecer los valores de las vistas con los datos del elemento
         txtTitRev.setText(movieTitle.get(position));
         txtUser.setText(user.get(position));
 
-        return convertView;
+        return view;
     }
 
 }
