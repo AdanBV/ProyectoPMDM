@@ -71,7 +71,6 @@
                 android:layout_height="wrap_content"
                 android:text="Titulo"
                 android:layout_marginBottom="5dp"
-                android:maxLength="20"
                 android:textSize="18sp"/>
 
             <TextView
@@ -80,7 +79,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
                 android:text="Director"
-                android:maxLength="40"
                 android:textSize="18sp"/>
 
             <ScrollView
@@ -90,7 +88,6 @@
                     android:id="@+id/txtDescription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLength="500"
                     android:text="Descripcion"
                     android:textSize="18sp" />
             </ScrollView>
