@@ -95,8 +95,8 @@ public class LoginActivity extends AppCompatActivity {
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         // Obtener el nombre de usuario y la contraseña de la interfaz de usuario
-        String User = editText_UserId.getText().toString();
-        String Password = editText_Password.getText().toString();
+        String User = editText_UserId.getText().toString().trim();
+        String Password = editText_Password.getText().toString().trim();
 
         // Comprobar si existe alguna entrada en la BD que coincida con los datos dados
         Cursor cursor = db.rawQuery("SELECT User_id, User_password FROM User WHERE User_Id = '"
