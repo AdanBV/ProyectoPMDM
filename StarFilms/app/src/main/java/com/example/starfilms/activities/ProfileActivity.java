@@ -6,9 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +26,7 @@ import java.util.ArrayList;
 public class ProfileActivity extends AppCompatActivity {
 
     String User;
+    EditText txtAp,txtNom;
     DataBaseHelper myDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +38,11 @@ public class ProfileActivity extends AppCompatActivity {
         Button btn = findViewById(R.id.btnLogOut);
         Intent intent = getIntent();
         User = intent.getStringExtra("Nombre");
+
+        txtAp = findViewById(R.id.Apellidos);
+        txtNom = findViewById(R.id.Nombre);
+
+        ColocarNombre(intent.getStringExtra("Nombre"));
 
         TextView txt_user = findViewById(R.id.txtIdUsuario);
         txt_user.setText(User);
@@ -56,6 +65,40 @@ public class ProfileActivity extends AppCompatActivity {
 
                 // Iniciar la nueva actividad
                 startActivity(intent);
+            }
+        });
+
+        txtAp.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                myDb.updateUser(intent.getStringExtra("Nombre"), txtNom.getText().toString(),s.toString());
+            }
+        });
+
+        txtNom.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                myDb.updateUser(intent.getStringExtra("Nombre"),s.toString(), txtAp.getText().toString());
             }
         });
 
@@ -121,6 +164,22 @@ public class ProfileActivity extends AppCompatActivity {
             c.close();
         }
         return review;
+    }
+
+    private void ColocarNombre(String user){
+        myDb = new DataBaseHelper(ProfileActivity.this);
+
+        Cursor cursor = myDb.getUserById(user);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                // Obtener datos de las columnas correspondientes
+                txtNom.setText(cursor.getString(cursor.getColumnIndexOrThrow("User_name")));
+                txtAp.setText(cursor.getString(cursor.getColumnIndexOrThrow("User_surname")));
+            }
+            // Cerrar el cursor después de usarlo
+            cursor.close();
+        }
     }
 
     private ArrayList<Integer>Buscarid(String user){
