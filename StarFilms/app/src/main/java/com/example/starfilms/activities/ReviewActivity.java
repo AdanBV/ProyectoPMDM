@@ -2,8 +2,10 @@ package com.example.starfilms.activities;
 
 import static java.lang.Integer.parseInt;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -15,6 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.starfilms.R;
 import com.example.starfilms.db.DataBaseHelper;
@@ -34,7 +37,7 @@ public class ReviewActivity extends AppCompatActivity {
 
         // Obtener el Intent que inició esta actividad
         Intent intent = getIntent();
-        title = intent.getStringExtra("titulo");
+        title = intent.getStringExtra("Titulo");
         user = intent.getStringExtra("Nombre");
 
         titleId = findViewById(R.id.idTitulo);
@@ -46,8 +49,8 @@ public class ReviewActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Crear un Intent para volver a la actividad Home
-                Intent intent2 = new Intent(ReviewActivity.this, HomeActivity.class);
-                intent2.putExtra("titulo",title);
+                Intent intent2 = new Intent(ReviewActivity.this, MovieActivity.class);
+                intent2.putExtra("Titulo",title);
                 intent2.putExtra("Nombre",intent.getStringExtra("Nombre"));
                 // Iniciar la nueva actividad
                 startActivity(intent2);
@@ -73,12 +76,28 @@ public class ReviewActivity extends AppCompatActivity {
                 if (cursor != null && cursor.moveToFirst()) {
                     int movieId = cursor.getInt(cursor.getColumnIndexOrThrow("Movie_id"));
 
-                    // Intentar agregar una nueva reseña a la base de datos
-                    db.addReview(
-                            textReview.getText().toString().trim(),
-                            Integer.valueOf(txtPuntuacion.getText().toString().trim()),
-                            user,
-                            movieId);
+                    if(textReview.getText().toString().trim().equals("") || (Integer.valueOf(txtPuntuacion.getText().toString().trim()) < 0 || Integer.valueOf(txtPuntuacion.getText().toString().trim()) > 5)){
+                        AlertDialog.Builder builder = new AlertDialog.Builder(ReviewActivity.this);
+                        builder.setMessage("Por favor, complete todos los campos de la reseña correctamente")
+                                .setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        // Aquí puedes realizar acciones adicionales si es necesario
+                                        dialog.dismiss(); // Cierra el cuadro de diálogo
+                                    }
+                                });
+
+                        // Crear y mostrar el cuadro de diálogo
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                    } else {
+                        // Intentar agregar una nueva reseña a la base de datos
+                        db.addReview(
+                                textReview.getText().toString().trim(),
+                                Integer.valueOf(txtPuntuacion.getText().toString().trim()),
+                                user,
+                                movieId);
+                    }
+
                 }
 
                 // Cerrar el cursor después de usarlo

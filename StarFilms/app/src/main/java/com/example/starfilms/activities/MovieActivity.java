@@ -1,8 +1,10 @@
 package com.example.starfilms.activities;
 
 import androidx.annotation.DrawableRes;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -103,7 +105,7 @@ public class MovieActivity extends AppCompatActivity {
                 // Crear un Intent para abrir la actividad de reseña
                 Intent intent2 = new Intent(MovieActivity.this, ReviewActivity.class);
                 // Obtener el título de la película y pasar a la siguiente actividad
-                intent2.putExtra("titulo",title);
+                intent2.putExtra("Titulo",title);
                 intent2.putExtra("Nombre",user);
                 // Iniciar la nueva actividad
                 startActivity(intent2);
@@ -256,5 +258,15 @@ public class MovieActivity extends AppCompatActivity {
         if (cursor != null) {
             cursor.close();
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent intent2 = new Intent(MovieActivity.this, HomeActivity.class);
+        // Obtener el título de la película y pasar a la siguiente actividad
+        intent2.putExtra("Nombre",user);
+        // Iniciar la nueva actividad
+        startActivity(intent2);
     }
 }
