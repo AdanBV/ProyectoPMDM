@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class FavouritesActivity extends AppCompatActivity {
     String User;
     ListView lv;
+    int pos;
     DataBaseHelper myDb;
     AdapterFavoritos adapter;
     @Override
@@ -45,7 +46,10 @@ public class FavouritesActivity extends AppCompatActivity {
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                pos = position;
+
                 mostrarMenu(view);
+
 
                 return false;
             }
@@ -89,6 +93,16 @@ public class FavouritesActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void eliminarElemento(int position) {
+        if (position >= 0 && position < adapter.getCount()) {
+            // Eliminar el elemento del adaptador
+            adapter.remove(adapter.getItem(position));
+
+            // Notificar al adaptador que los datos han cambiado
+            adapter.notifyDataSetChanged();
+        }
     }
 
     private ArrayList<Integer> Buscarid(String user){
@@ -182,6 +196,8 @@ public class FavouritesActivity extends AppCompatActivity {
                     int id = Obtenerid(txt.getText().toString());
 
                     myDb.deleteFavourite(User,id);
+
+                    eliminarElemento(pos);
                 }
                 return true;
             }
