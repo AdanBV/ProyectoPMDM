@@ -16,10 +16,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
-public class FavoritosActivity extends AppCompatActivity {
-
+public class FavouritesActivity extends AppCompatActivity {
     String User;
-
     ListView lv;
     DataBaseHelper myDb;
     @Override
@@ -55,7 +53,7 @@ public class FavoritosActivity extends AppCompatActivity {
                 switch (t) {
                     case "Inicio":
                         // Crear un Intent para abrir la actividad de inicio
-                        Intent intent = new Intent(FavoritosActivity.this, HomeActivity.class);
+                        Intent intent = new Intent(FavouritesActivity.this, HomeActivity.class);
                         intent.putExtra("Nombre",User);
                         // Iniciar la nueva actividad
                         startActivity(intent);
@@ -66,7 +64,7 @@ public class FavoritosActivity extends AppCompatActivity {
                         return true;
 
                     case "Perfil":
-                        Intent intent2 = new Intent(FavoritosActivity.this, ProfileActivity.class);
+                        Intent intent2 = new Intent(FavouritesActivity.this, ProfileActivity.class);
                         intent2.putExtra("Nombre",User);
                         // Iniciar la nueva actividad
                         startActivity(intent2);
@@ -83,7 +81,7 @@ public class FavoritosActivity extends AppCompatActivity {
         ArrayList<Integer> movieId = new ArrayList<>();
 
         int id = 0;
-        myDb = new DataBaseHelper(FavoritosActivity.this);
+        myDb = new DataBaseHelper(FavouritesActivity.this);
 
         // Utiliza myDb.obtenerPelis en lugar de DataBaseHelper.obtenerPelis
         Cursor cursor = myDb.obtenerFav(myDb, user);
@@ -104,7 +102,7 @@ public class FavoritosActivity extends AppCompatActivity {
 
     private ArrayList<String> Buscarimg(String user){
 
-        myDb = new DataBaseHelper(FavoritosActivity.this);
+        myDb = new DataBaseHelper(FavouritesActivity.this);
 
         ArrayList<Integer> movieId = Buscarid(user);
 
@@ -132,7 +130,7 @@ public class FavoritosActivity extends AppCompatActivity {
 
     private ArrayList<String> Buscartitulo(String user){
 
-        myDb = new DataBaseHelper(FavoritosActivity.this);
+        myDb = new DataBaseHelper(FavouritesActivity.this);
 
         ArrayList<Integer> movieId = Buscarid(user);
 

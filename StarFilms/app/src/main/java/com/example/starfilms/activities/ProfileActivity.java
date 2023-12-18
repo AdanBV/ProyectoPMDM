@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -83,7 +82,7 @@ public class ProfileActivity extends AppCompatActivity {
                         return true;
 
                     case "Favoritos":
-                        Intent intent2 = new Intent(ProfileActivity.this, FavoritosActivity.class);
+                        Intent intent2 = new Intent(ProfileActivity.this, FavouritesActivity.class);
                         intent2.putExtra("Nombre",User);
                         // Iniciar la nueva actividad
                         startActivity(intent2);

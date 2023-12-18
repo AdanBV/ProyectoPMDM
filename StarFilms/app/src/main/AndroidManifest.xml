@@ -15,7 +15,7 @@
         android:theme="@style/Theme.StarFilms"
         tools:targetApi="31">
         <activity
-            android:name=".activities.FavoritosActivity"
+            android:name=".activities.FavouritesActivity"
             android:exported="false"
             android:label="@string/title_activity_favoritos"
             android:theme="@style/Theme.StarFilms" />

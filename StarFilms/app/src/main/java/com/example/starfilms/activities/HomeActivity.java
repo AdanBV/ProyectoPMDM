@@ -61,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
 
                     case "Favoritos":
                         // Lógica para la opción "Favoritos"
-                        Intent intent2 = new Intent(HomeActivity.this, FavoritosActivity.class);
+                        Intent intent2 = new Intent(HomeActivity.this, FavouritesActivity.class);
                         intent2.putExtra("Nombre",User);
                         // Iniciar la nueva actividad
                         startActivity(intent2);
