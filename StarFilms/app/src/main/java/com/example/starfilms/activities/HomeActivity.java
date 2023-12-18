@@ -102,10 +102,6 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onLongItemClick(View view, int position) {
-                // Acción al mantener pulsado un elemento del RecyclerView
-                Intent intent2 = new Intent(HomeActivity.this, MovieActivity.class);
-                // Iniciar la nueva actividad
-                startActivity(intent2);
             }
         }));
 

@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.PopupMenu;
 
 import com.example.starfilms.R;
 import com.example.starfilms.clases.AdapterFavoritos;
@@ -154,5 +156,20 @@ public class FavouritesActivity extends AppCompatActivity {
         }
 
         return miLista;
+    }
+    // Método para mostrar el menú para eliminar
+    public void mostrarMenu(View view) {
+        txtPuntuacion = findViewById(R.id.txtPuntuacion);
+        PopupMenu popupMenu = new PopupMenu(this, view);
+        popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
+
+        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItem(MenuItem item) {
+
+            }
+        });
+
+        popupMenu.show();
     }
 }
