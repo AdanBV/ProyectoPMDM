@@ -6,59 +6,55 @@
     android:layout_height="match_parent"
     tools:context=".activities.FavouritesActivity">
 
-
-    <TextView
-        android:id="@+id/txtFavoritas"
-        android:layout_width="292dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="4dp"
-        android:background="#27BBC1"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_background"
         android:gravity="center"
-        android:text="Peliculas favoritas"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.59"
-        app:layout_constraintStart_toEndOf="@+id/imgEstrella"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imgEstrella"
-        android:layout_width="89dp"
-        android:layout_height="99dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/_828884" />
-
-    <TextView
-        android:id="@+id/txtTuspelifavo"
-        android:layout_width="346dp"
-        android:layout_height="37dp"
-        android:layout_marginStart="34dp"
-        android:layout_marginTop="56dp"
-
-        android:layout_marginEnd="31dp"
-        android:text="Tus peliculas con la etiqueta favoritas:"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgEstrella" />
-
-    <ListView
-        android:id="@+id/listaFavoritas"
-        android:layout_width="379dp"
-        android:layout_height="418dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/navBar"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTuspelifavo"
-        app:layout_constraintVertical_bias="0.478" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/txtFavoritas"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="Favoritos"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+
+        <ImageView
+            android:id="@+id/imgEstrella"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            app:srcCompat="@drawable/_828884" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent">
+
+        <ListView
+            android:id="@+id/listaFavoritas"
+            android:layout_width="379dp"
+            android:layout_height="418dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="15dp" />
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/navBar"
@@ -67,9 +63,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="10dp"
         android:background="@drawable/round_background"
         app:itemActiveIndicatorStyle="@android:color/transparent"
         app:itemIconTint="@color/black"
@@ -78,5 +72,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
         app:menu="@menu/bottom_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>
