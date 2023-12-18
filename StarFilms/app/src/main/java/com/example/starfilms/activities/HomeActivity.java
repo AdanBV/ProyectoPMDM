@@ -124,7 +124,6 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
 
         // Alerta al presionar el botón de retroceso
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
