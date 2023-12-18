@@ -8,8 +8,10 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 
 import com.example.starfilms.R;
 import com.example.starfilms.clases.AdapterFavoritos;
@@ -22,6 +24,7 @@ public class FavouritesActivity extends AppCompatActivity {
     String User;
     ListView lv;
     DataBaseHelper myDb;
+    AdapterFavoritos adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,11 +36,20 @@ public class FavouritesActivity extends AppCompatActivity {
         ArrayList<String> img = Buscarimg(User);
         ArrayList<String> titulos = Buscartitulo(User);
 
-        AdapterFavoritos adapter = new AdapterFavoritos(this, titulos,img);
+        adapter = new AdapterFavoritos(this, titulos,img);
 
         lv = findViewById(R.id.listaFavoritas);
 
         lv.setAdapter(adapter);
+
+        lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                mostrarMenu(view);
+
+                return false;
+            }
+        });
 
         // Referencia a la barra de navegación inferior
         BottomNavigationView bottomNavigationView = findViewById(R.id.navBar);
@@ -159,17 +171,39 @@ public class FavouritesActivity extends AppCompatActivity {
     }
     // Método para mostrar el menú para eliminar
     public void mostrarMenu(View view) {
-        txtPuntuacion = findViewById(R.id.txtPuntuacion);
         PopupMenu popupMenu = new PopupMenu(this, view);
-        popupMenu.getMenuInflater().inflate(R.menu.menu_popup, popupMenu.getMenu());
+        popupMenu.getMenuInflater().inflate(R.menu.menu_delete, popupMenu.getMenu());
 
         popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
-            public boolean onMenuItem(MenuItem item) {
+            public boolean onMenuItemClick(MenuItem item) {
+                if(item.getItemId() == R.id.delete){
+                    TextView txt = view.findViewById(R.id.txtPeli);
+                    int id = Obtenerid(txt.getText().toString());
 
+                    myDb.deleteFavourite(User,id);
+                }
+                return true;
             }
         });
 
         popupMenu.show();
+    }
+
+    public int Obtenerid(String title){
+        int id = 0;
+
+        Cursor cursor = myDb.obtenerPelis(myDb, title);
+
+        if (cursor != null) {
+            if (cursor.moveToFirst()) {
+                // Obtener datos de las columnas correspondientes
+                id = cursor.getInt(cursor.getColumnIndexOrThrow("Movie_id"));
+            }
+            // Cerrar el cursor después de usarlo
+            cursor.close();
+        }
+
+        return id;
     }
 }
