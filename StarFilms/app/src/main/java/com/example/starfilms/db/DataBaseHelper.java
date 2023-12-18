@@ -25,8 +25,6 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         this.context = context;
     }
 
-
-
     // CREACIÓN BD Y TABLAS
     @Override
     public void onCreate(SQLiteDatabase db) {
