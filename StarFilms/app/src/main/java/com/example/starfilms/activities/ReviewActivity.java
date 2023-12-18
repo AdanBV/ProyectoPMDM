@@ -90,10 +90,12 @@ public class ReviewActivity extends AppCompatActivity {
                         AlertDialog dialog = builder.create();
                         dialog.show();
                     } else {
+                        String text = textReview.getText().toString().trim();
+                        int i = Integer.valueOf(txtPuntuacion.getText().toString().trim());
                         // Intentar agregar una nueva reseña a la base de datos
                         db.addReview(
-                                textReview.getText().toString().trim(),
-                                Integer.valueOf(txtPuntuacion.getText().toString().trim()),
+                                text,
+                                i,
                                 user,
                                 movieId);
                     }
