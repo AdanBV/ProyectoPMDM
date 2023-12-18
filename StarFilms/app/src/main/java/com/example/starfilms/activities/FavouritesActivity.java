@@ -44,6 +44,18 @@ public class FavouritesActivity extends AppCompatActivity {
 
         lv.setAdapter(adapter);
 
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(FavouritesActivity.this, MovieActivity.class);
+                TextView txt = view.findViewById(R.id.txtPeli);
+                intent.putExtra("Titulo",txt.getText().toString());
+                intent.putExtra("Nombre",User);
+                // Iniciar la nueva actividad
+                startActivity(intent);
+            }
+        });
+
         lv.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
