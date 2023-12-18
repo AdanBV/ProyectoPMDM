@@ -56,12 +56,14 @@ public class MovieActivity extends AppCompatActivity {
         // Inicializar el ayudante de Base De Datos
         myDb = new DataBaseHelper(this);
 
-
-
         // Título de prueba (puede ser reemplazado por el título real obtenido del Intent)
         Intent intent4 = getIntent();
         title = intent4.getStringExtra("Titulo");
         user = intent4.getStringExtra("Nombre");
+
+        float media = CalcularMedia(title);
+        String valoracionComoTexto = String.valueOf(media);
+        txtValoracion.setText("Valoración Media: " + valoracionComoTexto);
 
         // Mostrar datos de la película en la interfaz de usuario
         mostrarDatos(title);
@@ -112,6 +114,29 @@ public class MovieActivity extends AppCompatActivity {
             }
         });
     }
+
+    private float CalcularMedia(String title) {
+        myDb = new DataBaseHelper(MovieActivity.this);
+        int id = Buscarid(title),n = 0, i =0;
+        float media = 0;
+
+        Cursor cursor = DataBaseHelper.obtenerReview(myDb,id);
+
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                // Obtener datos de las columnas correspondientes
+                n = n + cursor.getInt(cursor.getColumnIndexOrThrow("Review_rating"));
+
+                i++;
+
+                media = (float) n/i;
+            }
+            // Cerrar el cursor después de usarlo
+            cursor.close();
+        }
+        return media;
+    }
+
 
     private void ComprobarFav(String user){
         ArrayList<Integer> id = BuscarPeli(user);
@@ -257,7 +282,6 @@ public class MovieActivity extends AppCompatActivity {
             txtTitulo.setText(titulo);
             txtDescription.setText(descripcion);
             txtDirector.setText(director);
-            txtValoracion.setText("Valoración Media: " + String.valueOf(puntaje));
             Glide.with(this).load(img).into(imgPeli);
         }
 
