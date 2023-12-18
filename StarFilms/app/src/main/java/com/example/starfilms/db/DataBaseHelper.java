@@ -497,4 +497,22 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         String query = "SELECT * FROM Movie WHERE Movie_id = " + id + ";";
         return db.rawQuery(query, null);
     }
+
+    public static final String TABLE_USER = "User";
+    public static final String COLUMN_USER_ID = "User_id";
+    public static final String COLUMN_USER_NAME = "User_name";
+    public static final String COLUMN_USER_SURNAME = "User_surname";
+
+    // Constructor y métodos onCreate y onUpgrade
+
+    // Método para actualizar el nombre y el apellido de un usuario
+    public void updateUser(String userId, String newName, String newSurname) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String updateQuery = "UPDATE " + TABLE_USER +
+                " SET " + COLUMN_USER_NAME + " = '" + newName + "', " +
+                COLUMN_USER_SURNAME + " = '" + newSurname + "' " +
+                "WHERE " + COLUMN_USER_ID + " = '" + userId + "'";
+        db.execSQL(updateQuery);
+        db.close();
+    }
 }
