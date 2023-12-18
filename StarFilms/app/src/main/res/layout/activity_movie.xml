@@ -4,128 +4,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".activities.MovieActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:id="@+id/topMovieLinear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_background"
+        android:gravity="center"
+        android:layout_marginHorizontal="10dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@id/centralMovieLinear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/idTitulo"
-            android:layout_width="292dp"
-            android:layout_height="96dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:background="#27BBC1"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
             android:gravity="center"
-            android:text="Nombre de Pelicula"
-            android:textColor="@color/white"
+            android:text="Pelicula"
+            android:textColor="@color/black"
             android:textSize="30dp" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
-            android:layout_width="102dp"
-            android:layout_height="89dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/idTitulo"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:drawable/star_big_off" />
-
-        <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="102dp"
-            android:layout_height="89dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginTop="5dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
             app:srcCompat="@android:drawable/star_big_off" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+        android:id="@+id/centralMovieLinear"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomMovieLinear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topMovieLinear">
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="161dp"
-            android:layout_height="266dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp" />
+            android:layout_width="match_parent"
+            android:layout_weight="0.6"
+            android:layout_height="match_parent"
+            android:scaleType="center"
+            android:src="@drawable/add"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_weight="0.4"
+            android:padding="10dp">
 
             <TextView
                 android:id="@+id/txtTitulo"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="52dp"
-                android:layout_marginRight="10dp"
-                android:text="Nombre" />
+                android:text="Titulo"
+                android:maxLength="20"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/txtDirector"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="26dp"
-                android:text="Director" />
+                android:text="Director"
+                android:maxLength="40"
+                android:textSize="18sp"/>
 
             <TextView
                 android:id="@+id/txtDescription"
-                android:layout_width="177dp"
-                android:layout_height="171dp"
-                android:layout_marginStart="28dp"
-                android:layout_marginTop="84dp"
-                android:layout_marginBottom="19dp"
-                android:text="Descripcion" />
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Descripcion"
+                android:textSize="18sp"
+                android:maxLength="500"/>
 
         </LinearLayout>
+
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtValoracion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="16dp"
-        android:text="Valoracion"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ListView
-        android:id="@+id/lvReview"
-        android:layout_width="373dp"
-        android:layout_height="189dp"
-        android:layout_marginStart="19dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="2dp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/añadirReseña"
+    <LinearLayout
+        android:id="@+id/bottomMovieLinear"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        app:layout_constraintBottom_toTopOf="@id/añadirReseña"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/centralMovieLinear">
+
+        <TextView
+            android:id="@+id/txtValoracion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Valoracion"
+            android:layout_marginLeft="10dp"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+        <ListView
+            android:id="@+id/lvReview"
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/añadirReseña"
-        android:layout_width="366dp"
-        android:layout_height="75dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="12dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="Añadir Reseña"
         android:textSize="25dp"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottomMovieLinear" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
