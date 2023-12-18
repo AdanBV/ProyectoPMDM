@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context=".activities.ProfileActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"></LinearLayout>
+
     <TextView
         android:id="@+id/txtIdUsuario"
         android:layout_width="292dp"

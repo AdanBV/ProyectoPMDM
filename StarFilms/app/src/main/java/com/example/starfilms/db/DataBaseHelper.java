@@ -92,7 +92,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode I
         cv.put("Movie_title", "Star Wars: Episode I");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "The Phantom Menace" + "\n" + "El maestro jedi Qui-Gon Jinn " +
+        cv.put("Movie_description", "The Phantom Menace:" + "\n" + "El maestro jedi Qui-Gon Jinn " +
                 "y su aprendiz Obi-Wan Kenobi, escoltan y protegen a la Reina " +
                 "Amidala con la esperanza de encontrar una salida pacífica.");
         cv.put("Movie_rating", 4.5);
@@ -104,7 +104,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode II
         cv.put("Movie_title", "Star Wars: Episode II");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "Attack of the Clones" + "\n" + "Diez años después " +
+        cv.put("Movie_description", "Attack of the Clones:" + "\n" + "Diez años después " +
                 "La galaxia se encuentra al borde de una guerra civil.");
         cv.put("Movie_rating", 4.0);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode2.jpg?raw=true");
@@ -115,7 +115,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode III
         cv.put("Movie_title", "Star Wars: Episode III");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "Revenge of the Sith" + "\n" + "Una época en la que los Caballeros Jedi se han " +
+        cv.put("Movie_description", "Revenge of the Sith:" + "\n" + "Una época en la que los Caballeros Jedi se han " +
                 "esparcido por toda la galaxia, dirigiendo un ejército clon masivo para " +
                 "enfrentar a los Separatistas Galácticos.");
         cv.put("Movie_rating", 4.2);
@@ -127,7 +127,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode IV
         cv.put("Movie_title", "Star Wars: Episode IV");
         cv.put("Movie_director", "George Lucas");
-        cv.put("Movie_description", "A New Hope" + "\n" + "La trama describe la historia de un grupo de guerrilleros, " +
+        cv.put("Movie_description", "A New Hope:" + "\n" + "La trama describe la historia de un grupo de guerrilleros, " +
                 "la Alianza Rebelde, cuyo objetivo es destruir la estación espacial " +
                 "Estrella de la Muerte.");
         cv.put("Movie_rating", 5.0);
@@ -139,7 +139,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode V
         cv.put("Movie_title", "Star Wars: Episode V");
         cv.put("Movie_director", "Irvin Kershner");
-        cv.put("Movie_description", "The Empire Strikes Back" + "\n" + "La ficción de la película se sitúa tres años después de la " +
+        cv.put("Movie_description", "The Empire Strikes Back:" + "\n" + "La ficción de la película se sitúa tres años después de la " +
                 "destrucción de la estación espacial de combate conocida como la " +
                 "Estrella de la Muerte.");
         cv.put("Movie_rating", 4.3);
@@ -151,7 +151,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode VI
         cv.put("Movie_title", "Star Wars: Episode VI");
         cv.put("Movie_director", "Richard Marquand");
-        cv.put("Movie_description", "Return of the Jedi" + "\n" + "Luke no sabe que el Imperio Galáctico ha iniciado secretamente la " +
+        cv.put("Movie_description", "Return of the Jedi:" + "\n" + "Luke no sabe que el Imperio Galáctico ha iniciado secretamente la " +
                 "construcción de una nueva estación espacial blindada, incluso más " +
                 "poderosa que la primera y temida Estrella de la Muerte.");
         cv.put("Movie_rating", 4.8);
@@ -163,7 +163,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode VII
         cv.put("Movie_title", "Star Wars: Episode VII");
         cv.put("Movie_director", "J.J. Abrams");
-        cv.put("Movie_description", "The Force Awakens" + "\n" + "Cuando el desertor Finn llega a un planeta desierto conoce a Rey, " +
+        cv.put("Movie_description", "The Force Awakens:" + "\n" + "Cuando el desertor Finn llega a un planeta desierto conoce a Rey, " +
                 "cuyo androide contiene un mapa secreto.");
         cv.put("Movie_rating", 4.0);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode7.jpg?raw=true");
@@ -174,7 +174,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         // Episode VIII
         cv.put("Movie_title", "Star Wars: Episode VIII");
         cv.put("Movie_director", "Rian Johnson");
-        cv.put("Movie_description", "The Last Jedi" + "\n" + "La Resistencia encabezada por la general Leia Organa (Carrie Fisher) " +
+        cv.put("Movie_description", "The Last Jedi:" + "\n" + "La Resistencia encabezada por la general Leia Organa (Carrie Fisher) " +
                 "ha logrado contener temporalmente a la siniestra Primera Orden, " +
                 "un nuevo grupo militar nacido de las cenizas del Imperio Galáctico");
         cv.put("Movie_rating", 4.9);

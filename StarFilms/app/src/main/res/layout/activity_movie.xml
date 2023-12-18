@@ -31,9 +31,10 @@
 
         <ImageButton
             android:id="@+id/imageButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginStart="10dp"
+            android:background="@drawable/round_background"
             app:srcCompat="@android:drawable/star_big_off" />
     </LinearLayout>
 
@@ -41,6 +42,7 @@
         android:id="@+id/centralMovieLinear"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
         android:orientation="horizontal"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@id/bottomMovieLinear"
@@ -61,13 +63,14 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:layout_weight="0.4"
-            android:padding="10dp">
+            android:paddingHorizontal="10dp">
 
             <TextView
                 android:id="@+id/txtTitulo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Titulo"
+                android:layout_marginBottom="5dp"
                 android:maxLength="20"
                 android:textSize="18sp"/>
 
@@ -75,17 +78,22 @@
                 android:id="@+id/txtDirector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
                 android:text="Director"
                 android:maxLength="40"
                 android:textSize="18sp"/>
 
-            <TextView
-                android:id="@+id/txtDescription"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Descripcion"
-                android:textSize="18sp"
-                android:maxLength="500"/>
+                android:layout_height="match_parent" >
+                <TextView
+                    android:id="@+id/txtDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLength="500"
+                    android:text="Descripcion"
+                    android:textSize="18sp" />
+            </ScrollView>
 
         </LinearLayout>
 
@@ -96,6 +104,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
+        app:layout_constraintVertical_weight="1.5"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toTopOf="@id/añadirReseña"
         app:layout_constraintEnd_toEndOf="parent"

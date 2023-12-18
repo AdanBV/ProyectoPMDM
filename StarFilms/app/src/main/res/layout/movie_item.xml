@@ -8,14 +8,14 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:cardCornerRadius="25dp"
         android:layout_margin="3dp">
 
         <ImageView
             android:id="@+id/imagenPelicula"
             android:layout_width="match_parent"
-            android:layout_height="303dp"
+            android:layout_height="300dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop" />
     </androidx.cardview.widget.CardView>
