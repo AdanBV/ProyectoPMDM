@@ -180,6 +180,116 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("Movie_rating", 4.9);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/StarWars_episode8.jpg?raw=true");
         db.insert("Movie", null, cv);
+
+        cv.clear();
+
+        // Película 1
+        cv.put("Movie_title", "Fast and Furious 1");
+        cv.put("Movie_director", "Rob Cohen");
+        cv.put("Movie_description", "The Fast and the Furious" + "\n" +
+                "Brian O'Conner, un policía encubierto, se infiltra en el mundo del street racing para atrapar a los ladrones de equipos electrónicos.");
+        cv.put("Movie_rating", 4.5);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius.jpg?raw=true");
+        db.insert("Movie", null, cv);
+
+        cv.clear();
+
+// Película 2
+        cv.put("Movie_title", "2 Fast 2 Furious");
+        cv.put("Movie_director", "John Singleton");
+        cv.put("Movie_description",
+                "Brian O'Conner y su exconvicto amigo Roman Pierce se asocian para llevar a cabo una misión para la policía de Miami.");
+        cv.put("Movie_rating", 4.2);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius2.jpg?raw=true");
+        db.insert("Movie", null, cv);
+
+        cv.clear();
+
+// Película 3
+        cv.put("Movie_title", "The Fast and the Furious: Tokyo Drift");
+        cv.put("Movie_director", "Justin Lin");
+        cv.put("Movie_description",
+                "Un joven rebelde de Los Ángeles es enviado a vivir con su padre en Tokio, donde se ve envuelto en las carreras callejeras y la cultura del drift.");
+        cv.put("Movie_rating", 4.0);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius3.jpg?raw=true");
+        db.insert("Movie", null, cv);
+
+        cv.clear();
+
+// Película 4
+        cv.put("Movie_title", "Fast & Furious");
+        cv.put("Movie_director", "Justin Lin");
+        cv.put("Movie_description",
+                "Dominic Toretto y Brian O'Conner vuelven a trabajar juntos para derrotar a un narcotraficante común.");
+        cv.put("Movie_rating", 4.3);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius4.jpg?raw=true");
+        db.insert("Movie", null, cv);
+
+        cv.clear();
+
+// Película 5
+        cv.put("Movie_title", "Fast Five");
+        cv.put("Movie_director", "Justin Lin");
+        cv.put("Movie_description",
+                "Dominic Toretto y su equipo planean un último robo para comprar su libertad mientras son perseguidos por un implacable agente federal.");
+        cv.put("Movie_rating", 4.5);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius5.jpg?raw=true");
+        db.insert("Movie", null, cv);
+
+        cv.clear();
+
+// Película 6
+        cv.put("Movie_title", "Fast & Furious 6");
+        cv.put("Movie_director", "Justin Lin");
+        cv.put("Movie_description",
+                "Dominic Toretto y su equipo se asocian con el agente Hobbs para detener a un equipo rival de conductores mercenarios.");
+        cv.put("Movie_rating", 4.4);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius6.jpg?raw=true");
+        db.insert("Movie", null, cv);
+
+        cv.clear();
+
+// Película 7
+        cv.put("Movie_title", "Furious 7");
+        cv.put("Movie_director", "James Wan");
+        cv.put("Movie_description",
+                "Dominic Toretto y su equipo se enfrentan a Deckard Shaw, un asesino buscando venganza por la muerte de su hermano.");
+        cv.put("Movie_rating", 4.6);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius7.jpg?raw=true");
+        db.insert("Movie", null, cv);
+
+        cv.clear();
+
+// Película 8
+        cv.put("Movie_title", "The Fate of the Furious");
+        cv.put("Movie_director", "F. Gary Gray");
+        cv.put("Movie_description",
+                "Dominic Toretto se ve obligado a traicionar a su familia después de ser seducido por una mujer misteriosa.");
+        cv.put("Movie_rating", 4.2);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius8.jpg?raw=true");
+        db.insert("Movie", null, cv);
+
+        cv.clear();
+
+// Película 9
+        cv.put("Movie_title", "F9: The Fast Saga");
+        cv.put("Movie_director", "Justin Lin");
+        cv.put("Movie_description",
+                "Dominic Toretto y su equipo enfrentan una nueva amenaza mientras descubren secretos del pasado de Dom.");
+        cv.put("Movie_rating", 4.1);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius9.jpg?raw=true");
+        db.insert("Movie", null, cv);
+
+        cv.clear();
+
+// Película 10
+        cv.put("Movie_title", "Fast & Furious 10");
+        cv.put("Movie_director", "Louis Leterrier");
+        cv.put("Movie_description", "Dom Toretto y su familia enfrentan a un enemigo letal del pasado sediento de venganza." +
+                " La trama se centra en su lucha contra este adversario para proteger a la familia y lo que Dom valora.");
+        cv.put("Movie_rating", 4.8);
+        cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius10.jpg?raw=true");
+        db.insert("Movie", null, cv);
     }
 
     // INSERTAR NUEVO USUARIO EN TABLA (User) ~ "Registrarse"
