@@ -23,6 +23,7 @@ import java.util.ArrayList;
 public class FavouritesActivity extends AppCompatActivity {
     String User;
     ListView lv;
+    ArrayList<String> img, titulos;
     int pos;
     DataBaseHelper myDb;
     AdapterFavoritos adapter;
@@ -34,8 +35,8 @@ public class FavouritesActivity extends AppCompatActivity {
         Intent intent = getIntent();
         User = intent.getStringExtra("Nombre");
 
-        ArrayList<String> img = Buscarimg(User);
-        ArrayList<String> titulos = Buscartitulo(User);
+        img = Buscarimg(User);
+        titulos = Buscartitulo(User);
 
         adapter = new AdapterFavoritos(this, titulos,img);
 
@@ -98,7 +99,8 @@ public class FavouritesActivity extends AppCompatActivity {
     private void eliminarElemento(int position) {
         if (position >= 0 && position < adapter.getCount()) {
             // Eliminar el elemento del adaptador
-            adapter.remove(adapter.getItem(position));
+            img.remove(position);
+            titulos.remove(position);
 
             // Notificar al adaptador que los datos han cambiado
             adapter.notifyDataSetChanged();
