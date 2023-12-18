@@ -89,6 +89,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.clear();
 
         // DATOS TABLA (Movies) /* PARCIALMENTE GENERADO CON CHATGPT */
+
+        // Star Wars
+
         // Episode I
         cv.put("Movie_title", "Star Wars: Episode I");
         cv.put("Movie_director", "George Lucas");
@@ -183,11 +186,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         cv.clear();
 
+        // Fast & Furious
+
         // Película 1
-        cv.put("Movie_title", "Fast and Furious 1");
+        cv.put("Movie_title", "Fast & Furious 1");
         cv.put("Movie_director", "Rob Cohen");
-        cv.put("Movie_description", "The Fast and the Furious" + "\n" +
-                "Brian O'Conner, un policía encubierto, se infiltra en el mundo del street racing para atrapar a los ladrones de equipos electrónicos.");
+        cv.put("Movie_description", "The Fast and the Furious" + "\n" + "Brian O'Conner, un policía encubierto, se infiltra " +
+                "en el mundo del street racing para atrapar a los ladrones de equipos electrónicos.");
         cv.put("Movie_rating", 4.5);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius.jpg?raw=true");
         db.insert("Movie", null, cv);
@@ -195,10 +200,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.clear();
 
 // Película 2
-        cv.put("Movie_title", "2 Fast 2 Furious");
+        cv.put("Movie_title", "Fast & Furious 2");
         cv.put("Movie_director", "John Singleton");
-        cv.put("Movie_description",
-                "Brian O'Conner y su exconvicto amigo Roman Pierce se asocian para llevar a cabo una misión para la policía de Miami.");
+        cv.put("Movie_description", "2 Fast 2 Furious" + "\n" + "Brian O'Conner y su exconvicto amigo Roman Pierce se asocian para llevar a cabo una misión " +
+                "para la policía de Miami.");
         cv.put("Movie_rating", 4.2);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius2.jpg?raw=true");
         db.insert("Movie", null, cv);
@@ -206,10 +211,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.clear();
 
 // Película 3
-        cv.put("Movie_title", "The Fast and the Furious: Tokyo Drift");
+        cv.put("Movie_title", "Fast & Furious 3");
         cv.put("Movie_director", "Justin Lin");
-        cv.put("Movie_description",
-                "Un joven rebelde de Los Ángeles es enviado a vivir con su padre en Tokio, donde se ve envuelto en las carreras callejeras y la cultura del drift.");
+        cv.put("Movie_description", "Tokyo Drift" + "\n" + "Un joven rebelde de Los Ángeles es enviado a vivir con su padre en Tokio, donde se ve envuelto " +
+                "en las carreras callejeras y la cultura del drift.");
         cv.put("Movie_rating", 4.0);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius3.jpg?raw=true");
         db.insert("Movie", null, cv);
@@ -217,10 +222,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.clear();
 
 // Película 4
-        cv.put("Movie_title", "Fast & Furious");
+        cv.put("Movie_title", "Fast & Furious 4");
         cv.put("Movie_director", "Justin Lin");
-        cv.put("Movie_description",
-                "Dominic Toretto y Brian O'Conner vuelven a trabajar juntos para derrotar a un narcotraficante común.");
+        cv.put("Movie_description", "Even Faster" + "\n" + "Dominic Toretto y Brian O'Conner vuelven a trabajar juntos para derrotar a un narcotraficante común.");
         cv.put("Movie_rating", 4.3);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius4.jpg?raw=true");
         db.insert("Movie", null, cv);
@@ -228,10 +232,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.clear();
 
 // Película 5
-        cv.put("Movie_title", "Fast Five");
+        cv.put("Movie_title", "Fast & Furious 5");
         cv.put("Movie_director", "Justin Lin");
-        cv.put("Movie_description",
-                "Dominic Toretto y su equipo planean un último robo para comprar su libertad mientras son perseguidos por un implacable agente federal.");
+        cv.put("Movie_description", "Fast Five" + "\n" + "Dominic Toretto y su equipo planean un último robo para comprar su libertad mientras son perseguidos " +
+                "por un implacable agente federal.");
         cv.put("Movie_rating", 4.5);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius5.jpg?raw=true");
         db.insert("Movie", null, cv);
@@ -241,8 +245,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 // Película 6
         cv.put("Movie_title", "Fast & Furious 6");
         cv.put("Movie_director", "Justin Lin");
-        cv.put("Movie_description",
-                "Dominic Toretto y su equipo se asocian con el agente Hobbs para detener a un equipo rival de conductores mercenarios.");
+        cv.put("Movie_description", "All Roads Lead To This" + "\n" + "Dominic Toretto y su equipo se asocian con el agente Hobbs para detener a un equipo rival de " +
+                "conductores mercenarios.");
         cv.put("Movie_rating", 4.4);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius6.jpg?raw=true");
         db.insert("Movie", null, cv);
@@ -250,10 +254,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.clear();
 
 // Película 7
-        cv.put("Movie_title", "Furious 7");
+        cv.put("Movie_title", "Fast & Furious 7");
         cv.put("Movie_director", "James Wan");
-        cv.put("Movie_description",
-                "Dominic Toretto y su equipo se enfrentan a Deckard Shaw, un asesino buscando venganza por la muerte de su hermano.");
+        cv.put("Movie_description", "Vengeance Hits Home" + "\n" + "Dominic Toretto y su equipo se enfrentan a Deckard Shaw, un asesino buscando venganza por la muerte de su hermano.");
         cv.put("Movie_rating", 4.6);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius7.jpg?raw=true");
         db.insert("Movie", null, cv);
@@ -261,10 +264,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.clear();
 
 // Película 8
-        cv.put("Movie_title", "The Fate of the Furious");
+        cv.put("Movie_title", "Fast & Furious 8");
         cv.put("Movie_director", "F. Gary Gray");
-        cv.put("Movie_description",
-                "Dominic Toretto se ve obligado a traicionar a su familia después de ser seducido por una mujer misteriosa.");
+        cv.put("Movie_description", "The Fate Of The Furious" + "\n" + "Dominic Toretto se ve obligado a traicionar a su familia después de ser seducido por una mujer misteriosa.");
         cv.put("Movie_rating", 4.2);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius8.jpg?raw=true");
         db.insert("Movie", null, cv);
@@ -272,10 +274,9 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.clear();
 
 // Película 9
-        cv.put("Movie_title", "F9: The Fast Saga");
+        cv.put("Movie_title", "Fast & Furious 9");
         cv.put("Movie_director", "Justin Lin");
-        cv.put("Movie_description",
-                "Dominic Toretto y su equipo enfrentan una nueva amenaza mientras descubren secretos del pasado de Dom.");
+        cv.put("Movie_description", "The Fast Saga" + "\n" + "Dominic Toretto y su equipo enfrentan una nueva amenaza mientras descubren secretos del pasado de Dom.");
         cv.put("Movie_rating", 4.1);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius9.jpg?raw=true");
         db.insert("Movie", null, cv);
@@ -285,7 +286,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 // Película 10
         cv.put("Movie_title", "Fast & Furious 10");
         cv.put("Movie_director", "Louis Leterrier");
-        cv.put("Movie_description", "Dom Toretto y su familia enfrentan a un enemigo letal del pasado sediento de venganza." +
+        cv.put("Movie_description", "The End Of The Road Begins" + "\n" + "Dom Toretto y su familia enfrentan a un enemigo letal del pasado sediento de venganza." +
                 " La trama se centra en su lucha contra este adversario para proteger a la familia y lo que Dom valora.");
         cv.put("Movie_rating", 4.8);
         cv.put("Movie_image", "https://github.com/AdanBV/ProyectoPMDM/blob/master/Imagenes/FastandFurius10.jpg?raw=true");
@@ -300,8 +301,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         try {
             // Consulta si existe el usuario
-            cursor = db.query("User", new String[]{"User_id"}, "User_id = ?",
-                    new String[]{userId}, null, null, null);
+            cursor = db.query("User", new String[]{"User_id"}, "User_id = ?", new String[]{userId}, null, null, null);
 
             if (cursor.moveToFirst()) {
                 // Si el usuario ya existe se avisa
@@ -319,8 +319,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 if (result == -1) {
                     // Si no puede crear el usuario se aivsa
                     if (userPassword.equals("")) {
-                        Toast.makeText(context, "Failed to create user, password should be " +
-                                "at least 5 digits lenght.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "Failed to create user, password should be " + "at least 5 digits lenght.", Toast.LENGTH_LONG).show();
                     } else {
                         Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
                     }
@@ -386,8 +385,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         cv.put("Review_text", reviewText);
         cv.put("Review_rating", reviewRating);
 
-        int result = db.update("Review", cv, "User_id = ? AND Movie_id = ?",
-                new String[]{userId, String.valueOf(movieId)});
+        int result = db.update("Review", cv, "User_id = ? AND Movie_id = ?", new String[]{userId, String.valueOf(movieId)});
 
         if (result > 0) {
             // Éxito de actualización
@@ -508,18 +506,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // Método para actualizar el nombre y el apellido de un usuario
     public void updateUser(String userId, String newName, String newSurname) {
         SQLiteDatabase db = this.getWritableDatabase();
-        String updateQuery = "UPDATE " + TABLE_USER +
-                " SET " + COLUMN_USER_NAME + " = '" + newName + "', " +
-                COLUMN_USER_SURNAME + " = '" + newSurname + "' " +
-                "WHERE " + COLUMN_USER_ID + " = '" + userId + "'";
+        String updateQuery = "UPDATE " + TABLE_USER + " SET " + COLUMN_USER_NAME + " = '" + newName + "'," +
+                " " + COLUMN_USER_SURNAME + " = '" + newSurname + "' " + "WHERE " + COLUMN_USER_ID + " = '" + userId + "'";
         db.execSQL(updateQuery);
         db.close();
     }
 
     public Cursor getUserById(String userId) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String selectQuery = "SELECT * FROM " + TABLE_USER +
-                " WHERE " + COLUMN_USER_ID + " = '" + userId + "'";
+        String selectQuery = "SELECT * FROM " + TABLE_USER + " WHERE " + COLUMN_USER_ID + " = '" + userId + "'";
         return db.rawQuery(selectQuery, null);
     }
 }
