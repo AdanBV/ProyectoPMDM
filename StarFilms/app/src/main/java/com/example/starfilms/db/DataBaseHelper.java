@@ -232,24 +232,61 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     // INSERTAR NUEVA RESEÑA EN LA TABLA (Review)
     public boolean addReview(String reviewText, int reviewRating, String userId, int movieId) {
         SQLiteDatabase db = this.getWritableDatabase();
+
+        if (reviewExists(userId, movieId)) {
+            // Si existe, actualiza la reseña
+            return updateReview(reviewText, reviewRating, userId, movieId);
+        } else {
+            // Si no existe, crea una nueva reseña
+            ContentValues cv = new ContentValues();
+
+            cv.put("Review_text", reviewText);
+            cv.put("Review_rating", reviewRating);
+            cv.put("User_id", userId);
+            cv.put("Movie_id", movieId);
+
+            long result = db.insert("Review", null, cv);
+
+            if (result == -1) {
+                // Error de creación
+                Toast.makeText(context, "Failed to create review", Toast.LENGTH_LONG).show();
+                return false;
+            } else {
+                // Éxito de creación
+                Toast.makeText(context, "New review successfully created", Toast.LENGTH_LONG).show();
+                return true;
+            }
+        }
+    }
+
+    // Método para verificar si la reseña ya existe
+    private boolean reviewExists(String userId, int movieId) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT * FROM Review WHERE User_id = ? AND Movie_id = ?";
+        Cursor cursor = db.rawQuery(query, new String[]{userId, String.valueOf(movieId)});
+        boolean exists = cursor.moveToFirst();
+        cursor.close();
+        return exists;
+    }
+
+    private boolean updateReview(String reviewText, int reviewRating, String userId, int movieId) {
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        // Intenta crear la reseña
         cv.put("Review_text", reviewText);
         cv.put("Review_rating", reviewRating);
-        cv.put("User_id", userId);
-        cv.put("Movie_id", movieId);
 
-        long result = db.insert("Review", null, cv);
+        int result = db.update("Review", cv, "User_id = ? AND Movie_id = ?",
+                new String[]{userId, String.valueOf(movieId)});
 
-        if (result == -1) {
-            // Error de creación
-            Toast.makeText(context, "Failed to create review", Toast.LENGTH_LONG).show();
-            return false;
-        } else {
-            // Exito de creación
-            Toast.makeText(context, "New review successfully created", Toast.LENGTH_LONG).show();
+        if (result > 0) {
+            // Éxito de actualización
+            Toast.makeText(context, "Review successfully updated", Toast.LENGTH_LONG).show();
             return true;
+        } else {
+            // Error de actualización
+            Toast.makeText(context, "Failed to update review", Toast.LENGTH_LONG).show();
+            return false;
         }
     }
 

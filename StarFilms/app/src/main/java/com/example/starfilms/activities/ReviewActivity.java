@@ -106,6 +106,12 @@ public class ReviewActivity extends AppCompatActivity {
                 if (cursor != null) {
                     cursor.close();
                 }
+
+                Intent intent2 = new Intent(ReviewActivity.this, MovieActivity.class);
+                intent2.putExtra("Titulo",title);
+                intent2.putExtra("Nombre",intent.getStringExtra("Nombre"));
+                // Iniciar la nueva actividad
+                startActivity(intent2);
             }
         });
 

@@ -114,11 +114,11 @@ public class MovieActivity extends AppCompatActivity {
     }
 
     private void ComprobarFav(String user){
-        int id = BuscarPeli(user);
+        ArrayList<Integer> id = BuscarPeli(user);
 
-        String tit = BuscarTitulo(id);
+        ArrayList<String> tit = BuscarTitulo(id);
 
-        if (title != null && title.equals(tit)) {
+        if (tit != null && tit.contains(title)) {
             imgBtn.setImageResource(android.R.drawable.btn_star_big_on);
             favorito = true;
         } else {
@@ -127,16 +127,19 @@ public class MovieActivity extends AppCompatActivity {
         }
     }
 
-    private String BuscarTitulo(int id){
-        String tit = null;
+    private ArrayList<String> BuscarTitulo(ArrayList<Integer> id){
+        ArrayList<String> tit = new ArrayList<>();;
+        String t;
 
         // Utiliza myDb.obtenerPelis en lugar de DataBaseHelper.obtenerPelis
-        Cursor cursor = myDb.obtenerPeliId(myDb, id);
+        Cursor cursor = myDb.obtenerReviewporID(myDb, id);
 
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 // Obtener datos de las columnas correspondientes
-                tit = cursor.getString(cursor.getColumnIndexOrThrow("Movie_title"));
+                t = cursor.getString(cursor.getColumnIndexOrThrow("Movie_title"));
+
+                tit.add(t);
             }
             // Cerrar el cursor después de usarlo
             cursor.close();
@@ -145,8 +148,10 @@ public class MovieActivity extends AppCompatActivity {
         return tit;
     }
 
-    private int BuscarPeli(String user){
-        int movieId = 0;
+    private ArrayList<Integer> BuscarPeli(String user){
+        ArrayList<Integer> movieId = new ArrayList<>();
+        int id;
+
 
         // Utiliza myDb.obtenerPelis en lugar de DataBaseHelper.obtenerPelis
         Cursor cursor = myDb.obtenerFav(myDb, user);
@@ -154,7 +159,9 @@ public class MovieActivity extends AppCompatActivity {
         if (cursor != null) {
             while (cursor.moveToNext()) {
                 // Obtener datos de las columnas correspondientes
-                movieId = cursor.getInt(cursor.getColumnIndexOrThrow("Movie_id"));
+                id = cursor.getInt(cursor.getColumnIndexOrThrow("Movie_id"));
+
+                movieId.add(id);
             }
             // Cerrar el cursor después de usarlo
             cursor.close();
