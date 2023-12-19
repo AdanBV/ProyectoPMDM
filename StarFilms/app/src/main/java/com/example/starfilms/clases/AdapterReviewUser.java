@@ -11,11 +11,11 @@ import com.example.starfilms.R;
 
 import java.util.ArrayList;
 
-public class AdapterReviwUser extends ArrayAdapter<String> {
+public class AdapterReviewUser extends ArrayAdapter<String> {
 
     private final ArrayList<String> movieTitle;
     private final ArrayList<String> review;
-    public AdapterReviwUser(Context context, ArrayList<String> Movie_title, ArrayList<String> Review) {
+    public AdapterReviewUser(Context context, ArrayList<String> Movie_title, ArrayList<String> Review) {
         super(context, R.layout.activity_adapter_review_user,Movie_title);
 
         this.movieTitle = Movie_title;

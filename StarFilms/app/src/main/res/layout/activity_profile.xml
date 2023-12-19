@@ -113,7 +113,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/red"
             android:layout_marginTop="10dp"
-            android:text="Log Out"
+            android:text="Cerrar Sesión"
             android:layout_weight="0"
             android:textColor="@color/black"
             android:textSize="22sp"

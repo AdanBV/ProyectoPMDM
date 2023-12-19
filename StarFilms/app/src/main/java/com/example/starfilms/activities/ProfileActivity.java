@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.starfilms.R;
-import com.example.starfilms.clases.AdapterReviwUser;
+import com.example.starfilms.clases.AdapterReviewUser;
 import com.example.starfilms.db.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -52,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listaReviewsUsuario);
 
-        AdapterReviwUser adapter = new AdapterReviwUser(this, Titles, reviews);
+        AdapterReviewUser adapter = new AdapterReviewUser(this, Titles, reviews);
 
         listView.setAdapter(adapter);
 

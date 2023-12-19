@@ -54,6 +54,7 @@
                 android:background="@drawable/round_edit_text"
                 android:ems="8"
                 android:hint="@string/contra"
+                android:typeface="normal"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textColorHint="@color/grey"

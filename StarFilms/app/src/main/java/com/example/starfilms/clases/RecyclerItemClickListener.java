@@ -1,4 +1,4 @@
-package com.example.starfilms.activities;
+package com.example.starfilms.clases;
 
 import androidx.recyclerview.widget.RecyclerView;
 

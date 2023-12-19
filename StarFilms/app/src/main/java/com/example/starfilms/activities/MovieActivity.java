@@ -1,10 +1,7 @@
 package com.example.starfilms.activities;
 
-import androidx.annotation.DrawableRes;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -17,7 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.starfilms.R;
-import com.example.starfilms.clases.AdapterReviewPeli;
+import com.example.starfilms.clases.AdapterReviewMovie;
 import com.example.starfilms.db.DataBaseHelper;
 
 import java.util.ArrayList;
@@ -75,7 +72,7 @@ public class MovieActivity extends AppCompatActivity {
         ArrayList<String> titulos = obtenerReviwParaTuLista(title);
         ArrayList<String> usuarios = obtenerUsuariosParaTuLista(title);
 
-        AdapterReviewPeli adapter = new AdapterReviewPeli(this, usuarios, titulos);
+        AdapterReviewMovie adapter = new AdapterReviewMovie(this, usuarios, titulos);
 
         lv.setAdapter(adapter);
         adapter.notifyDataSetChanged();

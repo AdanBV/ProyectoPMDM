@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.starfilms.R;
+import com.example.starfilms.clases.RecyclerItemClickListener;
 import com.example.starfilms.db.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 

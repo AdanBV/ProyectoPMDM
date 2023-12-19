@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.starfilms.R;
 import com.example.starfilms.activities.MovieActivity;
-import com.example.starfilms.db.DataBaseHelper;
 
 import java.util.ArrayList;
 
@@ -34,7 +33,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.PeliculaView
     @Override
     public PeliculaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // Inflar el diseño de elemento de película y devolver un nuevo ViewHolder
-        View view = LayoutInflater.from(context).inflate(R.layout.movie_item, parent, false);
+        View view = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
         return new PeliculaViewHolder(view);
     }
 

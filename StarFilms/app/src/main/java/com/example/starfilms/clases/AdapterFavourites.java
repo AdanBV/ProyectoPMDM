@@ -13,13 +13,13 @@ import com.example.starfilms.R;
 
 import java.util.ArrayList;
 
-public class AdapterFavoritos extends ArrayAdapter<String> {
+public class AdapterFavourites extends ArrayAdapter<String> {
 
     private final Context context;
     private final ArrayList<String> titulo;
     private final ArrayList<String> img;
-    public AdapterFavoritos(Context context, ArrayList<String> title, ArrayList<String> image) {
-        super(context, R.layout.item_favorito,title);
+    public AdapterFavourites(Context context, ArrayList<String> title, ArrayList<String> image) {
+        super(context, R.layout.item_favourite,title);
 
         this.context = context;
         this.titulo = title;
@@ -29,7 +29,7 @@ public class AdapterFavoritos extends ArrayAdapter<String> {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View view = convertView;
-        if(view == null) view = LayoutInflater.from(getContext()).inflate(R.layout.item_favorito, parent, false);
+        if(view == null) view = LayoutInflater.from(getContext()).inflate(R.layout.item_favourite, parent, false);
 
         // Obtener referencias a las vistas en el diseño
         TextView txtPeli = view.findViewById(R.id.txtPeli);

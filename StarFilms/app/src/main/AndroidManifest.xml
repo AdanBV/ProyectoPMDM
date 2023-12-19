@@ -20,7 +20,7 @@
             android:label="@string/title_activity_favoritos"
             android:theme="@style/Theme.StarFilms" />
         <activity
-            android:name=".clases.AdapterReviewPeli"
+            android:name=".clases.AdapterReviewMovie"
             android:exported="false" />
         <activity
             android:name=".activities.ProfileActivity"

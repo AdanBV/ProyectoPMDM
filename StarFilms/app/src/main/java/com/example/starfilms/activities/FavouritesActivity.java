@@ -14,23 +14,23 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import com.example.starfilms.R;
-import com.example.starfilms.clases.AdapterFavoritos;
+import com.example.starfilms.clases.AdapterFavourites;
 import com.example.starfilms.db.DataBaseHelper;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
 public class FavouritesActivity extends AppCompatActivity {
+    DataBaseHelper myDb;
     String User;
+    int pos;
     ListView lv;
     ArrayList<String> img, titulos;
-    int pos;
-    DataBaseHelper myDb;
-    AdapterFavoritos adapter;
+    AdapterFavourites adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favoritos);
+        setContentView(R.layout.activity_favourites);
 
         Intent intent = getIntent();
         User = intent.getStringExtra("Nombre");
@@ -38,7 +38,7 @@ public class FavouritesActivity extends AppCompatActivity {
         img = Buscarimg(User);
         titulos = Buscartitulo(User);
 
-        adapter = new AdapterFavoritos(this, titulos,img);
+        adapter = new AdapterFavourites(this, titulos,img);
 
         lv = findViewById(R.id.listaFavoritas);
 
