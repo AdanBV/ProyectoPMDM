@@ -62,7 +62,9 @@ public class MovieActivity extends AppCompatActivity {
         user = intent4.getStringExtra("Nombre");
 
         float media = CalcularMedia(title);
+
         String valoracionComoTexto = String.valueOf(media);
+
         txtValoracion.setText("Valoración Media: " + valoracionComoTexto);
 
         // Mostrar datos de la película en la interfaz de usuario
