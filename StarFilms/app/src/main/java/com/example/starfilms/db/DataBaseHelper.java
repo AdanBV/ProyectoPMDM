@@ -305,7 +305,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             if (cursor.moveToFirst()) {
                 // Si el usuario ya existe se avisa
-                Toast.makeText(context, "User already in use", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Usuario en uso.", Toast.LENGTH_LONG).show();
                 return false;
             } else {
                 // Si no existe intenta crear el usuario
@@ -319,15 +319,15 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 if (result == -1) {
                     // Si no puede crear el usuario se aivsa
                     if (userPassword.equals("")) {
-                        Toast.makeText(context, "Failed to create user, password should be " + "at least 5 digits lenght.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "La contraseña tiene que tener 5 digitos como mínimo.", Toast.LENGTH_LONG).show();
                     } else {
-                        Toast.makeText(context, "Failed to create user", Toast.LENGTH_LONG).show();
+                        Toast.makeText(context, "La contraseña tiene que tener 5 digitos como mínimo.", Toast.LENGTH_LONG).show();
                     }
                     return false;
 
                 } else {
                     // Si puede crear el usuario se indica
-                    Toast.makeText(context, "New user successfully registered", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Nuevo usuario registrado.", Toast.LENGTH_LONG).show();
                     return true;
                 }
             }
@@ -358,11 +358,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
             if (result == -1) {
                 // Error de creación
-                Toast.makeText(context, "Failed to create review", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Fallo al crear la review.", Toast.LENGTH_LONG).show();
                 return false;
             } else {
                 // Éxito de creación
-                Toast.makeText(context, "New review successfully created", Toast.LENGTH_LONG).show();
+                Toast.makeText(context, "Nueva review creada", Toast.LENGTH_LONG).show();
                 return true;
             }
         }
@@ -389,11 +389,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (result > 0) {
             // Éxito de actualización
-            Toast.makeText(context, "Review successfully updated", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Review actualizada", Toast.LENGTH_LONG).show();
             return true;
         } else {
             // Error de actualización
-            Toast.makeText(context, "Failed to update review", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Fallo al actualizar la review", Toast.LENGTH_LONG).show();
             return false;
         }
     }
@@ -411,11 +411,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         if (result == -1) {
             // Error de creación
-            Toast.makeText(context, "Failed to add Favourite", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Fallo al aladir a Favoritos.", Toast.LENGTH_LONG).show();
             return false;
         } else {
             // Exito de creación
-            Toast.makeText(context, "New Favourite successfully added", Toast.LENGTH_LONG).show();
+            Toast.makeText(context, "Añadia a Favoritos.", Toast.LENGTH_LONG).show();
             return true;
         }
     }
