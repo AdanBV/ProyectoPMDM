@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                 // Comprobar que la contraseña coincide con el usuario e iniciar sesión
                 if (User.equals(cursor.getString(0)) && Password.equals(cursor.getString(1))) {
                     Intent intent = new Intent(this, HomeActivity.class);
-                    String Nombre = editText_UserId.getText().toString();
+                    String Nombre = editText_UserId.getText().toString().trim();
                     intent.putExtra("Nombre",Nombre);
                     startActivity(intent);
                 }

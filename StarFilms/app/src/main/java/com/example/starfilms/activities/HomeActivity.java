@@ -159,9 +159,6 @@ public class HomeActivity extends AppCompatActivity {
             // Almacenar datos en las listas desde la base de datos
             while (cursor.moveToNext()) {
                 Movie_title.add(cursor.getString(1));
-                Movie_director.add(cursor.getString(2));
-                Movie_description.add(cursor.getString(3));
-                Movie_rating.add(cursor.getString(4));
                 Movie_image.add(cursor.getString(5));
             }
         }
