@@ -4,96 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".activities.ReviewActivity">
+
+    <LinearLayout
+        android:id="@+id/topReviewLinear"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_background"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintBottom_toTopOf="@id/centerReviewLinear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/round_background"
+            android:layout_marginEnd="10dp"
+            app:srcCompat="@android:drawable/ic_menu_revert"
+            android:contentDescription="Atrás" />
+
+        <TextView
+            android:id="@+id/idTitulo"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="Nombre de Pelicula"
+            android:textColor="@color/black"
+            android:textSize="30dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/centerReviewLinear"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:padding="40dp"
+        app:layout_constraintBottom_toTopOf="@id/btnReseña"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topReviewLinear">
+
+        <EditText
+            android:id="@+id/txtTexto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="8"
+            android:maxLines="1"
+            android:inputType="textMultiLine"
+            android:background="@drawable/round_edit_text"
+            android:ems="10"
+            android:layout_marginBottom="10dp"
+            android:hint="Texto de la review"
+            android:padding="10dp"
+            android:textColorHint="@color/grey"
+            android:textSize="22sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/txtPuntuacion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_edit_text"
+                android:ems="3"
+                android:gravity="center"
+                android:text="0"
+                android:paddingVertical="5dp"
+                android:textColorHint="@color/grey"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/btnMostrarMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="10dp"
+                android:layout_marginStart="10dp"
+                android:onClick="mostrarMenu"
+                android:text="Valorar Pelicula"
+
+                />
+        </LinearLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnReseña"
-        android:layout_width="279dp"
-        android:layout_height="75dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Subir Review"
-        android:textSize="22sp"
+        android:textSize="25sp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/btnMostrarMenu"
-        android:layout_width="181dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="80dp"
-        android:onClick="mostrarMenu"
-        android:text="Valorar Pelicula"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTexto" />
-
-    <EditText
-        android:id="@+id/txtTexto"
-        android:layout_width="257dp"
-        android:layout_height="229dp"
-        android:layout_marginTop="92dp"
-        android:background="@drawable/round_edit_text"
-        android:ems="10"
-        android:hint="Texto de la review"
-        android:inputType="text"
-        android:padding="10dp"
-        android:textColorHint="@color/grey"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/idTitulo" />
-
-    <TextView
-        android:id="@+id/txtPuntuacion"
-        android:layout_width="69dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="72dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/round_edit_text"
-        android:ems="10"
-        android:gravity="center"
-        android:text="0"
-        android:textColorHint="@color/grey"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnMostrarMenu"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtTexto" />
-
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="80dp"
-        android:layout_height="107dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/idTitulo"
-        app:layout_constraintHorizontal_bias="0.444"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_revert" />
-
-    <TextView
-        android:id="@+id/idTitulo"
-        android:layout_width="292dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:background="#27BBC1"
-        android:gravity="center"
-        android:text="Nombre de Pelicula"
-        android:textColor="@color/white"
-        android:textSize="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/centerReviewLinear" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
