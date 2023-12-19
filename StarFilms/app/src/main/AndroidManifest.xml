@@ -18,6 +18,7 @@
             android:name=".activities.FavouritesActivity"
             android:exported="false"
             android:label="@string/title_activity_favoritos"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.StarFilms" />
         <activity
             android:name=".clases.AdapterReviewMovie"
