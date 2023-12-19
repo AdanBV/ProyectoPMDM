@@ -38,6 +38,7 @@
             android:padding="10dp"
             android:textColorHint="@color/grey"
             android:textSize="22sp"
+            android:typeface="normal"
             android:autofillHints="username" />
 
         <LinearLayout
