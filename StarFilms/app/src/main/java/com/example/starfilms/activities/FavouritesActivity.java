@@ -63,8 +63,7 @@ public class FavouritesActivity extends AppCompatActivity {
 
                 mostrarMenu(view);
 
-
-                return false;
+                return true;
             }
         });
 
